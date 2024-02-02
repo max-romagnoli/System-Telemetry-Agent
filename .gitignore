@@ -1,2 +1,4 @@
 prometheus/prometheus
 prometheus/promtool
+prometheus/data
+.vscode
