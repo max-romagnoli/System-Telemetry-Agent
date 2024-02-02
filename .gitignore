@@ -1,4 +1,11 @@
+grafana/*
+!conf
+!README.md
+
 prometheus/prometheus
 prometheus/promtool
 prometheus/data
+
 .vscode
+
+sample.yaml*
