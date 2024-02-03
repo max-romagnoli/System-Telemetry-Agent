@@ -55,6 +55,8 @@ A monitoring agent which runs on Linux machines and collects system metrics.
 * You can open the Grafana UI in your browser at: <br>
     `localhost:3000`
 
+* Login using _admin_ for both username and password.
+
 
 ### Windows
 
