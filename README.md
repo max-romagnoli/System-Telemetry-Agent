@@ -47,7 +47,7 @@ A monitoring agent which runs on Linux machines and collects system metrics.
     `tar xvfzk grafana-10.3.1.linux-amd64.tar.gz -C . --strip-components=1`
 
 * Delete zipped folder and unnecessary binaries: <br>
-    `rm -r grafana-10.3.1.linux-amd64.tar.gz LICENSE NOTICE`
+    `rm -r grafana-10.3.1.linux-amd64.tar.gz LICENSE NOTICE.md VERSION`
 
 * Start Grafana server on port 3000: <br>
     `./bin/grafana-server`
