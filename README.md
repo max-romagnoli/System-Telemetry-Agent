@@ -9,7 +9,7 @@ A monitoring agent which runs on Linux machines and collects system metrics.
     * On Mac AMD: `darwin-amd64`
     * On Mac ARM: `darwin-arm64`
 
-* Open bash/zsh terminal in root folder:
+* Open bash/zsh terminal in root folder
 
 * `cd prometheus`
 
@@ -44,7 +44,7 @@ A monitoring agent which runs on Linux machines and collects system metrics.
     * On Mac AMD: `darwin-amd64`
     * On Mac ARM: `darwin-arm64`
 
-* Open bash terminal in root folder:
+* Open bash/zsh terminal in root folder
 
 * `cd grafana`
 
