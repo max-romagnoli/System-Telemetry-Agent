@@ -1,0 +1,10 @@
+grafana/*
+!conf
+!README.md
+
+prometheus/*
+!prometheus.yml
+
+.vscode
+
+sample.yaml*
