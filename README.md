@@ -71,3 +71,4 @@ A monitoring agent which runs on Linux machines and collects system metrics.
     `localhost:3000`
 
 * Login using _admin_ for both username and password.
+
