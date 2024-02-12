@@ -8,3 +8,5 @@ prometheus/*
 .vscode
 
 sample.yaml*
+
+__pycache__

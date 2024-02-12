@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  exporter:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../exporter:/usr/src/app/exporter
+    working_dir: /usr/src/app
+    command: python3 start_exporter.py
