@@ -1,6 +1,6 @@
 import psutil
 
-class networkCollector:
+class NetworkCollector:
 
     def __init__(self) -> None:
         """

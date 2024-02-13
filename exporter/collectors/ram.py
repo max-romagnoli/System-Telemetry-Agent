@@ -1,6 +1,6 @@
 import psutil
 
-class ramCollector:
+class RAMCollector:
 
     def __init__(self) -> None:
         """

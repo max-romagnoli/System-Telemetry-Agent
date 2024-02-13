@@ -1,6 +1,6 @@
 import psutil
 
-class diskCollector:
+class DiskCollector:
 
     def __init__(self) -> None:
         """
@@ -31,7 +31,7 @@ class diskCollector:
         """
         pass
 
-    def get_reads(self):
+    def get_writes(self):
         """
         TODO: @
         If Possible
