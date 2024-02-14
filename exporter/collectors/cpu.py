@@ -21,6 +21,13 @@ class CPUCollector:
         TODO: @
         Returns the current CPU frequency in MHz.
         """
+        try:
+            with open('/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq', 'r') as f:
+                frequency = int(f.read()) / 1000 
+            return frequency
+        except Exception as e:
+            print(f"Error reading CPU frequency: {e}")
+            return None
         pass
 
     def get_temperature(self):
