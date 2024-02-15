@@ -9,7 +9,7 @@
 * Click on **Add service account token**
 * Name the token `GRAFANA_SYNC_API`
 * Copy and paste the secret to your clipboard.
-* **Now open the terminal:**
+* **Now open the terminal in VS Code:**
     *  `cd scripts`
     * Write secret into .env file: <br>
       `echo "GRAFANA_SYNC_API=<paste-your-secret-here>" > .env`
