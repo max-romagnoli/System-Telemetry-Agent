@@ -34,5 +34,4 @@ jobs:
         pip install psutil
     - name: Run pytest
       run: | 
-        echo "PYTHONPATH=${{ github.workspace }}" >> $GITHUB_ENV
         pytest
