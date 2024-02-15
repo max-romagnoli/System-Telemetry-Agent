@@ -13,6 +13,9 @@ dashboards_directory = "../grafana/conf/provisioning/dashboards"
 
 
 def fetch_dashboards(api_key, grafana_url):
+    """
+    Sends a request to Grafana API and returns a list of dashboards.
+    """
     headers = {
         'Authorization': f'Bearer {api_key}'
     }
@@ -21,6 +24,9 @@ def fetch_dashboards(api_key, grafana_url):
 
 
 def fetch_dashboard_details(api_key, grafana_url, dashboard_uid):
+    """
+    Sends a request to Grafana API and returns JSON of a specific dashboard.
+    """
     headers = {
         'Authorization': f'Bearer {api_key}'
     }
@@ -29,6 +35,9 @@ def fetch_dashboard_details(api_key, grafana_url, dashboard_uid):
 
 
 def files_are_different(existing_file, new_data):
+    """
+    Check if any updates have been made in a given dashboard. 
+    """
     if os.path.exists(existing_file):
         with open(existing_file, 'r') as file:
             existing_data = json.load(file)
@@ -37,11 +46,14 @@ def files_are_different(existing_file, new_data):
         new_data.pop('version', None)
         
         return existing_data != new_data
-    else: # file does not exist: new dashboard
+    else: # file does not exist: create new dashboard
         return True
 
 
 def sync_json_files(dashboard_details, file_path):
+    """
+    Writes new changes in ../grafana/conf/provisioning/dashboards
+    """
     dashboard_data = dashboard_details.get('dashboard', {})
     if files_are_different(file_path, dashboard_data):
         with open(file_path, 'w') as file:
@@ -50,7 +62,9 @@ def sync_json_files(dashboard_details, file_path):
 
 
 def export_dashboards():
-
+    """
+    Fetches dashboards from Grafana UI and iterates over them syncing new changes.
+    """    
     dashboards = fetch_dashboards(grafana_api_key, grafana_url)
 
     for dashboard in dashboards:
