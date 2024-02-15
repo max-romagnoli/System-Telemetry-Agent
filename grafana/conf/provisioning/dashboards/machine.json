@@ -85,7 +85,7 @@
             },
             "gridPos": {
                 "h": 8,
-                "w": 12,
+                "w": 6,
                 "x": 0,
                 "y": 0
             },
@@ -114,7 +114,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "Panel Title",
+            "title": "CPU",
             "type": "timeseries"
         }
     ],
@@ -132,6 +132,5 @@
     "timezone": "",
     "title": "machine",
     "uid": "d88798a4-223a-40f3-9a6a-3787f1b71f0d",
-    "version": 39,
     "weekStart": ""
 }
