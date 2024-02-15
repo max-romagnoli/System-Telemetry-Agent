@@ -36,3 +36,9 @@
 - Discharging cycles: _graph here_
 
 Link:https://drive.google.com/drive/folders/1GJsRbba88nLGNQmLYsbUBvvB4xxzfKv7
+
+ayos sketches:
+https://drive.google.com/file/d/1pcwhCcYOQJTwXdKIrOM3Pl8PwuYfz0sw/view?usp=drive_link
+https://drive.google.com/file/d/1ERDZxBAfnX8M09UvRk2tIUZVl_UBPyJP/view?usp=drive_link
+
+note: these were just rough sketches applying what kamil said about seeing everything all at once for ease.
