@@ -34,5 +34,4 @@ jobs:
         pip install psutil
     - name: Run pytest
       run: | 
-        export PYTHONPATH="/exporter:$PYTHONPATH"
         pytest
