@@ -3,9 +3,11 @@ import time
 
 from .metrics import *
 from .collectors.cpu import CPUCollector
+from .collectors.network import NetworkCollector
 
 
 cpu_collector = CPUCollector()
+network_collector = NetworkCollector()
 
 
 def export_metrics(port=8000):
