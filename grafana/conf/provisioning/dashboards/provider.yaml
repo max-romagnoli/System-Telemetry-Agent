@@ -1,0 +1,14 @@
+# # config file version
+apiVersion: 1
+
+providers:
+ - name: 'provider'
+   orgId: 1
+   folder: ''
+   folderUid: ''
+   type: file
+   allowUiUpdates: true
+   disableDeletion: false
+   updateIntervalSeconds: 5
+   options:
+     path: ./conf/provisioning/dashboards
