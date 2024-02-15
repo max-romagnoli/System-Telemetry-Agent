@@ -12,6 +12,6 @@ scrape_configs:
     - demo.promlabs.com:10000
     - demo.promlabs.com:10001
     - demo.promlabs.com:10002
-- job_name: 'test_container_exporter'
+- job_name: 'node_exporter'
   static_configs:
   - targets: ['localhost:9100']
