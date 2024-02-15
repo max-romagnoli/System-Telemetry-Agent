@@ -3,9 +3,11 @@ import time
 
 from .metrics import *
 from .collectors.cpu import CPUCollector
+from .collectors.ram import RAMCollector
 
 
 cpu_collector = CPUCollector()
+ram_collector = RAMCollector()
 
 
 def export_metrics(port=8000):
