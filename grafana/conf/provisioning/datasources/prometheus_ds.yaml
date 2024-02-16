@@ -1,7 +1,7 @@
 apiVersion: 1
 
 datasources:
-  - name: Test-Prometheus
+  - name: Prometheus
     type: prometheus
     access: proxy
     url: http://localhost:9090
