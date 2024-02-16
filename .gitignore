@@ -9,6 +9,4 @@ prometheus/*
 
 sample.yaml*
 
-scripts/.env
-
 __pycache__
