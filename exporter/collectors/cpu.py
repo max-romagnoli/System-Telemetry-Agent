@@ -14,14 +14,14 @@ class CPUCollector:
         TODO: @
         Returns the CPU utilization as a percentage.
         """
-        pass
+        return psutil.cpu_percent();
 
     def get_frequency(self):
         """
         TODO: @
         Returns the current CPU frequency in MHz.
         """
-        pass
+        return psutil.cpu_freq()[0];
 
     def get_temperature(self):
         """
@@ -35,4 +35,7 @@ class CPUCollector:
         TODO:
         Returns to string representation of all CPU metrics.        
         """
-        pass
+        utilization = self.get_utilization();
+        frequency = self.get_frequency();
+        temp = self.get_temperature();
+        return "CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: {temp}°C\n";
