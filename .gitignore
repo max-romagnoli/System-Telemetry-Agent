@@ -4,9 +4,12 @@ grafana/*
 
 prometheus/*
 !prometheus.yml
+!README.md
 
 .vscode
 
 sample.yaml*
+
+scripts/.env
 
 __pycache__

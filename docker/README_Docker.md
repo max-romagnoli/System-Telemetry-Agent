@@ -18,3 +18,8 @@
 
 2. Create and run one container from image: <br>
     `docker compose up exporter`
+
+
+## Run Node Exporter
+
+Run instead: `docker compose up node-exporter`
