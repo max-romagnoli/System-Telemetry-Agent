@@ -46,6 +46,4 @@ class NetworkCollector:
         traffic_out = self.get_traffic_out()
         return f"Inbound Traffic: {traffic_in} Mb/s, Outbound Traffic: {traffic_out} Mb/s"
 
-network_collector = NetworkCollector()
-print(network_collector.__str__())
         
