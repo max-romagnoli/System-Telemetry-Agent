@@ -1,14 +1,18 @@
 global:
-  scrape_interval: 5s
+  scrape_interval: 10s #Data collection interval
+  evaluation_interval: 10s #Rule discovery interval
+  scrape_timeout: 8s #Timeout period for collecting data
+
+
 
 scrape_configs:
-- job_name: "prometheus"
+- job_name: 'prometheus'
   static_configs:
   - targets: 
     - localhost:9090
-- job_name: "demo"
+
+#Store nqmcpu address, prom will periodically fetch data from nqmcpu.
+- job_name: node
   static_configs:
-    - targets:
-        - demo.promlabs.com:10000
-        - demo.promlabs.com:10001
-        - demo.promlabs.com:10002
+  - targets: 
+    - localhost:9100
