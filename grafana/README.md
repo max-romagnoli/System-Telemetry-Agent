@@ -1,3 +1,54 @@
+## Workflow for Local Development in Grafana
+
+### Setup Grafana API 
+**(1st time only)**
+
+* In the browser navigate to `Administration/Users and Access/Service Accounts`
+* Add a new service account
+* Name it `GRAFANA_SYNC_API`
+* Click on **Add service account token**
+* Name the token `GRAFANA_SYNC_API`
+* Copy and paste the secret to your clipboard.
+* **Now open the terminal in VS Code:**
+    *  `cd scripts`
+    * Write secret into .env file: <br>
+      `echo "GRAFANA_SYNC_API=<paste-your-secret-here>" > .env`
+    * Write the URI grafana is running on locally (change if needed): <br>
+      `echo "GRAFANA_LOCAL_API_URI=http://localhost:3000/api" >> .env`
+    * **IMPORTANT:** make sure you never commit the `.env` file!
+
+### Install requirements for script
+**(1st time only)**
+
+* **NOTE:** this might change if we run Grafana with Docker.
+* In root of the project: <br>
+  `pip install -r requirements.txt`
+
+### Workflow
+
+This should be the workflow to follow when developing locally on Grafana:
+
+1. **Start Grafana server: <br>**
+   `cd grafana` <br>
+   `./bin/grafana server`
+
+2. **Run the export script: <br>**
+   `cd ..` <br>
+   `cd scripts` <br>
+   `python3 export_dashboards.py` <br>
+   
+3. **Ensure that BOTH Grafana and the script are running without errors <br>**
+
+4. **Open Grafana in browser... <br>**
+   `localhost:3000` <br>
+
+5. **... and start developing.**
+   Changes made in the browser should appear in the repo.
+   
+6. **Commit often and add descriptions to your commits.**
+
+
+
 ## Setup Grafana
 
 * Use the correct OS version in the below commands. For example:

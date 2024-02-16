@@ -1,6 +1,7 @@
 grafana/*
 !conf
 !README.md
+!dashboards
 
 prometheus/*
 !prometheus.yml
@@ -10,6 +11,7 @@ prometheus/*
 
 sample.yaml*
 
-scripts/.env
 
 __pycache__
+
+scripts/.env
