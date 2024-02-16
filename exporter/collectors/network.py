@@ -5,7 +5,6 @@ class NetworkCollector:
     
     def __init__(self) -> None:
         """
-        TODO: @
         Constructor
         """
         
@@ -19,7 +18,6 @@ class NetworkCollector:
 
     def get_traffic_in(self):
         """
-        TODO: @
         Returns the inbound traffic in Mb/s.
         """
         netStat = psutil.net_io_counters()
@@ -27,7 +25,6 @@ class NetworkCollector:
 
     def get_traffic_out(self):
         """
-        TODO: @
         Returns the outbound traffic in Mb/s.
         """
         netStat = psutil.net_io_counters()     
@@ -35,12 +32,11 @@ class NetworkCollector:
     
     def __str__(self) -> str:
         """
-        TODO:
         Returns to string representation of all networking metrics.        
         """
         traffic_in = self.get_traffic_in()
         traffic_out = self.get_traffic_out()
         return f"Inbound Traffic: {traffic_in} Mb/s, Outbound Traffic: {traffic_out} Mb/s"
-    
 
-        
+       
+

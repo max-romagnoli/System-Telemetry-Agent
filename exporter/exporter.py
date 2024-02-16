@@ -23,5 +23,6 @@ def export_metrics(port=8000):
     while True:
 
         cpu_utilization_gauge.set(cpu_collector.get_utilization())
-
+        network_get_traffic_in_gauge.set(network_collector.get_traffic_in())
+        network_get_traffic_out_gauge.set(network_collector.get_traffic_out())
         time.sleep(5)
