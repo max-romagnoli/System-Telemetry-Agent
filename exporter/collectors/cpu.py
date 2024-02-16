@@ -15,14 +15,13 @@ class CPUCollector:
         Returns the CPU utilization as a percentage.
         """
         pass
-    @staticmethod
+
     def get_frequency():
         """
         TODO: @
         Returns the current CPU frequency in MHz.
         """
-        return 2
-        pass
+        return 0    # TODO: here for CI Proof of Concept
 
     def get_temperature(self):
         """
