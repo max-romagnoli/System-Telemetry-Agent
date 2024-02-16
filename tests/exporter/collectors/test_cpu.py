@@ -1,6 +1,6 @@
 # Here are tests about functions from collectors,Add tests if needed.
 import psutil
-from ...cpu import CPUCollector
+from ...cpu.py import CPUCollector
 
 def test_cpu_get_frequency():
     frequency = CPUCollector.get_frequency()
