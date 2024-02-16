@@ -4,6 +4,7 @@ grafana/*
 
 prometheus/*
 !prometheus.yml
+!README.md
 
 .vscode
 
