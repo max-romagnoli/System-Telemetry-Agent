@@ -11,15 +11,24 @@
 
 <br>
 
-**Re-run these two commands everytime you make changes and want to test the exporter in Docker**:
+
+### FRONTEND Development
+
+**Start System Telemetry Agent locally:**:
 
 1. Build a new image as per Dockerfile: <br>
     `docker compose build`
 
-2. Create and run one container from image: <br>
+2. Create and run all the containers: <br>
+    `docker compose up`
+
+
+### BACKEND Development
+
+**Re-run these two commands everytime you make changes and want to test the exporter in Docker**:
+
+1. Build as per docker-compose.yml: <br>
+    `docker compose build`
+
+2. Create and run one the exporter container from image: <br>
     `docker compose up exporter`
-
-
-## Run Node Exporter
-
-Run instead: `docker compose up node-exporter`
