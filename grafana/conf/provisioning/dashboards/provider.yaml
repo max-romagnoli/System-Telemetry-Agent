@@ -12,3 +12,14 @@ providers:
    updateIntervalSeconds: 5
    options:
      path: ./conf/provisioning/dashboards
+
+ - name: 'docker_provider'
+   orgId: 1
+   folder: ''
+   folderUid: ''
+   type: file
+   allowUiUpdates: true
+   disableDeletion: false
+   updateIntervalSeconds: 5
+   options:
+     path: /etc/grafana/provisioning/dashboards
