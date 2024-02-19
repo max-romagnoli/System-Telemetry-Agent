@@ -202,7 +202,7 @@
                             }
                         ]
                     },
-                    "unit": "decmbytes",
+                    "unit": "percent",
                     "unitScale": true
                 },
                 "overrides": []
@@ -807,7 +807,7 @@
                             }
                         ]
                     },
-                    "unit": "decmbytes",
+                    "unit": "percent",
                     "unitScale": true
                 },
                 "overrides": []
