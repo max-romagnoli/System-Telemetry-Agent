@@ -3,13 +3,14 @@ from dotenv import load_dotenv
 import requests
 import json
 import time
+import sys
 
 load_dotenv()
 
 grafana_api_key = os.getenv('GRAFANA_SYNC_API')
 grafana_url = os.getenv('GRAFANA_LOCAL_API_URI')
 
-dashboards_directory = "../grafana/conf/provisioning/dashboards"
+dashboards_directory = "/etc/grafana/provisioning/dashboards"
 
 
 def fetch_dashboards(api_key, grafana_url):
@@ -65,19 +66,28 @@ def export_dashboards():
     """
     Fetches dashboards from Grafana UI and iterates over them syncing new changes.
     """    
-    dashboards = fetch_dashboards(grafana_api_key, grafana_url)
-
-    for dashboard in dashboards:
-        dashboard_title = dashboard['title']
-        dashboard_uid = dashboard['uid']
-        dashboard_details = fetch_dashboard_details(grafana_api_key, grafana_url, dashboard_uid)
-        file_path = f"{dashboards_directory}/{dashboard_title}.json"
-        sync_json_files(dashboard_details, file_path)
+    try:
+        dashboards = fetch_dashboards(grafana_api_key, grafana_url)
+        for dashboard in dashboards:
+            dashboard_title = dashboard['title']
+            dashboard_uid = dashboard['uid']
+            dashboard_details = fetch_dashboard_details(grafana_api_key, grafana_url, dashboard_uid)
+            file_path = f"{dashboards_directory}/{dashboard_title}.json"
+            sync_json_files(dashboard_details, file_path)
+    except Exception as e:
+        if isinstance(dashboards, dict) and dashboards.get('message') == 'Unauthorized':
+            print("Unauthorized access to Grafana API. Please generate a valid API key.", file=sys.stderr)
+            os._exit(1)
+        else:
+            print(dashboards, file=sys.stderr)
+            print(f"An error occurred: {e}", file=sys.stderr)
+            os._exit(1)
+    
 
 
 def main():
     
-    if grafana_api_key is None:
+    if grafana_api_key is None or '':
         raise ValueError("No Grafana API Key found. Please check your .env file.")
     
     print("Syncing local JSON files to Grafana...")

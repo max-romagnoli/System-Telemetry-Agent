@@ -16,12 +16,12 @@ class CPUCollector:
         """
         pass
 
-    def get_frequency(self):
+    def get_frequency():
         """
         TODO: @
         Returns the current CPU frequency in MHz.
         """
-        pass
+        return 0    # TODO: here for CI Proof of Concept
 
     def get_temperature(self):
         """
