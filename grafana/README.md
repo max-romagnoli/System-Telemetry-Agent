@@ -1,14 +1,30 @@
-## Workflow for Local Development in Grafana using Docker
+## Grafana development using Docker
+
+### Run the system
+
+**Start System Telemetry Agent locally:**
+
+1. Build a new image as per Dockerfile: <br>
+    `docker compose build`
+
+2. Create and run all the containers: <br>
+    `docker compose up`
+
+---
+
+3. When you are done developing: <br>
+    `docker compose down`
+
 
 ### Setup Grafana API 
 **(1st time only)**
 
-* `cd docker`
-* Run `docker compose up grafana`
+* Run the system as shown above
 * Open `localhost:3000`
 * Navigate to `Administration/Users and Access/Service Accounts`
 * Add a new service account
 * Name it `GRAFANA_SYNC_API`
+* Change the role to "Admin"
 * Click on **Add service account token**
 * Name the token `GRAFANA_SYNC_API`
 * Copy and paste the secret to your clipboard
@@ -18,20 +34,15 @@
   GRAFANA_SYNC_API=copy_here_your_secret
   COMPOSE_PROJECT_NAME=system-telemetry-agent
   ``` 
+* Run the grafana-sync-script container:
+    `docker compose up grafana-sync-script`
 
 
-### Run the system
-
-**Start System Telemetry Agent locally:**:
-
-1. Build a new image as per Dockerfile: <br>
-    `docker compose build`
-
-2. Create and run all the containers: <br>
-    `docker compose up`
 
 
-## Setup Grafana
+
+
+## [LEGACY] Setup Grafana
 
 * Use the correct OS version in the below commands. For example:
     * On Linux/WSL AMD 64: `linux-amd64`

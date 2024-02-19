@@ -41,6 +41,8 @@ Massimiliano Romagnoli - 3rd Year
 
 Liam Zone - 3rd Year
 
+Qiming Nie - 3rd Year
+
 ---
 #### Frontend:
 
@@ -54,8 +56,6 @@ Binli Wang - 2nd Year
 Leila Adil - 2nd Year
 
 Cindy Ariyo - 2nd Year
-
-Ignatii Tsitsenko - 2nd Year
 
 Victor Dalessandris - 2nd Year
 

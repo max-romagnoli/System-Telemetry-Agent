@@ -11,10 +11,9 @@
 
 <br>
 
+### Frontend development
 
-### FRONTEND Development
-
-**Start System Telemetry Agent locally:**:
+**Start System Telemetry Agent locally:**
 
 1. Build a new image as per Dockerfile: <br>
     `docker compose build`
@@ -22,8 +21,14 @@
 2. Create and run all the containers: <br>
     `docker compose up`
 
+---
 
-### BACKEND Development
+3. When you are done developing: <br>
+    `docker compose down`
+
+<br>
+
+### Backend development
 
 **Re-run these two commands everytime you make changes and want to test the exporter in Docker**:
 
