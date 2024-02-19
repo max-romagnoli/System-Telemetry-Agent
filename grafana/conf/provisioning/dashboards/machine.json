@@ -117,8 +117,10 @@
                     "refId": "A"
                 }
             ],
+
             "title": "Utilization",
             "type": "gauge"
+
         },
         {
             "datasource": {
@@ -457,7 +459,7 @@
                 "x": 4,
                 "y": 8
             },
-            "id": 2,
+            "id": 11,
             "options": {
                 "displayMode": "gradient",
                 "maxVizHeight": 300,
