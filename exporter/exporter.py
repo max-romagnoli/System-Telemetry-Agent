@@ -24,4 +24,7 @@ def export_metrics(port=8000):
 
         cpu_utilization_gauge.set(cpu_collector.get_utilization())
 
+        ram_utilization_gauge.set(ram_collector.get_utilization())
+        ram_memory_gauge.set(ram_collector.get_memory())
+
         time.sleep(5)

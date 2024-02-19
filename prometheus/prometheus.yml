@@ -12,3 +12,7 @@ scrape_configs:
         - demo.promlabs.com:10000
         - demo.promlabs.com:10001
         - demo.promlabs.com:10002
+- job_name: "metrics"
+  static_configs:
+    - targets:
+        - localhost:8000
