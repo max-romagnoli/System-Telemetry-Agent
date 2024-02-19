@@ -30,32 +30,7 @@
             },
             "gridPos": {
                 "h": 2,
-                "w": 9,
-                "x": 0,
-                "y": 0
-            },
-            "id": 5,
-            "options": {
-                "code": {
-                    "language": "plaintext",
-                    "showLineNumbers": false,
-                    "showMiniMap": false
-                },
-                "content": "# Network",
-                "mode": "markdown"
-            },
-            "pluginVersion": "10.3.3",
-            "transparent": true,
-            "type": "text"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "P7C0DE56CDD952252"
-            },
-            "gridPos": {
-                "h": 2,
-                "w": 10,
+                "w": 11,
                 "x": 13,
                 "y": 0
             },
@@ -66,7 +41,7 @@
                     "showLineNumbers": false,
                     "showMiniMap": false
                 },
-                "content": "# Memory\n",
+                "content": "<br>\n\n# Memory",
                 "mode": "markdown"
             },
             "pluginVersion": "10.3.3",
@@ -78,76 +53,111 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
-            "description": "",
             "fieldConfig": {
                 "defaults": {
                     "color": {
                         "mode": "palette-classic"
                     },
                     "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
                         "hideFrom": {
                             "legend": false,
                             "tooltip": false,
                             "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
                         }
                     },
                     "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
+                    "unit": "decbytes",
+                    "unitScale": true
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Inactive Bytes"
+                        },
+                        "properties": [
                             {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "#969489",
+                                    "mode": "fixed"
+                                }
                             }
                         ]
                     },
-                    "unit": "decmbytes",
-                    "unitScale": true
-                },
-                "overrides": []
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Active Bytes"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "blue",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Unused"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "#999ea5",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Used"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "blue",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "gridPos": {
-                "h": 6,
-                "w": 6,
-                "x": 0,
+                "h": 8,
+                "w": 4,
+                "x": 13,
                 "y": 2
             },
-            "id": 2,
+            "id": 4,
             "options": {
+                "displayLabels": [
+                    "percent"
+                ],
                 "legend": {
-                    "calcs": [],
                     "displayMode": "list",
                     "placement": "bottom",
-                    "showLegend": true
+                    "showLegend": true,
+                    "values": [
+                        "value"
+                    ]
+                },
+                "pieType": "pie",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
                 },
                 "tooltip": {
                     "mode": "single",
@@ -162,100 +172,15 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "rate(node_network_transmit_bytes_total{device=\"eth0\"}[$__rate_interval])",
+                    "expr": "node_memory_Active_bytes",
                     "fullMetaSearch": false,
-                    "includeNullMetadata": false,
+                    "includeNullMetadata": true,
                     "instant": false,
-                    "legendFormat": "eth0",
+                    "legendFormat": "Used",
                     "range": true,
                     "refId": "A",
                     "useBackend": false
-                }
-            ],
-            "title": "Bytes Transmitted",
-            "type": "timeseries"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "P7C0DE56CDD952252"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "decmbytes",
-                    "unitScale": true
                 },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 6,
-                "w": 6,
-                "x": 6,
-                "y": 2
-            },
-            "id": 1,
-            "options": {
-                "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
-            },
-            "targets": [
                 {
                     "datasource": {
                         "type": "prometheus",
@@ -264,20 +189,19 @@
                     "disableTextWrap": false,
                     "editorMode": "builder",
                     "exemplar": false,
-                    "expr": "rate(node_network_receive_bytes_total{device=\"eth0\"}[$__rate_interval])",
-                    "format": "time_series",
+                    "expr": "node_memory_Inactive_bytes",
                     "fullMetaSearch": false,
-                    "includeNullMetadata": false,
+                    "hide": false,
+                    "includeNullMetadata": true,
                     "instant": false,
-                    "interval": "",
-                    "legendFormat": "eth0",
+                    "legendFormat": "Unused",
                     "range": true,
-                    "refId": "A",
+                    "refId": "B",
                     "useBackend": false
                 }
             ],
-            "title": "Bytes Received",
-            "type": "timeseries"
+            "title": "Memory Usage",
+            "type": "piechart"
         },
         {
             "datasource": {
@@ -297,7 +221,7 @@
                         "axisPlacement": "auto",
                         "barAlignment": 0,
                         "drawStyle": "line",
-                        "fillOpacity": 0,
+                        "fillOpacity": 25,
                         "gradientMode": "none",
                         "hideFrom": {
                             "legend": false,
@@ -315,7 +239,7 @@
                         "spanNulls": false,
                         "stacking": {
                             "group": "A",
-                            "mode": "none"
+                            "mode": "percent"
                         },
                         "thresholdsStyle": {
                             "mode": "off"
@@ -335,15 +259,76 @@
                             }
                         ]
                     },
-                    "unit": "decgbytes",
+                    "unit": "decbytes",
                     "unitScale": true
                 },
-                "overrides": []
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Active Bytes"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "blue",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Inactive Bytes"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "#9b9a93",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Used"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "blue",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Unused"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "#a2a2aa",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "gridPos": {
-                "h": 6,
-                "w": 11,
-                "x": 13,
+                "h": 8,
+                "w": 7,
+                "x": 17,
                 "y": 2
             },
             "id": 7,
@@ -371,7 +356,7 @@
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
-                    "legendFormat": "Active Bytes",
+                    "legendFormat": "Used",
                     "range": true,
                     "refId": "A",
                     "useBackend": false
@@ -388,14 +373,39 @@
                     "hide": false,
                     "includeNullMetadata": true,
                     "instant": false,
-                    "legendFormat": "Inactive Bytes",
+                    "legendFormat": "Unused",
                     "range": true,
                     "refId": "B",
                     "useBackend": false
                 }
             ],
-            "title": "Panel Title",
+            "title": "Usage Overtime",
             "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 11,
+                "x": 13,
+                "y": 10
+            },
+            "id": 5,
+            "options": {
+                "code": {
+                    "language": "plaintext",
+                    "showLineNumbers": false,
+                    "showMiniMap": false
+                },
+                "content": "<br>\r\n\r\n# Network",
+                "mode": "markdown"
+            },
+            "pluginVersion": "10.3.3",
+            "transparent": true,
+            "type": "text"
         },
         {
             "datasource": {
@@ -434,10 +444,10 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 6,
-                "w": 6,
-                "x": 0,
-                "y": 8
+                "h": 10,
+                "w": 3,
+                "x": 13,
+                "y": 12
             },
             "id": 3,
             "options": {
@@ -488,42 +498,69 @@
                         "mode": "palette-classic"
                     },
                     "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
                         "hideFrom": {
                             "legend": false,
                             "tooltip": false,
                             "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
                         }
                     },
                     "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
                     "unit": "decmbytes",
                     "unitScale": true
                 },
                 "overrides": []
             },
             "gridPos": {
-                "h": 6,
-                "w": 6,
-                "x": 18,
-                "y": 8
+                "h": 5,
+                "w": 8,
+                "x": 16,
+                "y": 12
             },
-            "id": 4,
+            "id": 1,
             "options": {
-                "displayLabels": [
-                    "percent"
-                ],
                 "legend": {
+                    "calcs": [],
                     "displayMode": "list",
                     "placement": "bottom",
-                    "showLegend": true,
-                    "values": []
-                },
-                "pieType": "pie",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
+                    "showLegend": true
                 },
                 "tooltip": {
                     "mode": "single",
@@ -538,15 +575,104 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "node_memory_Active_bytes",
+                    "exemplar": false,
+                    "expr": "rate(node_network_receive_bytes_total{device=\"eth0\"}[$__rate_interval])",
+                    "format": "time_series",
                     "fullMetaSearch": false,
-                    "includeNullMetadata": true,
+                    "includeNullMetadata": false,
                     "instant": false,
-                    "legendFormat": "Active Bytes",
+                    "interval": "",
+                    "legendFormat": "eth0",
                     "range": true,
                     "refId": "A",
                     "useBackend": false
+                }
+            ],
+            "title": "Traffic In",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "decmbytes",
+                    "unitScale": true
                 },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 16,
+                "y": 17
+            },
+            "id": 2,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
                 {
                     "datasource": {
                         "type": "prometheus",
@@ -554,20 +680,18 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "exemplar": false,
-                    "expr": "node_memory_Inactive_bytes",
+                    "expr": "rate(node_network_transmit_bytes_total{device=\"eth0\"}[$__rate_interval])",
                     "fullMetaSearch": false,
-                    "hide": false,
-                    "includeNullMetadata": true,
+                    "includeNullMetadata": false,
                     "instant": false,
-                    "legendFormat": "Inactive Bytes",
+                    "legendFormat": "eth0",
                     "range": true,
-                    "refId": "B",
+                    "refId": "A",
                     "useBackend": false
                 }
             ],
-            "title": "Memory Usage",
-            "type": "piechart"
+            "title": "Traffic Out",
+            "type": "timeseries"
         }
     ],
     "refresh": "5s",
