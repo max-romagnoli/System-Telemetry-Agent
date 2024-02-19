@@ -20,6 +20,6 @@ def export_metrics(port=8000):
 
     while True:
 
-        cpu_utilization_gauge.set(cpu_collector.get_utilization())
+        # cpu_utilization_gauge.set(cpu_collector.get_utilization())
 
         time.sleep(5)
