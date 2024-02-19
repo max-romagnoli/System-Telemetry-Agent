@@ -26,7 +26,7 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "P511B488A56A96D1F"
+                "uid": "P7C0DE56CDD952252"
             },
             "fieldConfig": {
                 "defaults": {
@@ -79,13 +79,14 @@
                             }
                         ]
                     },
+                    "unit": "decmbytes",
                     "unitScale": true
                 },
                 "overrides": []
             },
             "gridPos": {
                 "h": 8,
-                "w": 6,
+                "w": 12,
                 "x": 0,
                 "y": 0
             },
@@ -106,22 +107,29 @@
                 {
                     "datasource": {
                         "type": "prometheus",
-                        "uid": "P511B488A56A96D1F"
+                        "uid": "P7C0DE56CDD952252"
                     },
-                    "expr": "",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "rate(node_network_receive_bytes_total[$__rate_interval])",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": false,
                     "instant": false,
+                    "legendFormat": "__auto",
                     "range": true,
-                    "refId": "A"
+                    "refId": "A",
+                    "useBackend": false
                 }
             ],
-            "title": "CPU Changed",
+            "title": "Total Bytes Received",
             "type": "timeseries"
         },
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "P511B488A56A96D1F"
+                "uid": "P7C0DE56CDD952252"
             },
+            "description": "",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -173,14 +181,15 @@
                             }
                         ]
                     },
+                    "unit": "decmbytes",
                     "unitScale": true
                 },
                 "overrides": []
             },
             "gridPos": {
-                "h": 6,
-                "w": 8,
-                "x": 7,
+                "h": 8,
+                "w": 12,
+                "x": 12,
                 "y": 0
             },
             "id": 2,
@@ -196,8 +205,102 @@
                     "sort": "none"
                 }
             },
-            "title": "Network",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "P7C0DE56CDD952252"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "rate(node_network_transmit_bytes_total[$__rate_interval])",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": false,
+                    "instant": false,
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
+                }
+            ],
+            "title": "Total Bytes transmitted",
             "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "max": 2000000000,
+                    "min": 100,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "red",
+                                "value": null
+                            },
+                            {
+                                "color": "green",
+                                "value": 10
+                            }
+                        ]
+                    },
+                    "unit": "GBs",
+                    "unitScale": true
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 10,
+                "x": 0,
+                "y": 8
+            },
+            "id": 3,
+            "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto"
+            },
+            "pluginVersion": "10.3.3",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "P7C0DE56CDD952252"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "node_network_speed_bytes",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
+                }
+            ],
+            "title": "Network Speed",
+            "type": "gauge"
         }
     ],
     "refresh": "",
@@ -207,7 +310,7 @@
         "list": []
     },
     "time": {
-        "from": "now-6h",
+        "from": "now-1h",
         "to": "now"
     },
     "timepicker": {},

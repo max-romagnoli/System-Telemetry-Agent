@@ -79,7 +79,7 @@ def export_dashboards():
             print("Unauthorized access to Grafana API. Please generate a valid API key.", file=sys.stderr)
             os._exit(1)
         else:
-            print(dashboards, file=sys.stderr)
+            #print(dashboards, file=sys.stderr)
             print(f"An error occurred: {e}", file=sys.stderr)
             os._exit(1)
     
