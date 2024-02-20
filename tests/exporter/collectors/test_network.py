@@ -1,4 +1,3 @@
-
 import unittest
 from exporter.collectors.network import NetworkCollector
 
