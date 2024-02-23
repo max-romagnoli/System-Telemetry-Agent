@@ -11,7 +11,7 @@
 
 <br>
 
-### Frontend development
+### Development Workflow
 
 **Start System Telemetry Agent locally:**
 
@@ -20,20 +20,12 @@
 
 2. Create and run all the containers: <br>
     `docker compose up`
+   
+<br>
+
+To run only a specific container: `docker compose up service-name` 
 
 ---
 
 3. When you are done developing: <br>
     `docker compose down`
-
-<br>
-
-### Backend development
-
-**Re-run these two commands everytime you make changes and want to test the exporter in Docker**:
-
-1. Build as per docker-compose.yml: <br>
-    `docker compose build`
-
-2. Create and run one the exporter container from image: <br>
-    `docker compose up exporter`
