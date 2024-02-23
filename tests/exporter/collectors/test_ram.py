@@ -5,7 +5,7 @@ class TestRAMCollector(unittest.TestCase):
 
     def test_get_utilization(self):
         """
-        @Leila
+        @l3331l4
         Test whether RAM utilization is within the range (0-100%)
         """
         ram_collector = RAMCollector()
@@ -15,7 +15,7 @@ class TestRAMCollector(unittest.TestCase):
 
     def test_get_memory(self):
         """
-        @Leila
+        @l3331l4
         Test whether the total memory installed is a positive number
         """
         ram_collector = RAMCollector()
@@ -25,7 +25,7 @@ class TestRAMCollector(unittest.TestCase):
 
     def test_str(self):
         """
-        @Leila
+        @l3331l4
         Test whether the string representation of RAM metrics is correct
         """
         ram_collector = RAMCollector()
