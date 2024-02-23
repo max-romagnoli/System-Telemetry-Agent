@@ -17,7 +17,8 @@ scrape_configs:
     - targets: 
         - node-exporter:9100
         - localhost:9100
-- job_name: "metrics"
+- job_name: 'python_exporter'
   static_configs:
     - targets:
+        - exporter:8000
         - localhost:8000
