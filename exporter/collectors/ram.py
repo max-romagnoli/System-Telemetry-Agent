@@ -4,21 +4,21 @@ class RAMCollector:
 
     def __init__(self) -> None:
         """
-        @Leila
+        @l3331l4
         Constructor
         """
         pass
 
     def get_utilization(self):
         """
-        @Leila
+        @l3331l4
         Returns the RAM utilization as a percentage.
         """
         return psutil.virtual_memory().percent
 
     def get_memory(self):
         """
-        @Leila
+        @l3331l4
         Returns the total memory installed.
         """
         return psutil.virtual_memory().total
