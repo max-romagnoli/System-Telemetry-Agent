@@ -16,7 +16,7 @@ class CPUCollector:
         """
         return psutil.cpu_percent()
 
-    def get_frequency(self):
+    def get_frequency():
         """
         @mccooeyc11
         Returns the current CPU frequency in MHz.
