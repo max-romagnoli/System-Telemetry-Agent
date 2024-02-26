@@ -23,6 +23,12 @@ class TestCPUCollector(unittest.TestCase):
         self.assertIsInstance(freq, float)
         self.assertTrue(freq > 0.0)
 
+    def test_temp(self):
+        """
+        TODO: @mccooeyc11
+        Test whether CPU temperature is a reasonable value (20-100 C)
+        """
+
         
 
     def test_str(self):
