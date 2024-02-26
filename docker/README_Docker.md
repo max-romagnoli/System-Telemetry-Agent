@@ -11,10 +11,21 @@
 
 <br>
 
-**Re-run these two commands everytime you make changes and want to test the exporter in Docker**:
+### Development Workflow
+
+**Start System Telemetry Agent locally:**
 
 1. Build a new image as per Dockerfile: <br>
     `docker compose build`
 
-2. Create and run one container from image: <br>
-    `docker compose up exporter`
+2. Create and run all the containers: <br>
+    `docker compose up`
+   
+<br>
+
+To run only a specific container: `docker compose up service-name` 
+
+---
+
+3. When you are done developing: <br>
+    `docker compose down`

@@ -1,12 +1,16 @@
 grafana/*
 !conf
 !README.md
+!dashboards
 
 prometheus/*
 !prometheus.yml
+!README.md
 
-.vscode
-
-sample.yaml*
-
+sample.yaml
 __pycache__
+.DS_Store
+
+/.vscode
+/docker/.env
+/scripts/.env
