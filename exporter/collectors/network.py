@@ -41,6 +41,10 @@ class NetworkCollector:
     """
 
     def get_unit(self, bytes):
+        """
+        @cindyariyo
+        TODO: Missing description        
+        """
         bits = bytes * 8
         megabits = bits /1000000
         return megabits
