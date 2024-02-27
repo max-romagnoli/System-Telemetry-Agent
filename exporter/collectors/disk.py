@@ -14,14 +14,14 @@ class DiskCollector:
         TODO: @
         Returns the Disk space that is spent as a percentage.
         """
-        pass
+        return psutil.disk_usage()
 
     def get_total_space(self):
         """
         TODO: @
         Returns the computers total available storage.
         """
-        pass
+        return psutil.disk_usage()
 
     def get_reads(self):
         """
@@ -29,7 +29,7 @@ class DiskCollector:
         If Possible
         Returns the reads on the disk.        
         """
-        pass
+        return psutil.disk_io_counters().read_bytes
 
     def get_writes(self):
         """
@@ -37,11 +37,14 @@ class DiskCollector:
         If Possible
         Returns the writes on the disk.        
         """
-        pass
+        return psutil.disk_io_counters().write_bytes
 
     def __str__(self) -> str:
         """
         TODO:
         Returns to string representation of all disk metrics.        
         """
-        pass
+        #inspired by leila's function for the cpu
+        utilization = self.get_utilization()
+        disk = self.get_total_space()
+        return f"Disk Utilization: {utilization}%nAvailable storage: {disk}"
