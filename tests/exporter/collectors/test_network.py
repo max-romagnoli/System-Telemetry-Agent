@@ -13,6 +13,23 @@ class TestNetworkCollector(unittest.TestCase):
         units = network_collector.get_unit(bytes)
         self.assertEqual(units, mb)
 
+    def test_get_traffic_in_is_not_negative(self): 
+        """
+        test if method returns traffic >= 0
+        """
+        network_collector = NetworkCollector()
+        traffic_in = network_collector.get_traffic_in()
+        self.assertTrue(traffic_in >= 0)
+
+    def test_get_traffic_out_is_not_negative(self): 
+        """ 
+        test if method returns traffic >= 0
+        """
+        network_collector = NetworkCollector()
+        traffic_out = network_collector.get_traffic_out()
+        self.assertTrue(traffic_out >= 0)
+
+
     def test_get_traffic_in(self):
         """
         Test if bytes are received and returned in Mb/s.
@@ -20,7 +37,6 @@ class TestNetworkCollector(unittest.TestCase):
         network_collector = NetworkCollector()
         traffic_in = network_collector.get_traffic_in()
         self.assertIsInstance(traffic_in, float)
-        self.assertTrue(traffic_in >= 0)
     
     def test_get_traffic_out(self):
         """
@@ -29,7 +45,6 @@ class TestNetworkCollector(unittest.TestCase):
         network_collector = NetworkCollector()
         traffic_out = network_collector.get_traffic_out()
         self.assertIsInstance(traffic_out, float)
-        self.assertTrue(traffic_out >= 0)
 
     def test__str__(self):
         """
