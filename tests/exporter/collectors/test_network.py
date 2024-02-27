@@ -33,7 +33,7 @@ class TestNetworkCollector(unittest.TestCase):
 
     def test__str__(self):
         """
-        Test if a string representation of all networking metrics is returned.
+        Test if a string representation of networking metrics is returned.
         """
         network_collector = NetworkCollector()
         traffic_in = network_collector.get_traffic_in()
