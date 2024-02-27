@@ -29,7 +29,6 @@ class CPUCollector:
         Returns the CPU temperature in degrees Celsius.        
         """
         return psutil.sensors_temperatures()
-        pass
 
     def __str__(self) -> str:
         """

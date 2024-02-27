@@ -22,7 +22,9 @@ def export_metrics(port=8000):
 
     while True:
 
-        # cpu_utilization_gauge.set(cpu_collector.get_utilization())
+        cpu_utilization_gauge.set(cpu_collector.get_utilization())
+        cpu_frequency_gauge.set(cpu_collector.get_frequency())
+        cpu_temperature_gauge.set(cpu_collector.get_temperature())
 
         ram_utilization_gauge.set(ram_collector.get_utilization())
         ram_memory_gauge.set(ram_collector.get_memory())
