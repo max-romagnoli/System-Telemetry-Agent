@@ -28,6 +28,11 @@ class TestCPUCollector(unittest.TestCase):
         TODO: @mccooeyc11
         Test whether CPU temperature is a reasonable value (20-100 C)
         """
+        cpu_collector = CPUCollector()
+        temp = cpu_collector.get_temperature()
+        self.assertIsInstance(temp, float)
+        self.assertTrue(temp >= 20.0)
+        self.assertTrue(temp <= 100.0)
 
         
 
