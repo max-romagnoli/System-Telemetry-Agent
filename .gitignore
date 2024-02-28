@@ -9,6 +9,7 @@ prometheus/*
 
 sample.yaml
 __pycache__
+.DS_Store
 
 /.vscode
 /docker/.env
