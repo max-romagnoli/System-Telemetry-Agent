@@ -5,6 +5,7 @@ class TestNetworkCollector(unittest.TestCase):
 
     def test_get_unit(self):
         """
+        @cindyariyo
         Test if bytes are coverted to Mb.
         """
         bytes = 345214
@@ -15,6 +16,7 @@ class TestNetworkCollector(unittest.TestCase):
 
     def test_get_traffic_in_is_not_negative(self): 
         """
+        @cindyariyo
         test if method returns traffic >= 0
         """
         network_collector = NetworkCollector()
@@ -23,6 +25,7 @@ class TestNetworkCollector(unittest.TestCase):
 
     def test_get_traffic_out_is_not_negative(self): 
         """ 
+        @cindyariyo
         test if method returns traffic >= 0
         """
         network_collector = NetworkCollector()
@@ -32,6 +35,7 @@ class TestNetworkCollector(unittest.TestCase):
 
     def test_get_traffic_in(self):
         """
+        @cindyariyo
         Test if bytes are received and returned in Mb/s.
         """
         network_collector = NetworkCollector()
@@ -40,6 +44,7 @@ class TestNetworkCollector(unittest.TestCase):
     
     def test_get_traffic_out(self):
         """
+        @cindyariyo
         Test if bytes are sent and returned in Mb/s.
         """
         network_collector = NetworkCollector()
@@ -48,6 +53,7 @@ class TestNetworkCollector(unittest.TestCase):
 
     def test__str__(self):
         """
+        @cindyariyo
         Test if a string representation of networking metrics is returned.
         """
         network_collector = NetworkCollector()
