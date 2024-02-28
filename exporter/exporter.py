@@ -13,7 +13,6 @@ ram_collector = RAMCollector()
 def export_metrics(port=8000):
 
     """
-    TODO:
     Starts an http server on port 8000 and enters a loop to collect metrics and export them to Prometheus.
     """
 
@@ -22,11 +21,22 @@ def export_metrics(port=8000):
 
     while True:
 
-        cpu_utilization_gauge.set(cpu_collector.get_utilization())
-        cpu_frequency_gauge.set(cpu_collector.get_frequency())
-        cpu_temperature_gauge.set(cpu_collector.get_temperature())
+        set_gauge(cpu_utilization_gauge, cpu_collector.get_utilization())
+        set_gauge(cpu_frequency_gauge, cpu_collector.get_frequency())
+        set_gauge(cpu_temperature_gauge, cpu_collector.get_temperature())
 
-        ram_utilization_gauge.set(ram_collector.get_utilization())
-        ram_memory_gauge.set(ram_collector.get_memory())
+        set_gauge(ram_utilization_gauge, ram_collector.get_utilization())
+        set_gauge(ram_memory_gauge, ram_collector.get_memory())
+        set_gauge(cpu_temperature_gauge, cpu_collector.get_temperature())
 
         time.sleep(5)
+
+
+def set_gauge(gauge=Gauge, value=float):
+
+    """
+    Sets the gauge to the specified value if the value is not None.
+    """
+    
+    if value is not None:
+        gauge.set(value)
