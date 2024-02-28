@@ -25,7 +25,7 @@ class TestCPUCollector(unittest.TestCase):
 
     def test_temp(self):
         """
-        TODO: @mccooeyc11
+        @mccooeyc11
         Test whether CPU temperature is a reasonable value (20-100 C)
         """
         cpu_collector = CPUCollector()
@@ -44,7 +44,7 @@ class TestCPUCollector(unittest.TestCase):
         cpu_collector = CPUCollector()
         utilization = cpu_collector.get_utilization()
         frequency = cpu_collector.get_frequency()
-        temp = cpu_collector.get_temperature().__str__()
+        temp = cpu_collector.get_temperature()
         expected_output = f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: {temp}°C\n"
         self.assertEqual(str(cpu_collector), expected_output)
 
