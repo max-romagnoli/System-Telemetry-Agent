@@ -3,19 +3,18 @@ import time
 
 from .metrics import *
 from .collectors.cpu import CPUCollector
+from .collectors.network import NetworkCollector
 from .collectors.ram import RAMCollector
-
 
 cpu_collector = CPUCollector()
 ram_collector = RAMCollector()
+network_collector = NetworkCollector()
 
 
 def export_metrics(port=8000):
-
     """
     Starts an http server on port 8000 and enters a loop to collect metrics and export them to Prometheus.
     """
-
     start_http_server(port)
     print(f"Exporter running on port {port}")
 
@@ -28,6 +27,8 @@ def export_metrics(port=8000):
         set_gauge(ram_utilization_gauge, ram_collector.get_utilization())
         set_gauge(ram_memory_gauge, ram_collector.get_memory())
 
+        set_gauge(network_get_traffic_in_gauge, network_collector.get_traffic_in())
+        set_gauge(network_get_traffic_out_gauge, network_collector.get_traffic_out())
         time.sleep(5)
 
 
