@@ -33,8 +33,7 @@ class TestCPUCollector(unittest.TestCase):
         self.assertIsInstance(temp, float)
         self.assertTrue(temp >= 20.0)
         self.assertTrue(temp <= 100.0)
-
-        
+            
 
     def test_str(self):
         """

@@ -4,7 +4,6 @@ class CPUCollector:
 
     def __init__(self) -> None:
         """
-        TODO: @
         Constructor
         """
         pass
@@ -31,8 +30,8 @@ class CPUCollector:
         if not psutil.sensors_temperatures():
             return None
         else:
-            temps = psutil.sensors_temperatures()['acpitz'] # Temperature sensors may be under a different name - 'acpitz' is what works locally
-            if len(temps) > 0:
+            temps = psutil.sensors_temperatures()['acpitz']
+            if temps and len(temps) > 0:
                 return temps[0].current
             else:
                 return None
