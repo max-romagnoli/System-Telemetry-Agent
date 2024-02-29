@@ -19,7 +19,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 7,
+    "id": 12,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -1729,6 +1729,5 @@
     "timezone": "",
     "title": "machine-more-cpu",
     "uid": "d88798a4-223a-40f3-9a6a-5000f1b71f0d",
-    "version": 1,
     "weekStart": ""
 }

@@ -13,7 +13,6 @@ network_collector = NetworkCollector()
 
 def export_metrics(port=8000):
     """
-    TODO:
     Starts an http server on port 8000 and enters a loop to collect metrics and export them to Prometheus.
     """
     start_http_server(port)
@@ -21,12 +20,23 @@ def export_metrics(port=8000):
 
     while True:
 
-        # cpu_utilization_gauge.set(cpu_collector.get_utilization())
+        set_gauge(cpu_utilization_gauge, cpu_collector.get_utilization())
+        set_gauge(cpu_frequency_gauge, cpu_collector.get_frequency())
+        set_gauge(cpu_temperature_gauge, cpu_collector.get_temperature())
 
-        network_get_traffic_in_gauge.set(network_collector.get_traffic_in())
-        network_get_traffic_out_gauge.set(network_collector.get_traffic_out())
+        set_gauge(ram_utilization_gauge, ram_collector.get_utilization())
+        set_gauge(ram_memory_gauge, ram_collector.get_memory())
 
-        ram_utilization_gauge.set(ram_collector.get_utilization())
-        ram_memory_gauge.set(ram_collector.get_memory())
-
+        set_gauge(network_get_traffic_in_gauge, network_collector.get_traffic_in())
+        set_gauge(network_get_traffic_out_gauge, network_collector.get_traffic_out())
         time.sleep(5)
+
+
+def set_gauge(gauge=Gauge, value=float):
+
+    """
+    Sets the gauge to the specified value if the value is not None.
+    """
+    
+    if value is not None:
+        gauge.set(value)
