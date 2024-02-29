@@ -25,13 +25,17 @@ class CPUCollector:
 
     def get_temperature(self):
         """
-        TODO: @mccooeyc11
+        @mccooeyc11
         Returns the CPU temperature in degrees Celsius.        
         """
         if not psutil.sensors_temperatures():
             return None
         else:
-            return psutil.sensors_temperatures()[0][0][1]
+            temps = psutil.sensors_temperatures()['acpitz'] # Temperature sensors may be under a different name - 'acpitz' is what works locally
+            if len(temps) > 0:
+                return temps[0].current
+            else:
+                return None
 
     def __str__(self) -> str:
         """
