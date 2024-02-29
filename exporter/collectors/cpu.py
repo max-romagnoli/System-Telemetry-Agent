@@ -21,7 +21,7 @@ class CPUCollector:
         @mccooeyc11
         Returns the current CPU frequency in MHz.
         """
-        return psutil.cpu_freq()[0]
+        return psutil.cpu_freq().current
 
     def get_temperature(self):
         """
@@ -29,7 +29,7 @@ class CPUCollector:
         Returns the CPU temperature in degrees Celsius.        
         """
         if not psutil.sensors_temperatures():
-            return 20.0
+            return None
         else:
             return psutil.sensors_temperatures()[0][0][1]
 
