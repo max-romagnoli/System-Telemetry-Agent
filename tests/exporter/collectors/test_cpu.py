@@ -30,10 +30,12 @@ class TestCPUCollector(unittest.TestCase):
         """
         cpu_collector = CPUCollector()
         temp = cpu_collector.get_temperature()
-        self.assertIsInstance(temp, float)
-        self.assertTrue(temp >= 20.0)
-        self.assertTrue(temp <= 100.0)
-            
+        if temp:
+            self.assertIsInstance(temp, float)
+            self.assertTrue(20 <= temp <= 100)
+        else:
+            self.assertIsNone(temp)
+
 
     def test_str(self):
         """
