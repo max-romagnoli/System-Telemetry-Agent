@@ -19,7 +19,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 4,
+    "id": 1,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -385,22 +385,7 @@
                     {
                         "matcher": {
                             "id": "byName",
-                            "options": "Inactive Bytes"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "#969489",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Active Bytes"
+                            "options": "Unused Bytes"
                         },
                         "properties": [
                             {
@@ -415,13 +400,13 @@
                     {
                         "matcher": {
                             "id": "byName",
-                            "options": "Unused"
+                            "options": "Used Bytes"
                         },
                         "properties": [
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "#a3a3af",
+                                    "fixedColor": "text",
                                     "mode": "fixed"
                                 }
                             }
@@ -457,13 +442,13 @@
                 ],
                 "legend": {
                     "displayMode": "list",
-                    "placement": "bottom",
+                    "placement": "right",
                     "showLegend": true,
                     "values": [
                         "value"
                     ]
                 },
-                "pieType": "pie",
+                "pieType": "donut",
                 "reduceOptions": {
                     "calcs": [
                         "lastNotNull"
@@ -484,11 +469,12 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "node_memory_Active_bytes",
+                    "expr": "stagent_ram_memory_bytes",
                     "fullMetaSearch": false,
+                    "hide": false,
                     "includeNullMetadata": true,
                     "instant": false,
-                    "legendFormat": "Used",
+                    "legendFormat": "Unused Bytes",
                     "range": true,
                     "refId": "A",
                     "useBackend": false
@@ -500,13 +486,12 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "exemplar": false,
-                    "expr": "node_memory_Inactive_bytes",
+                    "expr": "stagent_ram_utilization_percentage",
                     "fullMetaSearch": false,
                     "hide": false,
                     "includeNullMetadata": true,
                     "instant": false,
-                    "legendFormat": "Unused",
+                    "legendFormat": "Used Bytes",
                     "range": true,
                     "refId": "B",
                     "useBackend": false
@@ -664,7 +649,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "node_memory_Active_bytes",
+                    "expr": "stagent_ram_utilization_percentage",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -680,7 +665,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "node_memory_Inactive_bytes",
+                    "expr": "stagent_ram_memory_bytes",
                     "fullMetaSearch": false,
                     "hide": false,
                     "includeNullMetadata": true,
