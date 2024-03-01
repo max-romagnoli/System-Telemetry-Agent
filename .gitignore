@@ -7,11 +7,10 @@ prometheus/*
 !prometheus.yml
 !README.md
 
-.vscode
-
-sample.yaml*
-
-
+sample.yaml
 __pycache__
+.DS_Store
 
-scripts/.env
+/.vscode
+/docker/.env
+/scripts/.env

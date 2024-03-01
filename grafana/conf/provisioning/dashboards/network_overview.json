@@ -19,10 +19,84 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 66,
+    "id": 5,
     "links": [],
     "liveNow": false,
     "panels": [
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "max": 2000000000,
+                    "min": 0,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    },
+                    "unit": "decbytes",
+                    "unitScale": true
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 0
+            },
+            "id": 2,
+            "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto",
+                "text": {
+                    "titleSize": 16
+                }
+            },
+            "pluginVersion": "10.3.3",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "P7C0DE56CDD952252"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "node_network_speed_bytes",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
+                }
+            ],
+            "title": "Network speed ",
+            "type": "gauge"
+        },
         {
             "datasource": {
                 "type": "prometheus",
@@ -32,7 +106,7 @@
                 "h": 21,
                 "w": 24,
                 "x": 0,
-                "y": 0
+                "y": 8
             },
             "id": 1,
             "options": {
@@ -46,7 +120,7 @@
                 "showStarred": true,
                 "tags": []
             },
-            "pluginVersion": "10.3.1",
+            "pluginVersion": "10.3.3",
             "targets": [
                 {
                     "datasource": {
@@ -71,13 +145,12 @@
         "list": []
     },
     "time": {
-        "from": "now-6h",
+        "from": "now-30m",
         "to": "now"
     },
     "timepicker": {},
     "timezone": "",
     "title": "network_overview",
     "uid": "d1036811-b6db-4833-9812-80ce82e65164",
-    "version": 224,
     "weekStart": ""
 }
