@@ -24,7 +24,7 @@ class CPUCollector:
             return psutil.cpu_freq().current
         else:
             return None
-    
+
     def get_temperature(self):
         """
         @mccooeyc11
