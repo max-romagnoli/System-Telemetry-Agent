@@ -430,7 +430,7 @@
                 ]
             },
             "gridPos": {
-                "h": 8,
+                "h": 5,
                 "w": 4,
                 "x": 13,
                 "y": 4
@@ -966,15 +966,12 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
-            "description": "",
             "fieldConfig": {
                 "defaults": {
                     "color": {
                         "mode": "thresholds"
                     },
                     "mappings": [],
-                    "max": 2000000000,
-                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -983,27 +980,23 @@
                                 "value": null
                             },
                             {
-                                "color": "red",
-                                "value": 100
-                            },
-                            {
                                 "color": "green",
-                                "value": 200000000
+                                "value": 0.5
                             }
                         ]
                     },
-                    "unit": "Bps",
+                    "unit": "MBs",
                     "unitScale": true
                 },
                 "overrides": []
             },
             "gridPos": {
-                "h": 10,
-                "w": 3,
-                "x": 13,
+                "h": 5,
+                "w": 5,
+                "x": 12,
                 "y": 14
             },
-            "id": 3,
+            "id": 27,
             "options": {
                 "minVizHeight": 75,
                 "minVizWidth": 75,
@@ -1028,7 +1021,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "node_network_speed_bytes",
+                    "expr": "stagent_traffic_in_mbs",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1038,7 +1031,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "Network Speed",
+            "title": "Traffic In Network speed",
             "type": "gauge"
         },
         {
@@ -1097,18 +1090,18 @@
                             }
                         ]
                     },
-                    "unit": "decmbytes",
+                    "unit": "MBs",
                     "unitScale": true
                 },
                 "overrides": []
             },
             "gridPos": {
                 "h": 5,
-                "w": 8,
-                "x": 16,
+                "w": 7,
+                "x": 17,
                 "y": 14
             },
-            "id": 1,
+            "id": 25,
             "options": {
                 "legend": {
                     "calcs": [],
@@ -1129,20 +1122,17 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "exemplar": false,
-                    "expr": "rate(node_network_receive_bytes_total{device=\"eth0\"}[$__rate_interval])",
-                    "format": "time_series",
+                    "expr": "stagent_traffic_in_mbs",
                     "fullMetaSearch": false,
-                    "includeNullMetadata": false,
+                    "includeNullMetadata": true,
                     "instant": false,
-                    "interval": "",
                     "legendFormat": "eth0",
                     "range": true,
                     "refId": "A",
                     "useBackend": false
                 }
             ],
-            "title": "Traffic In",
+            "title": "Traffic In ",
             "type": "timeseries"
         },
         {
@@ -1440,6 +1430,79 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "red",
+                                "value": null
+                            },
+                            {
+                                "color": "green",
+                                "value": 0.72
+                            }
+                        ]
+                    },
+                    "unit": "MBs",
+                    "unitScale": true
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 5,
+                "x": 12,
+                "y": 19
+            },
+            "id": 28,
+            "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto"
+            },
+            "pluginVersion": "10.3.3",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "P7C0DE56CDD952252"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "stagent_traffic_out_mbs",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
+                }
+            ],
+            "title": "Traffic Out Network Speed",
+            "type": "gauge"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
             "description": "",
             "fieldConfig": {
                 "defaults": {
@@ -1492,18 +1555,18 @@
                             }
                         ]
                     },
-                    "unit": "decmbytes",
+                    "unit": "MBs",
                     "unitScale": true
                 },
                 "overrides": []
             },
             "gridPos": {
                 "h": 5,
-                "w": 8,
-                "x": 16,
+                "w": 7,
+                "x": 17,
                 "y": 19
             },
-            "id": 2,
+            "id": 26,
             "options": {
                 "legend": {
                     "calcs": [],
@@ -1524,9 +1587,9 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "rate(node_network_transmit_bytes_total{device=\"eth0\"}[$__rate_interval])",
+                    "expr": "stagent_traffic_out_mbs",
                     "fullMetaSearch": false,
-                    "includeNullMetadata": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "eth0",
                     "range": true,
