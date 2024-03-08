@@ -9,7 +9,8 @@ class TestDiskCollector(unittest.TestCase):
         """
         Tests if a percentage as a number is returned
         """
-        usage = DiskCollector.get_utilization()
+        dc = DiskCollector()
+        usage = dc.get_utilization()
         self.assertIsInstance(usage, (int, float)) #
         self.assertTrue(0 <= usage <= 0)
 
@@ -17,28 +18,32 @@ class TestDiskCollector(unittest.TestCase):
         """
         Tests if a number is returned.
         """
-        usage = DiskCollector.get_total_space()
+        dc = DiskCollector()
+        usage = dc.get_total_space()
         self.assertIsInstance(usage, (int, float)) #
 
     def test_disk_get_reads(self):
         """
         Tests if a number is returned.
         """
-        reads = DiskCollector.get_reads()
+        dc = DiskCollector()
+        reads = dc.get_reads()
         self.assertIsInstance(reads, (int, float)) #
 
     def test_disk_get_writes(self):
         """
         Tests if a number is returned.
         """
-        writes = DiskCollector.get_writes()
+        dc = DiskCollector()
+        writes = dc.get_writes()
         self.assertIsInstance(writes, (int, float)) #
 
     def test_disk__str__(self):
         """
         Tests if a string is returned.
         """
-        string = DiskCollector.__str__()
+        dc = DiskCollector()
+        string = dc.__str__()
         self.assertIsInstance(string, (str)) #
 
 if __name__ == '__main__':
