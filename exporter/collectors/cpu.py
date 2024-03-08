@@ -20,7 +20,10 @@ class CPUCollector:
         @mccooeyc11
         Returns the current CPU frequency in MHz.
         """
-        return psutil.cpu_freq().current
+        if psutil.cpu_freq():
+            return psutil.cpu_freq().current
+        else:
+            return None
 
     def get_temperature(self):
         """
