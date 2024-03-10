@@ -9,3 +9,11 @@ network_get_traffic_out_gauge = Gauge("stagent_traffic_out_mbs", "NETWORK outbou
 
 ram_utilization_gauge = Gauge("stagent_ram_utilization_percentage", "Total RAM utilization as a percentage")
 ram_memory_gauge = Gauge("stagent_ram_memory_bytes", "Total RAM memory installed in bytes")
+
+disk_utilization_gauge = Gauge("stagent_disk_utilization_percentage", "Used Disk space as a percentage")
+disk_total_space_gauge = Gauge("stagent_disk_total_space_bytes", "Disk total storage (used and unused) in bytes")
+disk_free_space_gauge = Gauge("stagent_disk_free_space_bytes", "Disk free storage in bytes")
+disk_reads_bytes_gauge = Gauge("stagent_disk_reads_bytes", "Disk number of bytes read")
+disk_writes_bytes_gauge = Gauge("stagent_disk_writes_bytes", "Disk number of bytes written")
+disk_reads_ops_gauge = Gauge("stagent_disk_reads_ops", "Disk number of read operations")
+disk_writes_ops_gauge = Gauge("stagent_disk_writes_ops", "Disk number of write operations")
