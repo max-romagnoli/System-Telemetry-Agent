@@ -39,10 +39,8 @@ class TestCPUCollector(unittest.TestCase):
     """
     TODO: this test doesn't always pass.
     def test_str(self):
-        """
         @mccooeyc11
         Test whether the string representation of CPU metrics is correct
-        """
         cpu_collector = CPUCollector()
         utilization = cpu_collector.get_utilization()
         frequency = cpu_collector.get_frequency()
