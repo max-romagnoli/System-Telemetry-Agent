@@ -45,7 +45,7 @@ class TestCPUCollector(unittest.TestCase):
         cpu_collector = CPUCollector()
         utilization = cpu_collector.get_utilization()
         frequency = cpu_collector.get_frequency()
-        temp = cpu_collector.get_temperature()
+        temp = cpu_collector.get_temperature().__str__()
         expected_output = f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: {temp}°C\n"
         self.assertEqual(str(cpu_collector), expected_output)
 
