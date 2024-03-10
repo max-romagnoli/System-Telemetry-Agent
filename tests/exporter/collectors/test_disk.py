@@ -13,7 +13,7 @@ class TestDiskCollector(unittest.TestCase):
         dc = DiskCollector()
         usage = dc.get_utilization()
         self.assertIsInstance(usage, (int, float))
-        self.assertTrue(0 <= usage <= 0)
+        self.assertTrue(0 <= usage <= 100)
 
     def test_disk_get_total_space(self):
         """
