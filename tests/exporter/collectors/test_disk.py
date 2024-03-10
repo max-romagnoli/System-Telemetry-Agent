@@ -1,12 +1,13 @@
-# Here are tests about functions from collectors,Add tests if needed.
-from exporter.collectors.disk import DiskCollector
 import unittest
+from exporter.collectors.disk import DiskCollector
+
 
 class TestDiskCollector(unittest.TestCase):
     
     
     def test_disk_get_utilization(self):
         """
+        @dalesv
         Tests if a percentage as a number is returned
         """
         dc = DiskCollector()
@@ -16,6 +17,7 @@ class TestDiskCollector(unittest.TestCase):
 
     def test_disk_get_total_space(self):
         """
+        @dalesv
         Tests if a number is returned.
         """
         dc = DiskCollector()
@@ -24,6 +26,7 @@ class TestDiskCollector(unittest.TestCase):
 
     def test_disk_get_reads(self):
         """
+        @dalesv
         Tests if a number is returned.
         """
         dc = DiskCollector()
@@ -32,6 +35,7 @@ class TestDiskCollector(unittest.TestCase):
 
     def test_disk_get_writes(self):
         """
+        @dalesv
         Tests if a number is returned.
         """
         dc = DiskCollector()
@@ -40,6 +44,7 @@ class TestDiskCollector(unittest.TestCase):
 
     def test_disk__str__(self):
         """
+        @dalesv
         Tests if a string is returned.
         """
         dc = DiskCollector()
