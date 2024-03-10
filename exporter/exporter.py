@@ -5,10 +5,12 @@ from .metrics import *
 from .collectors.cpu import CPUCollector
 from .collectors.network import NetworkCollector
 from .collectors.ram import RAMCollector
+from .collectors.disk import DiskCollector
 
 cpu_collector = CPUCollector()
 ram_collector = RAMCollector()
 network_collector = NetworkCollector()
+disk_collector = DiskCollector()
 
 
 def export_metrics(port=8000):
@@ -29,6 +31,15 @@ def export_metrics(port=8000):
 
         set_gauge(network_get_traffic_in_gauge, network_collector.get_traffic_in())
         set_gauge(network_get_traffic_out_gauge, network_collector.get_traffic_out())
+
+        set_gauge(disk_utilization_gauge, disk_collector.get_utilization())
+        set_gauge(disk_total_space_gauge, disk_collector.get_total_space())
+        set_gauge(disk_free_space_gauge, disk_collector.get_free_space())
+        set_gauge(disk_reads_bytes_gauge, disk_collector.get_reads_bytes())
+        set_gauge(disk_writes_bytes_gauge, disk_collector.get_writes_bytes())
+        set_gauge(disk_reads_ops_gauge, disk_collector.get_reads_ops())
+        set_gauge(disk_writes_ops_gauge, disk_collector.get_writes_ops())
+
         time.sleep(5)
 
 
