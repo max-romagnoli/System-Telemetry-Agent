@@ -23,3 +23,4 @@ scrape_configs:
     - targets:
         - exporter:8000
         - localhost:8000
+        - 20.107.240.171:8000   # target-1
