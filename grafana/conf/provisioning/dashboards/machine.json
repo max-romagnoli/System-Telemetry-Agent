@@ -19,7 +19,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 9,
+    "id": 6,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -124,13 +124,12 @@
                             }
                         ]
                     },
-                    "unit": "percent",
                     "unitScale": true
                 },
                 "overrides": []
             },
             "gridPos": {
-                "h": 5,
+                "h": 4,
                 "w": 3,
                 "x": 0,
                 "y": 4
@@ -149,7 +148,7 @@
                     "values": false
                 },
                 "showThresholdLabels": false,
-                "showThresholdMarkers": false,
+                "showThresholdMarkers": true,
                 "sizing": "auto"
             },
             "pluginVersion": "10.3.3",
@@ -238,11 +237,27 @@
                     "unit": "percent",
                     "unitScale": true
                 },
-                "overrides": []
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Utilization"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "#5794f2",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "gridPos": {
-                "h": 5,
-                "w": 6,
+                "h": 4,
+                "w": 5,
                 "x": 3,
                 "y": 4
             },
@@ -290,7 +305,7 @@
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "fixedColor": "blue",
+                        "fixedColor": "#5794f2",
                         "mode": "fixed"
                     },
                     "fieldMinMax": false,
@@ -314,9 +329,9 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 5,
-                "w": 3,
-                "x": 9,
+                "h": 4,
+                "w": 4,
+                "x": 8,
                 "y": 4
             },
             "id": 11,
@@ -403,6 +418,7 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
+            "description": "The amount of RAM(random access memory) in use",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -483,7 +499,7 @@
                 ]
             },
             "gridPos": {
-                "h": 8,
+                "h": 5,
                 "w": 4,
                 "x": 13,
                 "y": 4
@@ -558,6 +574,7 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
+            "description": "RAM usage over a period of time",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -676,7 +693,7 @@
                 ]
             },
             "gridPos": {
-                "h": 8,
+                "h": 5,
                 "w": 7,
                 "x": 17,
                 "y": 4
@@ -740,33 +757,24 @@
             "description": "Provides real-time data of the CPU's current operating frequency",
             "fieldConfig": {
                 "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
                     "mappings": [],
-                    "min": 0,
                     "thresholds": {
-                        "mode": "absolute",
+                        "mode": "percentage",
                         "steps": [
                             {
-                                "color": "red",
+                                "color": "green",
                                 "value": null
                             },
                             {
+                                "color": "orange",
+                                "value": 70
+                            },
+                            {
                                 "color": "red",
-                                "value": 0
-                            },
-                            {
-                                "color": "#EAB839",
-                                "value": 1500
-                            },
-                            {
-                                "color": "green",
-                                "value": 3000
+                                "value": 85
                             }
                         ]
                     },
-                    "unit": "rotmhz",
                     "unitScale": true
                 },
                 "overrides": []
@@ -775,7 +783,7 @@
                 "h": 4,
                 "w": 2,
                 "x": 0,
-                "y": 9
+                "y": 8
             },
             "id": 26,
             "options": {
@@ -812,7 +820,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "Frequency",
+            "title": "Freq",
             "type": "gauge"
         },
         {
@@ -879,13 +887,29 @@
                     "unit": "rotmhz",
                     "unitScale": true
                 },
-                "overrides": []
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Frequency"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "#5794f2",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "gridPos": {
                 "h": 4,
                 "w": 4,
                 "x": 2,
-                "y": 9
+                "y": 8
             },
             "id": 27,
             "options": {
@@ -961,7 +985,7 @@
                 "h": 4,
                 "w": 2,
                 "x": 6,
-                "y": 9
+                "y": 8
             },
             "id": 31,
             "options": {
@@ -998,7 +1022,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "Temperature",
+            "title": "Temp",
             "type": "gauge"
         },
         {
@@ -1074,7 +1098,7 @@
                 "h": 4,
                 "w": 4,
                 "x": 8,
-                "y": 9
+                "y": 8
             },
             "id": 32,
             "options": {
@@ -1119,7 +1143,7 @@
                 "h": 2,
                 "w": 11,
                 "x": 13,
-                "y": 12
+                "y": 9
             },
             "id": 5,
             "options": {
@@ -1138,53 +1162,26 @@
         {
             "datasource": {
                 "type": "prometheus",
-                "uid": "P511B488A56A96D1F"
-            },
-            "gridPos": {
-                "h": 2,
-                "w": 12,
-                "x": 0,
-                "y": 13
-            },
-            "id": 21,
-            "options": {
-                "code": {
-                    "language": "plaintext",
-                    "showLineNumbers": false,
-                    "showMiniMap": false
-                },
-                "content": "<h1 style=\"padding-top: 15px; overflow: hidden;\">Disk</h1>",
-                "mode": "markdown"
-            },
-            "pluginVersion": "10.3.3",
-            "transparent": true,
-            "type": "text"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
+            "description": "The amount of data entering a specified network or system",
             "fieldConfig": {
                 "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
                     "mappings": [],
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "red",
+                                "color": "green",
                                 "value": null
                             },
                             {
-                                "color": "yellow",
-                                "value": 0.1
+                                "color": "orange",
+                                "value": 70
                             },
                             {
-                                "color": "green",
-                                "value": 0.5
+                                "color": "red",
+                                "value": 85
                             }
                         ]
                     },
@@ -1197,7 +1194,7 @@
                 "h": 5,
                 "w": 3,
                 "x": 13,
-                "y": 14
+                "y": 11
             },
             "id": 33,
             "options": {
@@ -1242,6 +1239,7 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
+            "description": "The amount of data being received over the network interface named \"eth0\" ",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -1296,13 +1294,29 @@
                     "unit": "MBs",
                     "unitScale": true
                 },
-                "overrides": []
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "eth0"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "#5794f2",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "gridPos": {
                 "h": 5,
                 "w": 8,
                 "x": 16,
-                "y": 14
+                "y": 11
             },
             "id": 34,
             "options": {
@@ -1336,6 +1350,31 @@
                 }
             ],
             "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P511B488A56A96D1F"
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 12,
+                "x": 0,
+                "y": 12
+            },
+            "id": 21,
+            "options": {
+                "code": {
+                    "language": "plaintext",
+                    "showLineNumbers": false,
+                    "showMiniMap": false
+                },
+                "content": "<h1 style=\"padding-top: 15px; overflow: hidden;\">Disk</h1>",
+                "mode": "markdown"
+            },
+            "pluginVersion": "10.3.3",
+            "transparent": true,
+            "type": "text"
         },
         {
             "datasource": {
@@ -1384,7 +1423,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "blue",
+                                    "fixedColor": "#5794F2",
                                     "mode": "fixed"
                                 }
                             }
@@ -1408,10 +1447,10 @@
                 ]
             },
             "gridPos": {
-                "h": 6,
+                "h": 8,
                 "w": 3,
                 "x": 0,
-                "y": 15
+                "y": 14
             },
             "id": 20,
             "options": {
@@ -1557,7 +1596,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "blue",
+                                    "fixedColor": "text",
                                     "mode": "fixed"
                                 }
                             }
@@ -1572,7 +1611,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "text",
+                                    "fixedColor": "#5794f2",
                                     "mode": "fixed"
                                 }
                             }
@@ -1581,10 +1620,10 @@
                 ]
             },
             "gridPos": {
-                "h": 6,
-                "w": 9,
+                "h": 8,
+                "w": 4,
                 "x": 3,
-                "y": 15
+                "y": 14
             },
             "id": 23,
             "options": {
@@ -1643,6 +1682,100 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
+            "description": "Measures the speed of data read and write operations completed in 5min",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "fixedColor": "blue",
+                        "mode": "fixed"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "KBs",
+                    "unitScale": true
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 5,
+                "x": 7,
+                "y": 14
+            },
+            "id": 29,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+            },
+            "pluginVersion": "10.3.3",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "P7C0DE56CDD952252"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "rate(stagent_disk_writes_bytes{instance=\"$exporter\"}[5m])",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "Write",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "P7C0DE56CDD952252"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "rate(stagent_disk_reads_bytes{instance=\"$exporter\"}[5m])",
+                    "fullMetaSearch": false,
+                    "hide": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "Read",
+                    "range": true,
+                    "refId": "B",
+                    "useBackend": false
+                }
+            ],
+            "title": "Read & Write Rate",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
+            "description": "The amount of data that leaves a specified network or system",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -1675,7 +1808,7 @@
                 "h": 5,
                 "w": 3,
                 "x": 13,
-                "y": 19
+                "y": 16
             },
             "id": 28,
             "options": {
@@ -1720,7 +1853,7 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
-            "description": "",
+            "description": "The amount of data being sent out through the \"eth0\" network interface",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -1775,13 +1908,29 @@
                     "unit": "MBs",
                     "unitScale": true
                 },
-                "overrides": []
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "eth0"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "#5794f2",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "gridPos": {
                 "h": 5,
                 "w": 8,
                 "x": 16,
-                "y": 19
+                "y": 16
             },
             "id": 35,
             "options": {
@@ -1821,193 +1970,12 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
-            "description": "Measures the speed of data read and write operations completed in 5min",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "Bps",
-                    "unitScale": true
-                },
-                "overrides": [
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Write"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-red",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Read"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-blue",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            },
-            "gridPos": {
-                "h": 5,
-                "w": 6,
-                "x": 0,
-                "y": 21
-            },
-            "id": 29,
-            "options": {
-                "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "right",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
-            },
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "P7C0DE56CDD952252"
-                    },
-                    "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "rate(stagent_disk_writes_bytes{instance=\"$exporter\"}[5m])",
-                    "fullMetaSearch": false,
-                    "includeNullMetadata": true,
-                    "instant": false,
-                    "legendFormat": "Write",
-                    "range": true,
-                    "refId": "A",
-                    "useBackend": false
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "P7C0DE56CDD952252"
-                    },
-                    "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "rate(stagent_disk_reads_bytes{instance=\"$exporter\"}[5m])",
-                    "fullMetaSearch": false,
-                    "hide": false,
-                    "includeNullMetadata": true,
-                    "instant": false,
-                    "legendFormat": "Read",
-                    "range": true,
-                    "refId": "B",
-                    "useBackend": false
-                }
-            ],
-            "title": "Read & Write Rate",
-            "type": "timeseries"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "P7C0DE56CDD952252"
-            },
             "description": "How many read and write operations can be performed per second on the disk",
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
+                        "fixedColor": "blue",
+                        "mode": "fixed"
                     },
                     "mappings": [],
                     "thresholds": {
@@ -2026,88 +1994,32 @@
                     "unit": "ops",
                     "unitScale": true
                 },
-                "overrides": [
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Read IOPS"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-blue",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Write IOPS"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-red",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Write"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-red",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Read"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-blue",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    }
-                ]
+                "overrides": []
             },
             "gridPos": {
-                "h": 5,
-                "w": 6,
-                "x": 6,
-                "y": 21
+                "h": 4,
+                "w": 5,
+                "x": 7,
+                "y": 18
             },
             "id": 30,
             "options": {
-                "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "right",
-                    "showLegend": true
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
                 },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
             },
+            "pluginVersion": "10.3.3",
             "targets": [
                 {
                     "datasource": {
@@ -2144,7 +2056,7 @@
                 }
             ],
             "title": "IOPS",
-            "type": "timeseries"
+            "type": "stat"
         }
     ],
     "refresh": "5s",
