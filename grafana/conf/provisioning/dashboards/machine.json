@@ -159,12 +159,16 @@
                         "type": "prometheus",
                         "uid": "P7C0DE56CDD952252"
                     },
+                    "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "stagent_cpu_utilization_overall_percentage{}",
+                    "expr": "stagent_cpu_utilization_overall_percentage{instance=\"$exporter\"}",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "Idle",
                     "range": true,
-                    "refId": "A"
+                    "refId": "A",
+                    "useBackend": false
                 }
             ],
             "title": "Utilization",
@@ -263,12 +267,16 @@
                         "type": "prometheus",
                         "uid": "P7C0DE56CDD952252"
                     },
-                    "editorMode": "code",
-                    "expr": "stagent_cpu_utilization_overall_percentage{}",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "stagent_cpu_utilization_overall_percentage{instance=\"$exporter\"}",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "Utilization",
                     "range": true,
-                    "refId": "A"
+                    "refId": "A",
+                    "useBackend": false
                 }
             ],
             "type": "timeseries"
@@ -514,7 +522,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "stagent_ram_utilization_percentage",
+                    "expr": "stagent_ram_utilization_percentage{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "hide": false,
                     "includeNullMetadata": true,
@@ -531,7 +539,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "stagent_ram_memory_bytes",
+                    "expr": "stagent_ram_memory_bytes{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "hide": false,
                     "includeNullMetadata": true,
@@ -694,7 +702,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "stagent_ram_utilization_percentage",
+                    "expr": "stagent_ram_utilization_percentage{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -710,7 +718,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "stagent_ram_memory_bytes",
+                    "expr": "stagent_ram_memory_bytes{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "hide": false,
                     "includeNullMetadata": true,
@@ -792,12 +800,16 @@
                         "type": "prometheus",
                         "uid": "P7C0DE56CDD952252"
                     },
-                    "editorMode": "code",
-                    "expr": "stagent_cpu_frequency_current_mhz{}",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "stagent_cpu_frequency_current_mhz{instance=\"$exporter\"}",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
-                    "refId": "A"
+                    "refId": "A",
+                    "useBackend": false
                 }
             ],
             "title": "Frequency",
@@ -895,12 +907,16 @@
                         "type": "prometheus",
                         "uid": "P7C0DE56CDD952252"
                     },
-                    "editorMode": "code",
-                    "expr": "stagent_cpu_frequency_current_mhz{}",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "stagent_cpu_frequency_current_mhz{instance=\"$exporter\"}",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "Frequency",
                     "range": true,
-                    "refId": "A"
+                    "refId": "A",
+                    "useBackend": false
                 }
             ],
             "type": "timeseries"
@@ -970,12 +986,16 @@
                         "type": "prometheus",
                         "uid": "P7C0DE56CDD952252"
                     },
-                    "editorMode": "code",
-                    "expr": "stagent_cpu_coretemp_sensor_1_celsius{} > 20",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "stagent_cpu_coretemp_sensor_1_celsius{instance=\"$exporter\"} > 20",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "__auto",
                     "range": true,
-                    "refId": "A"
+                    "refId": "A",
+                    "useBackend": false
                 }
             ],
             "title": "Temperature",
@@ -1076,12 +1096,16 @@
                         "type": "prometheus",
                         "uid": "P7C0DE56CDD952252"
                     },
-                    "editorMode": "code",
-                    "expr": "stagent_cpu_coretemp_sensor_1_celsius{} > 20",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "stagent_cpu_coretemp_sensor_1_celsius{instance=\"$exporter\"} > 20",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "Frequency",
                     "range": true,
-                    "refId": "A"
+                    "refId": "A",
+                    "useBackend": false
                 }
             ],
             "type": "timeseries"
@@ -1200,7 +1224,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "stagent_traffic_in_mbs",
+                    "expr": "stagent_traffic_in_mbs{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1301,7 +1325,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "stagent_traffic_in_mbs",
+                    "expr": "stagent_traffic_in_mbs{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1420,12 +1444,16 @@
                         "type": "prometheus",
                         "uid": "P7C0DE56CDD952252"
                     },
-                    "editorMode": "code",
-                    "expr": "stagent_disk_total_space_bytes - stagent_disk_free_space_bytes",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "stagent_disk_total_space_bytes{instance=\"$exporter\"} - stagent_disk_free_space_bytes{instance=\"$exporter\"}",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "Used",
                     "range": true,
-                    "refId": "A"
+                    "refId": "A",
+                    "useBackend": false
                 },
                 {
                     "datasource": {
@@ -1577,26 +1605,34 @@
                         "type": "prometheus",
                         "uid": "P511B488A56A96D1F"
                     },
-                    "editorMode": "code",
-                    "expr": "stagent_disk_total_space_bytes - stagent_disk_free_space_bytes",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "stagent_disk_total_space_bytes{instance=\"$exporter\"} - stagent_disk_free_space_bytes{instance=\"$exporter\"}",
+                    "fullMetaSearch": false,
                     "hide": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "Used",
                     "range": true,
-                    "refId": "B"
+                    "refId": "B",
+                    "useBackend": false
                 },
                 {
                     "datasource": {
                         "type": "prometheus",
                         "uid": "P511B488A56A96D1F"
                     },
-                    "editorMode": "code",
-                    "expr": "stagent_disk_free_space_bytes",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "stagent_disk_free_space_bytes{instance=\"$exporter\"}",
+                    "fullMetaSearch": false,
                     "hide": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "Free",
                     "range": true,
-                    "refId": "A"
+                    "refId": "A",
+                    "useBackend": false
                 }
             ],
             "title": "Capacity Overtime",
@@ -1666,7 +1702,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "stagent_traffic_out_mbs",
+                    "expr": "stagent_traffic_out_mbs{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1768,7 +1804,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "stagent_traffic_out_mbs",
+                    "expr": "stagent_traffic_out_mbs{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1899,8 +1935,8 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "code",
-                    "expr": "rate(stagent_disk_writes_bytes[5m])",
+                    "editorMode": "builder",
+                    "expr": "rate(stagent_disk_writes_bytes{instance=\"$exporter\"}[5m])",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1914,13 +1950,17 @@
                         "type": "prometheus",
                         "uid": "P7C0DE56CDD952252"
                     },
-                    "editorMode": "code",
-                    "expr": "rate(stagent_disk_reads_bytes[5m])\n",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "rate(stagent_disk_reads_bytes{instance=\"$exporter\"}[5m])",
+                    "fullMetaSearch": false,
                     "hide": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "Read",
                     "range": true,
-                    "refId": "B"
+                    "refId": "B",
+                    "useBackend": false
                 }
             ],
             "title": "Read & Write Rate",
@@ -2075,8 +2115,8 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "code",
-                    "expr": "rate(stagent_disk_writes_ops[5m])",
+                    "editorMode": "builder",
+                    "expr": "rate(stagent_disk_writes_ops{instance=\"$exporter\"}[5m])",
                     "fullMetaSearch": false,
                     "hide": false,
                     "includeNullMetadata": true,
@@ -2091,12 +2131,16 @@
                         "type": "prometheus",
                         "uid": "P7C0DE56CDD952252"
                     },
-                    "editorMode": "code",
-                    "expr": "rate(stagent_disk_reads_ops[5m])",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "rate(stagent_disk_reads_ops{instance=\"$exporter\"}[5m])",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "Read",
                     "range": true,
-                    "refId": "A"
+                    "refId": "A",
+                    "useBackend": false
                 }
             ],
             "title": "IOPS",
@@ -2110,34 +2154,15 @@
         "list": [
             {
                 "current": {
-                    "selected": false,
-                    "text": "prometheus",
-                    "value": "b8506768-412c-4b61-a08d-5a604e634cba"
-                },
-                "hide": 0,
-                "includeAll": false,
-                "label": "Data Source",
-                "multi": false,
-                "name": "DS_PROMETHEUS",
-                "options": [],
-                "query": "prometheus",
-                "queryValue": "",
-                "refresh": 1,
-                "regex": "",
-                "skipUrlSync": false,
-                "type": "datasource"
-            },
-            {
-                "current": {
-                    "selected": false,
-                    "text": "node",
-                    "value": "node"
+                    "selected": true,
+                    "text": "20.107.240.171:8000",
+                    "value": "20.107.240.171:8000"
                 },
                 "datasource": {
                     "type": "prometheus",
-                    "uid": "b8506768-412c-4b61-a08d-5a604e634cba"
+                    "uid": "P7C0DE56CDD952252"
                 },
-                "definition": "label_values(node_uname_info,job)",
+                "definition": "label_values({job=\"python_exporter\"},instance)",
                 "hide": 0,
                 "includeAll": false,
                 "label": "Exporter",
@@ -2146,41 +2171,13 @@
                 "options": [],
                 "query": {
                     "qryType": 1,
-                    "query": "label_values(node_uname_info,job)",
+                    "query": "label_values({job=\"python_exporter\"},instance)",
                     "refId": "PrometheusVariableQueryEditor-VariableQuery"
                 },
                 "refresh": 1,
                 "regex": "",
                 "skipUrlSync": false,
-                "sort": 1,
-                "type": "query"
-            },
-            {
-                "current": {
-                    "selected": false,
-                    "text": "localhost:9100",
-                    "value": "localhost:9100"
-                },
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "b8506768-412c-4b61-a08d-5a604e634cba"
-                },
-                "definition": "label_values(node_uname_info{job=\"$job\"},instance)",
-                "hide": 0,
-                "includeAll": false,
-                "label": "Host",
-                "multi": false,
-                "name": "host",
-                "options": [],
-                "query": {
-                    "qryType": 1,
-                    "query": "label_values(node_uname_info{job=\"$job\"},instance)",
-                    "refId": "PrometheusVariableQueryEditor-VariableQuery"
-                },
-                "refresh": 1,
-                "regex": "",
-                "skipUrlSync": false,
-                "sort": 1,
+                "sort": 0,
                 "type": "query"
             }
         ]
