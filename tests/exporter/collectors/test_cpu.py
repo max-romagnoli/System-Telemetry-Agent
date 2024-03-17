@@ -44,19 +44,11 @@ class TestCPUCollector(unittest.TestCase):
         Test whether the string representation of CPU metrics is correct
         """
         cpu_collector = CPUCollector()
-        # utilization = cpu_collector.get_utilization()
-        # frequency = cpu_collector.get_frequency()
-        # temp = cpu_collector.get_temperature()
-        # if temp:
-        #     temp = temp.__str__()
-        #     expected_output = f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: {temp}°C\n"
-        # else:
-        #     expected_output = f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: not available\n"
-        # self.assertEqual(str(cpu_collector), expected_output)
         output_str = str(cpu_collector)
         self.assertTrue('CPU utilization: ' in output_str)
         self.assertTrue('%\n' in output_str)
         self.assertTrue('CPU frequency: ' in output_str)
+        self.assertTrue('MHz\n' in output_str)
         self.assertTrue('CPU temperature: ' in output_str)
 
 
