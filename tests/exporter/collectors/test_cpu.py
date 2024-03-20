@@ -36,8 +36,6 @@ class TestCPUCollector(unittest.TestCase):
         else:
             self.assertIsNone(temp)
 
-
-    # TODO: this test doesn't always pass.
     def test_str(self):
         """
         @mccooeyc11
