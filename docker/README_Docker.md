@@ -13,7 +13,17 @@
 
 ### Development Workflow
 
-**Start System Telemetry Agent locally:**
+
+**Start System with N Exporters:**
+
+1. Run the script specifying how many *exporter* replicas you want to generate: <br>
+    `./start_replicas.sh <number>`
+2. Stop the system and clean up configurations: <br>
+    `Press CTRL+C`
+
+<br>
+
+**Start System with One Exporter (No Replicas):**
 
 1. Build a new image as per Dockerfile: <br>
     `docker compose build`
