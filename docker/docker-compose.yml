@@ -5,8 +5,6 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile.python_exporter
-    ports:
-      - "8000:8000"
     volumes:
       - ../exporter:/usr/src/app/exporter
     working_dir: /usr/src/app
@@ -23,6 +21,8 @@ services:
       - "80:80"
     networks:
       - systel-subnet
+    profiles:
+      - replicas
 
   grafana:
     image: grafana/grafana:10.3.3
@@ -36,6 +36,8 @@ services:
       - grafana-data:/var/lib/grafana
     networks:
       - systel-subnet
+    profiles:
+      - replicas
 
   prometheus:
     image: prom/prometheus:v2.45.3
@@ -43,6 +45,7 @@ services:
       - "9090:9090"
     volumes:
       - ../prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../prometheus/sd:/etc/prometheus/sd
       - prometheus-data:/prometheus
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
@@ -50,6 +53,8 @@ services:
       - "--web.enable-lifecycle"
     networks:
       - systel-subnet
+    profiles:
+      - replicas
 
   grafana-sync-script:
     image: python:3.9
@@ -65,6 +70,8 @@ services:
       - grafana
     networks:
       - systel-subnet
+    profiles:
+      - replicas
 
 volumes:
   prometheus-data:
