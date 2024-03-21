@@ -4,35 +4,52 @@ class CPUCollector:
 
     def __init__(self) -> None:
         """
-        TODO: @
         Constructor
         """
         pass
 
     def get_utilization(self):
         """
-        TODO: @
+        @mccooeyc11
         Returns the CPU utilization as a percentage.
         """
-        pass
+        return psutil.cpu_percent()
 
-    def get_frequency():
+    def get_frequency(self):
         """
-        TODO: @
+        @mccooeyc11
         Returns the current CPU frequency in MHz.
         """
-        return 0    # TODO: here for CI Proof of Concept
+        if psutil.cpu_freq():
+            return psutil.cpu_freq().current
+        else:
+            return None
 
     def get_temperature(self):
         """
-        TODO: @
+        @mccooeyc11
         Returns the CPU temperature in degrees Celsius.        
         """
-        pass
+        if not psutil.sensors_temperatures():
+            return None
+        else:
+            temps = psutil.sensors_temperatures()['acpitz']
+            if temps and len(temps) > 0:
+                return temps[0].current
+            else:
+                return None
 
     def __str__(self) -> str:
         """
-        TODO:
+        @mccooeyc11
         Returns to string representation of all CPU metrics.        
         """
-        pass
+        utilization = self.get_utilization()
+        frequency = self.get_frequency()
+        temp = self.get_temperature()
+        if temp:
+            temp = temp.__str__()
+            return f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: {temp}°C\n"
+        else:
+            return f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: not available\n"
+

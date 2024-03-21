@@ -3,24 +3,17 @@ import time
 
 class NetworkCollector:
     
+    prev_traffic_in = 0
+    prev_traffic_out = 0
     
     def __init__(self) -> None:
         """
         Constructor
         """
     
-    
-    def get_unit(self, bytes):
-        """ 
-        Returns bytes sent and received in Megabits.
-        """
-        bits = bytes * 8
-        megabits = bits /1000000
-        return megabits
-    
-
     def get_traffic_in(self):
         """
+        @cindyariyo
         Returns the inbound traffic in Megabits.
         """
         traffic_in = psutil.net_io_counters()
@@ -32,6 +25,7 @@ class NetworkCollector:
 
     def get_traffic_out(self):
         """
+        @cindyariyo
         Returns the outbound traffic in Megabits.
         """
         traffic_out = psutil.net_io_counters(nowrap=True)  
@@ -71,8 +65,22 @@ class NetworkCollector:
 
     def __str__(self) -> str:
         """
+        @cindyariyo
         Returns to string representation of all networking metrics.        
         """
         traffic_in = self.get_rate_traffic_in()
         traffic_out = self.get_rate_traffic_out()
         return f"Inbound Traffic: {traffic_in} Mb/s, Outbound Traffic: {traffic_out} Mb/s"
+
+    """
+    Helper functions       
+    """  
+        
+    def get_unit(self, bytes):
+        """ 
+        @cindyariyo
+        Returns bytes sent and received in Megabits.
+        """
+        bits = bytes * 8
+        megabits = bits /1000000
+        return megabits
