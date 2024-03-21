@@ -28,6 +28,8 @@ def export_metrics(port=8000):
 
         set_gauge(ram_utilization_gauge, ram_collector.get_utilization())
         set_gauge(ram_memory_gauge, ram_collector.get_memory())
+        set_gauge(ram_memory_used_gauge,ram_collector.get_memory_used())
+        set_gauge(ram_memory_available_gauge,ram_collector.get_memory_available())
 
         set_gauge(network_get_traffic_in_gauge, network_collector.get_traffic_in())
         set_gauge(network_get_traffic_out_gauge, network_collector.get_traffic_out())

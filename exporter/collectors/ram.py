@@ -23,10 +23,27 @@ class RAMCollector:
         """
         return psutil.virtual_memory().total
 
+    def get_memory_available(self):
+        """
+        @ljdzed
+        Return the total memory available
+        """
+        return psutil.virtual_memory().available
+
+    def get_memory_used(self):
+        """
+        @ljdzed
+        Returns the total memory used
+        """
+        memoryUsed = self.get_memory() - self.get_memory_available()
+        return memoryUsed
+
     def __str__(self) -> str:
         """
         Returns to string representation of all RAM metrics.        
         """
         utilization = self.get_utilization()
-        memory = self.get_memory()
-        return f"RAM Utilization: {utilization}%\nTotal Memory: {memory} bytes"
+        memoryTotal = self.get_memory()
+        memoryUsed = self.get_memory_used()
+        memoryAvailable = self.get_memory_available()
+        return f"RAM Utilization: {utilization}%\nTotal Memory: {memoryTotal} bytes\nUsed Memory: {memoryUsed} bytes\nAvailable Memory: {memoryAvailable} bytes"
