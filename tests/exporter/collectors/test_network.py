@@ -19,8 +19,9 @@ class TestNetworkCollector(unittest.TestCase):
         @dalesv
         Makes sure return is not None
         """
+        bytes = 345214
         network_collector = NetworkCollector()
-        val = network_collector.get_unit()
+        val = network_collector.get_unit(bytes)
         self.assertFalse(val is None)
 
     def test_get_traffic_in_is_not_negative(self): 
