@@ -8,7 +8,9 @@ network_get_traffic_in_gauge = Gauge("stagent_traffic_in_mbs", "NETWORK inbound 
 network_get_traffic_out_gauge = Gauge("stagent_traffic_out_mbs", "NETWORK outbound traffic in Mb/s")
 
 ram_utilization_gauge = Gauge("stagent_ram_utilization_percentage", "Total RAM utilization as a percentage")
-ram_memory_gauge = Gauge("stagent_ram_memory_bytes", "Total RAM memory installed in bytes")
+ram_memory_total_gauge = Gauge("stagent_ram_memory_total_bytes", "Total RAM memory installed in bytes")
+ram_memory_used_gauge = Gauge("stagent_ram_memory_used_bytes", "Total RAM memory used in bytes")
+ram_memory_available_gauge = Gauge("stagent_ram_memory_available_bytes", "Total RAM memory available for use in bytes")
 
 disk_utilization_gauge = Gauge("stagent_disk_utilization_percentage", "Used Disk space as a percentage")
 disk_total_space_gauge = Gauge("stagent_disk_total_space_bytes", "Disk total storage (used and unused) in bytes")
