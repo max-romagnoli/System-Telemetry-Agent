@@ -107,6 +107,8 @@
             "fieldConfig": {
                 "defaults": {
                     "mappings": [],
+                    "max": 100,
+                    "min": 0,
                     "thresholds": {
                         "mode": "percentage",
                         "steps": [
@@ -116,7 +118,7 @@
                             },
                             {
                                 "color": "orange",
-                                "value": 70
+                                "value": 60
                             },
                             {
                                 "color": "red",
@@ -124,13 +126,14 @@
                             }
                         ]
                     },
+                    "unit": "percent",
                     "unitScale": true
                 },
                 "overrides": []
             },
             "gridPos": {
-                "h": 4,
-                "w": 3,
+                "h": 5,
+                "w": 2,
                 "x": 0,
                 "y": 4
             },
@@ -182,7 +185,7 @@
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "palette-classic"
+                        "mode": "thresholds"
                     },
                     "custom": {
                         "axisBorderShow": false,
@@ -193,7 +196,7 @@
                         "barAlignment": 0,
                         "drawStyle": "line",
                         "fillOpacity": 0,
-                        "gradientMode": "none",
+                        "gradientMode": "scheme",
                         "hideFrom": {
                             "legend": false,
                             "tooltip": false,
@@ -217,8 +220,10 @@
                         }
                     },
                     "mappings": [],
+                    "max": 100,
+                    "min": 0,
                     "thresholds": {
-                        "mode": "percentage",
+                        "mode": "absolute",
                         "steps": [
                             {
                                 "color": "green",
@@ -237,28 +242,12 @@
                     "unit": "percent",
                     "unitScale": true
                 },
-                "overrides": [
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Utilization"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "#5794f2",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    }
-                ]
+                "overrides": []
             },
             "gridPos": {
-                "h": 4,
-                "w": 5,
-                "x": 3,
+                "h": 5,
+                "w": 6,
+                "x": 2,
                 "y": 4
             },
             "id": 25,
@@ -283,7 +272,7 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
+                    "editorMode": "code",
                     "expr": "stagent_cpu_utilization_overall_percentage{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
@@ -310,6 +299,8 @@
                     },
                     "fieldMinMax": false,
                     "mappings": [],
+                    "max": 100,
+                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -329,7 +320,7 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 4,
+                "h": 5,
                 "w": 4,
                 "x": 8,
                 "y": 4
@@ -499,8 +490,8 @@
                 ]
             },
             "gridPos": {
-                "h": 5,
-                "w": 4,
+                "h": 6,
+                "w": 3,
                 "x": 13,
                 "y": 4
             },
@@ -693,9 +684,9 @@
                 ]
             },
             "gridPos": {
-                "h": 5,
-                "w": 7,
-                "x": 17,
+                "h": 6,
+                "w": 8,
+                "x": 16,
                 "y": 4
             },
             "id": 7,
@@ -758,23 +749,30 @@
             "fieldConfig": {
                 "defaults": {
                     "mappings": [],
+                    "max": 3500,
+                    "min": 0,
                     "thresholds": {
-                        "mode": "percentage",
+                        "mode": "absolute",
                         "steps": [
                             {
                                 "color": "green",
                                 "value": null
                             },
                             {
-                                "color": "orange",
-                                "value": 70
+                                "color": "red",
+                                "value": 0
                             },
                             {
-                                "color": "red",
-                                "value": 85
+                                "color": "orange",
+                                "value": 2200
+                            },
+                            {
+                                "color": "green",
+                                "value": 2300
                             }
                         ]
                     },
+                    "unit": "rotmhz",
                     "unitScale": true
                 },
                 "overrides": []
@@ -783,7 +781,7 @@
                 "h": 4,
                 "w": 2,
                 "x": 0,
-                "y": 8
+                "y": 9
             },
             "id": 26,
             "options": {
@@ -867,6 +865,8 @@
                     },
                     "fieldMinMax": false,
                     "mappings": [],
+                    "max": 3500,
+                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -876,40 +876,24 @@
                             },
                             {
                                 "color": "yellow",
-                                "value": 1500
+                                "value": 2200
                             },
                             {
                                 "color": "green",
-                                "value": 3000
+                                "value": 2300
                             }
                         ]
                     },
                     "unit": "rotmhz",
                     "unitScale": true
                 },
-                "overrides": [
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Frequency"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "#5794f2",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    }
-                ]
+                "overrides": []
             },
             "gridPos": {
                 "h": 4,
                 "w": 4,
                 "x": 2,
-                "y": 8
+                "y": 9
             },
             "id": 27,
             "options": {
@@ -985,7 +969,7 @@
                 "h": 4,
                 "w": 2,
                 "x": 6,
-                "y": 8
+                "y": 9
             },
             "id": 31,
             "options": {
@@ -1098,7 +1082,7 @@
                 "h": 4,
                 "w": 4,
                 "x": 8,
-                "y": 8
+                "y": 9
             },
             "id": 32,
             "options": {
@@ -1143,7 +1127,7 @@
                 "h": 2,
                 "w": 11,
                 "x": 13,
-                "y": 9
+                "y": 10
             },
             "id": 5,
             "options": {
@@ -1194,7 +1178,7 @@
                 "h": 5,
                 "w": 3,
                 "x": 13,
-                "y": 11
+                "y": 12
             },
             "id": 33,
             "options": {
@@ -1316,7 +1300,7 @@
                 "h": 5,
                 "w": 8,
                 "x": 16,
-                "y": 11
+                "y": 12
             },
             "id": 34,
             "options": {
@@ -1360,7 +1344,7 @@
                 "h": 2,
                 "w": 12,
                 "x": 0,
-                "y": 12
+                "y": 13
             },
             "id": 21,
             "options": {
@@ -1447,10 +1431,10 @@
                 ]
             },
             "gridPos": {
-                "h": 8,
+                "h": 6,
                 "w": 3,
                 "x": 0,
-                "y": 14
+                "y": 15
             },
             "id": 20,
             "options": {
@@ -1620,10 +1604,10 @@
                 ]
             },
             "gridPos": {
-                "h": 8,
-                "w": 4,
+                "h": 6,
+                "w": 9,
                 "x": 3,
-                "y": 14
+                "y": 15
             },
             "id": 23,
             "options": {
@@ -1682,99 +1666,6 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
-            "description": "Measures the speed of data read and write operations completed in 5min",
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "fixedColor": "blue",
-                        "mode": "fixed"
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "KBs",
-                    "unitScale": true
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 4,
-                "w": 5,
-                "x": 7,
-                "y": 14
-            },
-            "id": 29,
-            "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showPercentChange": false,
-                "textMode": "auto",
-                "wideLayout": true
-            },
-            "pluginVersion": "10.3.3",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "P7C0DE56CDD952252"
-                    },
-                    "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "rate(stagent_disk_writes_bytes{instance=\"$exporter\"}[5m])",
-                    "fullMetaSearch": false,
-                    "includeNullMetadata": true,
-                    "instant": false,
-                    "legendFormat": "Write",
-                    "range": true,
-                    "refId": "A",
-                    "useBackend": false
-                },
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "P7C0DE56CDD952252"
-                    },
-                    "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "rate(stagent_disk_reads_bytes{instance=\"$exporter\"}[5m])",
-                    "fullMetaSearch": false,
-                    "hide": false,
-                    "includeNullMetadata": true,
-                    "instant": false,
-                    "legendFormat": "Read",
-                    "range": true,
-                    "refId": "B",
-                    "useBackend": false
-                }
-            ],
-            "title": "Read & Write Rate",
-            "type": "stat"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "P7C0DE56CDD952252"
-            },
             "description": "The amount of data that leaves a specified network or system",
             "fieldConfig": {
                 "defaults": {
@@ -1808,7 +1699,7 @@
                 "h": 5,
                 "w": 3,
                 "x": 13,
-                "y": 16
+                "y": 17
             },
             "id": 28,
             "options": {
@@ -1930,7 +1821,7 @@
                 "h": 5,
                 "w": 8,
                 "x": 16,
-                "y": 16
+                "y": 17
             },
             "id": 35,
             "options": {
@@ -1970,12 +1861,196 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
+            "description": "Measures the speed of data read and write operations completed in 5min",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "fixedColor": "blue",
+                        "mode": "fixed"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "KBs",
+                    "unitScale": true
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Write"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "dark-purple",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Read"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "dark-blue",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 6,
+                "x": 0,
+                "y": 21
+            },
+            "id": 29,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "10.3.3",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "P7C0DE56CDD952252"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "rate(stagent_disk_writes_bytes{instance=\"$exporter\"}[5m])",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "Write",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
+                },
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "P7C0DE56CDD952252"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "rate(stagent_disk_reads_bytes{instance=\"$exporter\"}[5m])",
+                    "fullMetaSearch": false,
+                    "hide": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "Read",
+                    "range": true,
+                    "refId": "B",
+                    "useBackend": false
+                }
+            ],
+            "title": "Read & Write Rate",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
             "description": "How many read and write operations can be performed per second on the disk",
             "fieldConfig": {
                 "defaults": {
                     "color": {
                         "fixedColor": "blue",
                         "mode": "fixed"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
                     },
                     "mappings": [],
                     "thresholds": {
@@ -1994,30 +2069,57 @@
                     "unit": "ops",
                     "unitScale": true
                 },
-                "overrides": []
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Write"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "dark-purple",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "Read"
+                        },
+                        "properties": [
+                            {
+                                "id": "color",
+                                "value": {
+                                    "fixedColor": "dark-blue",
+                                    "mode": "fixed"
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "gridPos": {
-                "h": 4,
-                "w": 5,
-                "x": 7,
-                "y": 18
+                "h": 5,
+                "w": 6,
+                "x": 6,
+                "y": 21
             },
             "id": 30,
             "options": {
-                "colorMode": "value",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "auto",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
                 },
-                "showPercentChange": false,
-                "textMode": "auto",
-                "wideLayout": true
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
             },
             "pluginVersion": "10.3.3",
             "targets": [
@@ -2056,7 +2158,7 @@
                 }
             ],
             "title": "IOPS",
-            "type": "stat"
+            "type": "timeseries"
         }
     ],
     "refresh": "5s",
