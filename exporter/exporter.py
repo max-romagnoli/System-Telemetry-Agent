@@ -27,7 +27,7 @@ def export_metrics(port=8000):
         set_gauge(cpu_temperature_gauge, cpu_collector.get_temperature())
 
         set_gauge(ram_utilization_gauge, ram_collector.get_utilization())
-        set_gauge(ram_memory_gauge, ram_collector.get_memory())
+        set_gauge(ram_memory_total_gauge, ram_collector.get_memory_total())
         set_gauge(ram_memory_used_gauge,ram_collector.get_memory_used())
         set_gauge(ram_memory_available_gauge,ram_collector.get_memory_available())
 

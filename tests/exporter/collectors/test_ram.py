@@ -14,13 +14,13 @@ class TestRAMCollector(unittest.TestCase):
         self.assertIsInstance(utilization, float)
         self.assertTrue(0.0 <= utilization <= 100.0)
 
-    def test_get_memory(self):
+    def test_get_total_memory(self):
         """
         @l3331l4
         Test whether the total memory installed is a positive number
         """
         ram_collector = RAMCollector()
-        memory = ram_collector.get_memory()
+        memory = ram_collector.get_memory_total()
         self.assertIsInstance(memory, int)
         self.assertTrue(memory > 0)
 
@@ -52,10 +52,8 @@ class TestRAMCollector(unittest.TestCase):
         Test whether the string representation of RAM metrics is correct
         """
         ram_collector = RAMCollector()
-        
-        
+
         expected_pattern = r"^RAM Utilization: \d+(\.\d+)?%\nTotal Memory: \d+ bytes\nUsed Memory: \d+ bytes\nAvailable Memory: \d+ bytes$"
-        
         
         self.assertRegex(str(ram_collector), expected_pattern, 'ram_collector output does not match the expected format.')
 
