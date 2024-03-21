@@ -33,7 +33,7 @@ class RAMCollector:
     def get_memory_used(self):
         """
         @ljdzed
-        Returns the total memory used
+        Returns the total memory used as the difference of get_memory and get_memory_available
         """
         memoryUsed = self.get_memory() - self.get_memory_available()
         return memoryUsed
