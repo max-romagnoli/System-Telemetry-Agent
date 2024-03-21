@@ -46,5 +46,10 @@ class CPUCollector:
         """
         utilization = self.get_utilization()
         frequency = self.get_frequency()
-        temp = self.get_temperature().__str__()
-        return f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: {temp}°C\n"
+        temp = self.get_temperature()
+        if temp:
+            temp = temp.__str__()
+            return f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: {temp}°C\n"
+        else:
+            return f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: not available\n"
+
