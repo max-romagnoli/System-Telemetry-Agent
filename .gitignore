@@ -16,3 +16,7 @@ __pycache__
 /scripts/.env
 
 *.pem
+
+docker-compose.override.yml
+
+docs/reviews
