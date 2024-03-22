@@ -30,6 +30,7 @@ class CPUCollector:
         @mccooeyc11
         Returns the CPU temperature in degrees Celsius.        
         """
+        print(psutil.sensors_temperatures()) ## Debugging Purposes
         if not psutil.sensors_temperatures():
             return None
         else:

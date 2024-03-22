@@ -10,7 +10,7 @@ services:
     volumes:
       - ../exporter:/usr/src/app/exporter
     working_dir: /usr/src/app
-    command: python3 start_exporter.py
+    command: python3 -u start_exporter.py
     networks:
       - systel-subnet
 
