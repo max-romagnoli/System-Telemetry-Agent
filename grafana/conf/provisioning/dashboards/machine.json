@@ -19,7 +19,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 9,
+    "id": 6,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -1355,7 +1355,7 @@
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "palette-classic"
+                        "mode": "fixed"
                     },
                     "custom": {
                         "hideFrom": {
@@ -1393,7 +1393,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "#5794F2",
+                                    "fixedColor": "#5794f2",
                                     "mode": "fixed"
                                 }
                             }
@@ -1418,7 +1418,7 @@
             },
             "gridPos": {
                 "h": 6,
-                "w": 3,
+                "w": 4,
                 "x": 0,
                 "y": 15
             },
@@ -1591,8 +1591,8 @@
             },
             "gridPos": {
                 "h": 6,
-                "w": 9,
-                "x": 3,
+                "w": 8,
+                "x": 4,
                 "y": 15
             },
             "id": 23,
@@ -1905,7 +1905,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "dark-purple",
+                                    "fixedColor": "#8c4fff",
                                     "mode": "fixed"
                                 }
                             }
@@ -1920,7 +1920,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "dark-blue",
+                                    "fixedColor": "#5794f2",
                                     "mode": "fixed"
                                 }
                             }
@@ -1939,7 +1939,7 @@
                 "legend": {
                     "calcs": [],
                     "displayMode": "list",
-                    "placement": "bottom",
+                    "placement": "right",
                     "showLegend": true
                 },
                 "tooltip": {
@@ -2057,7 +2057,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "dark-purple",
+                                    "fixedColor": "#8c4fff",
                                     "mode": "fixed"
                                 }
                             }
@@ -2072,7 +2072,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "dark-blue",
+                                    "fixedColor": "#5794f2",
                                     "mode": "fixed"
                                 }
                             }
@@ -2091,7 +2091,7 @@
                 "legend": {
                     "calcs": [],
                     "displayMode": "list",
-                    "placement": "bottom",
+                    "placement": "right",
                     "showLegend": true
                 },
                 "tooltip": {
