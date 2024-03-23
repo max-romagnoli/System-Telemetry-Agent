@@ -25,7 +25,16 @@ def export_metrics(port=8000):
         set_gauge(cpu_utilization_gauge, cpu_collector.get_utilization())
         set_gauge(cpu_frequency_gauge, cpu_collector.get_frequency())
         set_gauge(cpu_temperature_gauge, cpu_collector.get_temperature())
-
+        utilization_by_logical_core, utilization_by_physical_core = cpu_collector.get_utilization_by_core()
+        num_logical_cores = len(utilization_by_logical_core)
+        num_physical_cores = len(utilization_by_physical_core)
+        for core in range(num_logical_cores):
+            logical_core_utilization = utilization_by_logical_core[core]
+            cpu_utilization_by_logical_core_gauge.labels(core=str(core)).set(logical_core_utilization)      
+        for core in range(num_physical_cores):
+            physical_core_utilization = utilization_by_physical_core[core]
+            cpu_utilization_by_physical_core_gauge.labels(core=str(core)).set(physical_core_utilization)        
+             
         set_gauge(ram_utilization_gauge, ram_collector.get_utilization())
         set_gauge(ram_memory_total_gauge, ram_collector.get_memory_total())
         set_gauge(ram_memory_used_gauge,ram_collector.get_memory_used())
