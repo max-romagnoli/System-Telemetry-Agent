@@ -111,6 +111,8 @@
                         }
                     ],
                     "mappings": [],
+                    "max": 100,
+                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -120,43 +122,18 @@
                             },
                             {
                                 "color": "#EAB839",
-                                "value": 29.7
+                                "value": 70
                             },
                             {
                                 "color": "red",
-                                "value": 30
+                                "value": 90
                             }
                         ]
                     },
                     "unit": "percent",
                     "unitScale": true
                 },
-                "overrides": [
-                    {
-                        "__systemRef": "hideSeriesFrom",
-                        "matcher": {
-                            "id": "byNames",
-                            "options": {
-                                "mode": "exclude",
-                                "names": [
-                                    "exporter-2:8000"
-                                ],
-                                "prefix": "All except:",
-                                "readOnly": true
-                            }
-                        },
-                        "properties": [
-                            {
-                                "id": "custom.hideFrom",
-                                "value": {
-                                    "legend": false,
-                                    "tooltip": false,
-                                    "viz": true
-                                }
-                            }
-                        ]
-                    }
-                ]
+                "overrides": []
             },
             "gridPos": {
                 "h": 7,
@@ -202,7 +179,7 @@
             "type": "timeseries"
         }
     ],
-    "refresh": "",
+    "refresh": false,
     "schemaVersion": 39,
     "tags": [],
     "templating": {
