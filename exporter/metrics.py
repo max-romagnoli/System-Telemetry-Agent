@@ -4,8 +4,10 @@ cpu_utilization_gauge = Gauge("stagent_cpu_utilization_overall_percentage", "Sys
 cpu_frequency_gauge = Gauge("stagent_cpu_frequency_current_mhz", "CPU frequency in MHz")
 cpu_temperature_gauge = Gauge("stagent_cpu_coretemp_sensor_1_celsius", "Core temperature from Sensor 1 in Celsius")
 
-network_get_traffic_in_gauge = Gauge("stagent_traffic_in_mbs", "NETWORK inbound traffic in Mb/s")
-network_get_traffic_out_gauge = Gauge("stagent_traffic_out_mbs", "NETWORK outbound traffic in Mb/s")
+network_get_traffic_in_gauge = Gauge("stagent_traffic_in_mbits", "NETWORK inbound traffic in Megabits")
+network_get_traffic_out_gauge = Gauge("stagent_traffic_out_mbits", "NETWORK outbound traffic in Megabits")
+network_get_traffic_in_rate_gauge = Gauge("stagent_traffic_in_mbits_per_sec", "NETWORK inbound traffic in Mbits/s")
+network_get_traffic_out_rate_gauge = Gauge("stagent_traffic_out_mbits_per_sec", "NETWORK outbound traffic in Mbits/s")
 
 ram_utilization_gauge = Gauge("stagent_ram_utilization_percentage", "Total RAM utilization as a percentage")
 ram_memory_total_gauge = Gauge("stagent_ram_memory_total_bytes", "Total RAM memory installed in bytes")

@@ -33,6 +33,8 @@ def export_metrics(port=8000):
 
         set_gauge(network_get_traffic_in_gauge, network_collector.get_traffic_in())
         set_gauge(network_get_traffic_out_gauge, network_collector.get_traffic_out())
+        set_gauge(network_get_traffic_in_rate_gauge, network_collector.get_rate_traffic_in())
+        set_gauge(network_get_traffic_out_rate_gauge, network_collector.get_rate_traffic_out())
 
         set_gauge(disk_utilization_gauge, disk_collector.get_utilization())
         set_gauge(disk_total_space_gauge, disk_collector.get_total_space())
