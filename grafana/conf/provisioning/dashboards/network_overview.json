@@ -133,7 +133,32 @@
                     "unit": "percent",
                     "unitScale": true
                 },
-                "overrides": []
+                "overrides": [
+                    {
+                        "__systemRef": "hideSeriesFrom",
+                        "matcher": {
+                            "id": "byNames",
+                            "options": {
+                                "mode": "exclude",
+                                "names": [
+                                    "exporter-5:8000"
+                                ],
+                                "prefix": "All except:",
+                                "readOnly": true
+                            }
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.hideFrom",
+                                "value": {
+                                    "legend": false,
+                                    "tooltip": false,
+                                    "viz": true
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "gridPos": {
                 "h": 7,
@@ -174,12 +199,12 @@
                     "useBackend": false
                 }
             ],
-            "title": "Utilizations",
+            "title": "Utilization overview",
             "transformations": [],
             "type": "timeseries"
         }
     ],
-    "refresh": false,
+    "refresh": "",
     "schemaVersion": 39,
     "tags": [],
     "templating": {
