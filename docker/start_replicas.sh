@@ -1,5 +1,4 @@
 #!/bin/bash
-set -xe
 
 NUM_INSTANCES=$1
 MAX_INSTANCES=30
