@@ -39,20 +39,6 @@ class CPUCollector:
             else:
                 return None
 
-    def __str__(self) -> str:
-        """
-        @mccooeyc11
-        Returns to string representation of all CPU metrics.        
-        """
-        utilization = self.get_utilization()
-        frequency = self.get_frequency()
-        temp = self.get_temperature()
-        if temp:
-            temp = temp.__str__()
-            return f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: {temp}°C\n"
-        else:
-            return f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: not available\n"
-
     def get_utilization_by_core(self):
         """
         @l3331l4
@@ -66,3 +52,17 @@ class CPUCollector:
             core_utilizations.append(core_utilization)
 
         return cpu_percent, core_utilizations
+
+    def __str__(self) -> str:
+        """
+        @mccooeyc11
+        Returns to string representation of all CPU metrics.        
+        """
+        utilization = self.get_utilization()
+        frequency = self.get_frequency()
+        temp = self.get_temperature()
+        if temp:
+            temp = temp.__str__()
+            return f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: {temp}°C\n"
+        else:
+            return f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: not available\n"
