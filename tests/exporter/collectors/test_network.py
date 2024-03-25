@@ -14,6 +14,16 @@ class TestNetworkCollector(unittest.TestCase):
         units = network_collector.get_unit(bytes)
         self.assertEqual(units, mb)
 
+    def test_get_unit_is_not_none(self):
+        """
+        @dalesv
+        Makes sure return is not None
+        """
+        bytes = 345214
+        network_collector = NetworkCollector()
+        val = network_collector.get_unit(bytes)
+        self.assertFalse(val is None)
+
     def test_get_traffic_in_is_not_negative(self): 
         """
         @cindyariyo
@@ -22,6 +32,25 @@ class TestNetworkCollector(unittest.TestCase):
         network_collector = NetworkCollector()
         traffic_in = network_collector.get_traffic_in()
         self.assertTrue(traffic_in >= 0)
+
+    def test_traffic_in_is_appropriate_size(self):
+        """
+        @dalesv
+        test if method returns traffic is not obscenely high
+        """
+        network_collector = NetworkCollector()
+        traffic_in = network_collector.get_traffic_in()
+        self.assertTrue(traffic_in < 150000000000)
+        # 50 Giga Bytes/s is max, as 11.5 GB/s is a NASA computer
+
+    def test_traffic_in_is_not_none(self):
+        """
+        @dalesv
+        Makes sure return is not None
+        """
+        network_collector = NetworkCollector()
+        val = network_collector.get_traffic_in()
+        self.assertFalse(val is None)
 
     def test_get_traffic_out_is_not_negative(self): 
         """ 
@@ -32,6 +61,24 @@ class TestNetworkCollector(unittest.TestCase):
         traffic_out = network_collector.get_traffic_out()
         self.assertTrue(traffic_out >= 0)
 
+    def test_traffic_out_is_appropriate_size(self):
+        """
+        @dalesv
+        test if method returns traffic is not obscenely high
+        """
+        network_collector = NetworkCollector()
+        traffic_out = network_collector.get_traffic_in()
+        self.assertTrue(traffic_out < 150000000000)
+        # 50 Giga Bytes/s is max, as 11.5 GB/s is a NASA computer
+    
+    def test_traffic_out_is_not_none(self):
+        """
+        @dalesv
+        Makes sure return is not None
+        """
+        network_collector = NetworkCollector()
+        val = network_collector.get_traffic_out()
+        self.assertFalse(val is None)
 
     def test_get_traffic_in(self):
         """
@@ -60,6 +107,15 @@ class TestNetworkCollector(unittest.TestCase):
         traffic_in = network_collector.get_traffic_in()
         traffic_out = network_collector.get_traffic_out()
         self.assertEqual(network_collector.__str__(), f"Inbound Traffic: {traffic_in} Mb/s, Outbound Traffic: {traffic_out} Mb/s")
+
+    def test_str_is_not_none(self):
+        """
+        @dalesv
+        Makes sure return is not None
+        """
+        network_collector = NetworkCollector()
+        val = network_collector.__str__()
+        self.assertFalse(val is None)
         
 if __name__ == '__main__':
     unittest.main()
