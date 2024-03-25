@@ -19,10 +19,48 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 5,
+    "id": 2,
     "links": [],
     "liveNow": false,
     "panels": [
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 24,
+                "x": 0,
+                "y": 0
+            },
+            "id": 5,
+            "options": {
+                "code": {
+                    "language": "plaintext",
+                    "showLineNumbers": false,
+                    "showMiniMap": false
+                },
+                "content": "<h1 \n  style=\"text-align: center; overflow: hidden; color: #026bbf; font-size: 35px; font-weight: bold\"\n>\n\nSystem Telemetry Agent\n\n</h1>",
+                "mode": "markdown"
+            },
+            "pluginVersion": "10.3.3",
+            "transparent": true,
+            "type": "text"
+        },
+        {
+            "collapsed": false,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 2
+            },
+            "id": 4,
+            "panels": [],
+            "title": "RAM",
+            "type": "row"
+        },
         {
             "datasource": {
                 "type": "prometheus",
@@ -33,8 +71,47 @@
                     "color": {
                         "mode": "thresholds"
                     },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "scheme",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "links": [
+                        {
+                            "targetBlank": true,
+                            "title": "${__field.labels.instance}",
+                            "url": "http://localhost:3000/d/d88798a4-223a-40f3-9a6a-3787f1b71f0d/machine?var-exporter=${__field.labels.instance}"
+                        }
+                    ],
                     "mappings": [],
-                    "max": 2000000000,
+                    "max": 100,
                     "min": 0,
                     "thresholds": {
                         "mode": "absolute",
@@ -42,37 +119,64 @@
                             {
                                 "color": "green",
                                 "value": null
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 70
+                            },
+                            {
+                                "color": "red",
+                                "value": 90
                             }
                         ]
                     },
-                    "unit": "decbytes",
+                    "unit": "percent",
                     "unitScale": true
                 },
-                "overrides": []
+                "overrides": [
+                    {
+                        "__systemRef": "hideSeriesFrom",
+                        "matcher": {
+                            "id": "byNames",
+                            "options": {
+                                "mode": "exclude",
+                                "names": [
+                                    "exporter-5:8000"
+                                ],
+                                "prefix": "All except:",
+                                "readOnly": true
+                            }
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.hideFrom",
+                                "value": {
+                                    "legend": false,
+                                    "tooltip": false,
+                                    "viz": true
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "gridPos": {
-                "h": 8,
-                "w": 12,
+                "h": 7,
+                "w": 24,
                 "x": 0,
-                "y": 0
+                "y": 3
             },
-            "id": 2,
+            "id": 3,
             "options": {
-                "minVizHeight": 75,
-                "minVizWidth": 75,
-                "orientation": "auto",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "right",
+                    "showLegend": true
                 },
-                "showThresholdLabels": false,
-                "showThresholdMarkers": true,
-                "sizing": "auto",
-                "text": {
-                    "titleSize": 16
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
                 }
             },
             "pluginVersion": "10.3.3",
@@ -84,58 +188,20 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "node_network_speed_bytes",
+                    "expr": "stagent_ram_utilization_percentage",
                     "fullMetaSearch": false,
+                    "hide": false,
                     "includeNullMetadata": true,
                     "instant": false,
-                    "legendFormat": "",
+                    "legendFormat": "{{instance}}",
                     "range": true,
                     "refId": "A",
                     "useBackend": false
                 }
             ],
-            "title": "Network speed ",
-            "type": "gauge"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "P511B488A56A96D1F"
-            },
-            "gridPos": {
-                "h": 21,
-                "w": 24,
-                "x": 0,
-                "y": 8
-            },
-            "id": 1,
-            "options": {
-                "includeVars": false,
-                "keepTime": false,
-                "maxItems": 12,
-                "query": "",
-                "showHeadings": true,
-                "showRecentlyViewed": false,
-                "showSearch": false,
-                "showStarred": true,
-                "tags": []
-            },
-            "pluginVersion": "10.3.3",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "P511B488A56A96D1F"
-                    },
-                    "expr": "",
-                    "instant": false,
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "New title",
-            "transparent": true,
-            "type": "dashlist"
+            "title": "Utilization overview",
+            "transformations": [],
+            "type": "timeseries"
         }
     ],
     "refresh": "",
