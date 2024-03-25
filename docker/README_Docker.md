@@ -27,12 +27,12 @@
 ### **Start System with One Exporter:**
 
 1. Build a new image as per Dockerfile: <br>
-    `docker compose build`
+    `docker compose --profile single-exporter build`
 
-2. Create and run all the containers: <br>
-    `docker compose up`
+2. Create and run all the containers with 1 exporter: <br>
+    `docker compose --profile single-exporter up`
 
    *To run only a specific container:* `docker compose up service-name` 
 
 3. When you are done developing: <br>
-    `docker compose down`
+    `docker compose --profile single-exporter down`

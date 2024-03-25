@@ -1,4 +1,5 @@
 #!/bin/bash
+set -xe
 
 NUM_INSTANCES=$1
 MAX_INSTANCES=30
@@ -62,11 +63,11 @@ echo "]" >> "$PROMETHEUS_SD_FILE"
 
 
 cleanup() {
+    docker-compose --profile replicas down
     echo -e "\nCleaning up docker-compose.override.yml..."
     > docker-compose.override.yml
     echo -e "Cleaning up $PROMETHEUS_SD_FILE...\n"
     > $PROMETHEUS_SD_FILE
-    docker-compose down
     exit 0
 }
 
