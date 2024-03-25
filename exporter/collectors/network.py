@@ -2,9 +2,7 @@ import psutil
 import time
 
 class NetworkCollector:
-    
-    prev_traffic_in = 0
-    prev_traffic_out = 0
+
     
     def __init__(self) -> None:
         """
@@ -16,11 +14,12 @@ class NetworkCollector:
         @cindyariyo
         Returns the inbound traffic in Megabits.
         """
-        traffic_in = psutil.net_io_counters()
+        traffic = psutil.net_io_counters()
+        traffic_in = self.get_unit(traffic.bytes_recv)
         if not traffic_in:
             return None
         else:
-            return self.get_unit(traffic_in.bytes_recv) 
+            return traffic_in
     
 
     def get_traffic_out(self):
@@ -28,21 +27,25 @@ class NetworkCollector:
         @cindyariyo
         Returns the outbound traffic in Megabits.
         """
-        traffic_out = psutil.net_io_counters(nowrap=True)  
+        traffic = psutil.net_io_counters(nowrap=True)  
+        traffic_out = self.get_unit(traffic.bytes_sent) 
         if not traffic_out:
             return None
         else: 
-            return self.get_unit(traffic_out.bytes_sent) 
+            return traffic_out
     
 
     def get_rate_traffic_in(self):
         """
         Returns the inbound traffic in Megabits/s.
         """
-        curr_traffic = self.get_unit(psutil.net_io_counters().bytes_recv)
-        time.sleep(5)
         prev_traffic = self.get_traffic_in()
-        traffic_in_per_sec = abs(curr_traffic - prev_traffic) / 5
+        time.sleep(5)
+        curr_traffic = self.get_traffic_in()
+        if not curr_traffic or not prev_traffic:
+            traffic_in_per_sec = max(curr_traffic, prev_traffic) / 5
+        else:
+            traffic_in_per_sec = (curr_traffic - prev_traffic) / 5
         if not traffic_in_per_sec:
             return None
         else:
@@ -53,10 +56,13 @@ class NetworkCollector:
         """
         Returns the outbound traffic in Megabits/s.
         """
-        curr_traffic = self.get_unit(psutil.net_io_counters(nowrap=True).bytes_sent)
-        time.sleep(5)
         prev_traffic = self.get_traffic_out()
-        traffic_out_per_sec = abs(curr_traffic - prev_traffic) / 5
+        time.sleep(5)
+        curr_traffic = self.get_traffic_out()
+        if not curr_traffic or not prev_traffic:
+            traffic_out_per_sec = max(curr_traffic, prev_traffic) / 5
+        else:
+            traffic_out_per_sec = (curr_traffic - prev_traffic) / 5      
         if not traffic_out_per_sec:
             return None
         else:
