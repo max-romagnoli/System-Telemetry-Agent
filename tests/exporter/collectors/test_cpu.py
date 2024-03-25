@@ -49,6 +49,15 @@ class TestCPUCollector(unittest.TestCase):
         self.assertTrue('MHz\n' in output_str)
         self.assertTrue('CPU temperature: ' in output_str)
 
+    def test_get_utilization_by_core(self): 
+        """
+        @l3331l4
+        Test whether CPU utilization by core is within an acceptable range
+        """
+        cpu_collector = CPUCollector()
+        cpu_percent, core_utilizations = cpu_collector.get_utilization_by_core()
+        self.assertTrue(all(0 <= util <= 100 for util in cpu_percent))
+        self.assertTrue(all(0 <= util <= 100 for util in core_utilizations))
 
 if __name__ == '__main__':
     unittest.main()
