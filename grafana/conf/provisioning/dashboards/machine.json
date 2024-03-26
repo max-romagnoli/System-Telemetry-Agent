@@ -19,8 +19,21 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 1,
-    "links": [],
+    "id": 9,
+    "links": [
+        {
+            "asDropdown": false,
+            "icon": "external link",
+            "includeVars": false,
+            "keepTime": false,
+            "tags": [],
+            "targetBlank": false,
+            "title": "New link",
+            "tooltip": "",
+            "type": "dashboards",
+            "url": ""
+        }
+    ],
     "liveNow": false,
     "panels": [
         {
@@ -30,7 +43,7 @@
             },
             "gridPos": {
                 "h": 2,
-                "w": 24,
+                "w": 12,
                 "x": 0,
                 "y": 0
             },
@@ -41,7 +54,32 @@
                     "showLineNumbers": false,
                     "showMiniMap": false
                 },
-                "content": "<h1 \r\n  style=\"overflow: hidden; color: #8c4fff; font-size: 35px; font-weight: bold\"\r\n>\r\n\r\nDashboard\r\n\r\n</h1>",
+                "content": "<h1 \r\n  style=\"text-align: left; overflow: hidden; color: #8c4fff; font-size: 35px; font-weight: bold\"\r\n>\r\n\r\nDashboard\r\n\r\n</h1>",
+                "mode": "html"
+            },
+            "pluginVersion": "10.3.3",
+            "transparent": true,
+            "type": "text"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 11,
+                "x": 13,
+                "y": 0
+            },
+            "id": 36,
+            "options": {
+                "code": {
+                    "language": "plaintext",
+                    "showLineNumbers": false,
+                    "showMiniMap": false
+                },
+                "content": "\r\n<h1 \r\n  style=\"text-align: right; overflow: hidden; color: gray; font-size: 25px; font-weight: bold\"\r\n>\r\n\r\n${exporter}\r\n\r\n</h1>\r\n\r\n",
                 "mode": "html"
             },
             "pluginVersion": "10.3.3",
@@ -107,6 +145,8 @@
             "fieldConfig": {
                 "defaults": {
                     "mappings": [],
+                    "max": 100,
+                    "min": 0,
                     "thresholds": {
                         "mode": "percentage",
                         "steps": [
@@ -115,8 +155,8 @@
                                 "value": null
                             },
                             {
-                                "color": "orange",
-                                "value": 70
+                                "color": "yellow",
+                                "value": 60
                             },
                             {
                                 "color": "red",
@@ -131,7 +171,7 @@
             },
             "gridPos": {
                 "h": 5,
-                "w": 3,
+                "w": 2,
                 "x": 0,
                 "y": 4
             },
@@ -149,7 +189,7 @@
                     "values": false
                 },
                 "showThresholdLabels": false,
-                "showThresholdMarkers": false,
+                "showThresholdMarkers": true,
                 "sizing": "auto"
             },
             "pluginVersion": "10.3.3",
@@ -183,7 +223,7 @@
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "palette-classic"
+                        "mode": "thresholds"
                     },
                     "custom": {
                         "axisBorderShow": false,
@@ -194,7 +234,7 @@
                         "barAlignment": 0,
                         "drawStyle": "line",
                         "fillOpacity": 0,
-                        "gradientMode": "none",
+                        "gradientMode": "scheme",
                         "hideFrom": {
                             "legend": false,
                             "tooltip": false,
@@ -218,15 +258,17 @@
                         }
                     },
                     "mappings": [],
+                    "max": 100,
+                    "min": 0,
                     "thresholds": {
-                        "mode": "percentage",
+                        "mode": "absolute",
                         "steps": [
                             {
                                 "color": "green",
                                 "value": null
                             },
                             {
-                                "color": "orange",
+                                "color": "yellow",
                                 "value": 70
                             },
                             {
@@ -243,7 +285,7 @@
             "gridPos": {
                 "h": 5,
                 "w": 6,
-                "x": 3,
+                "x": 2,
                 "y": 4
             },
             "id": 25,
@@ -268,7 +310,7 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
+                    "editorMode": "code",
                     "expr": "stagent_cpu_utilization_overall_percentage{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
@@ -290,11 +332,13 @@
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "fixedColor": "blue",
+                        "fixedColor": "#5794f2",
                         "mode": "fixed"
                     },
                     "fieldMinMax": false,
                     "mappings": [],
+                    "max": 100,
+                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -315,8 +359,8 @@
             },
             "gridPos": {
                 "h": 5,
-                "w": 3,
-                "x": 9,
+                "w": 4,
+                "x": 8,
                 "y": 4
             },
             "id": 11,
@@ -403,6 +447,7 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
+            "description": "The amount of RAM(random access memory) in use",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -416,7 +461,7 @@
                         }
                     },
                     "mappings": [],
-                    "unit": "decbytes",
+                    "unit": "percent",
                     "unitScale": true
                 },
                 "overrides": [
@@ -483,8 +528,8 @@
                 ]
             },
             "gridPos": {
-                "h": 8,
-                "w": 4,
+                "h": 6,
+                "w": 3,
                 "x": 13,
                 "y": 4
             },
@@ -497,9 +542,7 @@
                     "displayMode": "list",
                     "placement": "bottom",
                     "showLegend": true,
-                    "values": [
-                        "value"
-                    ]
+                    "values": []
                 },
                 "pieType": "donut",
                 "reduceOptions": {
@@ -521,7 +564,7 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
+                    "editorMode": "code",
                     "expr": "stagent_ram_utilization_percentage{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "hide": false,
@@ -538,8 +581,8 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "stagent_ram_memory_bytes{instance=\"$exporter\"}",
+                    "editorMode": "code",
+                    "expr": "100 - stagent_ram_utilization_percentage{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "hide": false,
                     "includeNullMetadata": true,
@@ -558,6 +601,7 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
+            "description": "RAM usage over a period of time",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -676,9 +720,9 @@
                 ]
             },
             "gridPos": {
-                "h": 8,
-                "w": 7,
-                "x": 17,
+                "h": 6,
+                "w": 8,
+                "x": 16,
                 "y": 4
             },
             "id": 7,
@@ -701,7 +745,7 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
+                    "editorMode": "code",
                     "expr": "stagent_ram_utilization_percentage{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
@@ -717,8 +761,8 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "stagent_ram_memory_bytes{instance=\"$exporter\"}",
+                    "editorMode": "code",
+                    "expr": "100 - stagent_ram_utilization_percentage{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "hide": false,
                     "includeNullMetadata": true,
@@ -740,16 +784,14 @@
             "description": "Provides real-time data of the CPU's current operating frequency",
             "fieldConfig": {
                 "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
                     "mappings": [],
+                    "max": 3500,
                     "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "red",
+                                "color": "green",
                                 "value": null
                             },
                             {
@@ -757,12 +799,12 @@
                                 "value": 0
                             },
                             {
-                                "color": "#EAB839",
-                                "value": 1500
+                                "color": "yellow",
+                                "value": 2200
                             },
                             {
                                 "color": "green",
-                                "value": 3000
+                                "value": 2300
                             }
                         ]
                     },
@@ -812,7 +854,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "Frequency",
+            "title": "Freq",
             "type": "gauge"
         },
         {
@@ -859,6 +901,8 @@
                     },
                     "fieldMinMax": false,
                     "mappings": [],
+                    "max": 3500,
+                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -868,11 +912,11 @@
                             },
                             {
                                 "color": "yellow",
-                                "value": 1500
+                                "value": 2200
                             },
                             {
                                 "color": "green",
-                                "value": 3000
+                                "value": 2300
                             }
                         ]
                     },
@@ -998,7 +1042,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "Temperature",
+            "title": "Temp",
             "type": "gauge"
         },
         {
@@ -1119,7 +1163,7 @@
                 "h": 2,
                 "w": 11,
                 "x": 13,
-                "y": 12
+                "y": 10
             },
             "id": 5,
             "options": {
@@ -1134,6 +1178,186 @@
             "pluginVersion": "10.3.3",
             "transparent": true,
             "type": "text"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
+            "description": "The amount of data entering a specified network or system",
+            "fieldConfig": {
+                "defaults": {
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "red",
+                                "value": null
+                            },
+                            {
+                                "color": "yellow",
+                                "value": 0.2
+                            },
+                            {
+                                "color": "green",
+                                "value": 0.5
+                            }
+                        ]
+                    },
+                    "unit": "Mbits",
+                    "unitScale": true
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 3,
+                "x": 13,
+                "y": 12
+            },
+            "id": 33,
+            "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto"
+            },
+            "pluginVersion": "10.3.3",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "P7C0DE56CDD952252"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "code",
+                    "expr": "stagent_traffic_in_mbits_per_sec{instance=\"$exporter\"}",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
+                }
+            ],
+            "title": "Traffic In",
+            "type": "gauge"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
+            "description": "The amount of data being received over the network interface named \"eth0\" ",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "scheme",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "red",
+                                "value": null
+                            },
+                            {
+                                "color": "yellow",
+                                "value": 0.2
+                            },
+                            {
+                                "color": "green",
+                                "value": 0.5
+                            }
+                        ]
+                    },
+                    "unit": "Mbits",
+                    "unitScale": true
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 5,
+                "w": 8,
+                "x": 16,
+                "y": 12
+            },
+            "id": 34,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "P7C0DE56CDD952252"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "code",
+                    "expr": "stagent_traffic_in_mbits_per_sec{instance=\"$exporter\"}",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "eth0",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
+                }
+            ],
+            "type": "timeseries"
         },
         {
             "datasource": {
@@ -1165,188 +1389,11 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "red",
-                                "value": null
-                            },
-                            {
-                                "color": "yellow",
-                                "value": 0.1
-                            },
-                            {
-                                "color": "green",
-                                "value": 0.5
-                            }
-                        ]
-                    },
-                    "unit": "MBs",
-                    "unitScale": true
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 5,
-                "w": 3,
-                "x": 13,
-                "y": 14
-            },
-            "id": 33,
-            "options": {
-                "minVizHeight": 75,
-                "minVizWidth": 75,
-                "orientation": "auto",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showThresholdLabels": false,
-                "showThresholdMarkers": true,
-                "sizing": "auto"
-            },
-            "pluginVersion": "10.3.3",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "P7C0DE56CDD952252"
-                    },
-                    "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "stagent_traffic_in_mbs{instance=\"$exporter\"}",
-                    "fullMetaSearch": false,
-                    "includeNullMetadata": true,
-                    "instant": false,
-                    "legendFormat": "__auto",
-                    "range": true,
-                    "refId": "A",
-                    "useBackend": false
-                }
-            ],
-            "title": "Traffic In",
-            "type": "gauge"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "P7C0DE56CDD952252"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "palette-classic"
-                    },
-                    "custom": {
-                        "axisBorderShow": false,
-                        "axisCenteredZero": false,
-                        "axisColorMode": "text",
-                        "axisLabel": "",
-                        "axisPlacement": "auto",
-                        "barAlignment": 0,
-                        "drawStyle": "line",
-                        "fillOpacity": 0,
-                        "gradientMode": "none",
-                        "hideFrom": {
-                            "legend": false,
-                            "tooltip": false,
-                            "viz": false
-                        },
-                        "insertNulls": false,
-                        "lineInterpolation": "linear",
-                        "lineWidth": 1,
-                        "pointSize": 5,
-                        "scaleDistribution": {
-                            "type": "linear"
-                        },
-                        "showPoints": "auto",
-                        "spanNulls": false,
-                        "stacking": {
-                            "group": "A",
-                            "mode": "none"
-                        },
-                        "thresholdsStyle": {
-                            "mode": "off"
-                        }
-                    },
-                    "mappings": [],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "MBs",
-                    "unitScale": true
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 5,
-                "w": 8,
-                "x": 16,
-                "y": 14
-            },
-            "id": 34,
-            "options": {
-                "legend": {
-                    "calcs": [],
-                    "displayMode": "list",
-                    "placement": "bottom",
-                    "showLegend": true
-                },
-                "tooltip": {
-                    "mode": "single",
-                    "sort": "none"
-                }
-            },
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "P7C0DE56CDD952252"
-                    },
-                    "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "stagent_traffic_in_mbs{instance=\"$exporter\"}",
-                    "fullMetaSearch": false,
-                    "includeNullMetadata": true,
-                    "instant": false,
-                    "legendFormat": "eth0",
-                    "range": true,
-                    "refId": "A",
-                    "useBackend": false
-                }
-            ],
-            "type": "timeseries"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "P7C0DE56CDD952252"
-            },
             "description": "Disk space usage",
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "palette-classic"
+                        "mode": "fixed"
                     },
                     "custom": {
                         "hideFrom": {
@@ -1384,7 +1431,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "blue",
+                                    "fixedColor": "#5794f2",
                                     "mode": "fixed"
                                 }
                             }
@@ -1409,7 +1456,7 @@
             },
             "gridPos": {
                 "h": 6,
-                "w": 3,
+                "w": 4,
                 "x": 0,
                 "y": 15
             },
@@ -1461,7 +1508,7 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "editorMode": "code",
-                    "expr": "stagent_disk_free_space_bytes",
+                    "expr": "stagent_disk_free_space_bytes{instance=\"$exporter\"}",
                     "hide": false,
                     "instant": false,
                     "legendFormat": "Free",
@@ -1557,7 +1604,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "blue",
+                                    "fixedColor": "text",
                                     "mode": "fixed"
                                 }
                             }
@@ -1572,7 +1619,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "text",
+                                    "fixedColor": "#5794f2",
                                     "mode": "fixed"
                                 }
                             }
@@ -1582,8 +1629,8 @@
             },
             "gridPos": {
                 "h": 6,
-                "w": 9,
-                "x": 3,
+                "w": 8,
+                "x": 4,
                 "y": 15
             },
             "id": 23,
@@ -1643,6 +1690,7 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
+            "description": "The amount of data that leaves a specified network or system",
             "fieldConfig": {
                 "defaults": {
                     "color": {
@@ -1657,8 +1705,8 @@
                                 "value": null
                             },
                             {
-                                "color": "#EAB839",
-                                "value": 0.1
+                                "color": "yellow",
+                                "value": 0.2
                             },
                             {
                                 "color": "green",
@@ -1666,7 +1714,7 @@
                             }
                         ]
                     },
-                    "unit": "MBs",
+                    "unit": "Mbits",
                     "unitScale": true
                 },
                 "overrides": []
@@ -1675,7 +1723,7 @@
                 "h": 5,
                 "w": 3,
                 "x": 13,
-                "y": 19
+                "y": 17
             },
             "id": 28,
             "options": {
@@ -1701,8 +1749,8 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "stagent_traffic_out_mbs{instance=\"$exporter\"}",
+                    "editorMode": "code",
+                    "expr": "stagent_traffic_out_mbits_per_sec{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1720,11 +1768,11 @@
                 "type": "prometheus",
                 "uid": "P7C0DE56CDD952252"
             },
-            "description": "",
+            "description": "The amount of data being sent out through the \"eth0\" network interface",
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "palette-classic"
+                        "mode": "thresholds"
                     },
                     "custom": {
                         "axisBorderShow": false,
@@ -1735,7 +1783,7 @@
                         "barAlignment": 0,
                         "drawStyle": "line",
                         "fillOpacity": 0,
-                        "gradientMode": "none",
+                        "gradientMode": "scheme",
                         "hideFrom": {
                             "legend": false,
                             "tooltip": false,
@@ -1763,16 +1811,24 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
+                                "color": "red",
                                 "value": null
                             },
                             {
                                 "color": "red",
-                                "value": 80
+                                "value": 0.2
+                            },
+                            {
+                                "color": "yellow",
+                                "value": 0.5
+                            },
+                            {
+                                "color": "green",
+                                "value": 1
                             }
                         ]
                     },
-                    "unit": "MBs",
+                    "unit": "Mbits",
                     "unitScale": true
                 },
                 "overrides": []
@@ -1781,7 +1837,7 @@
                 "h": 5,
                 "w": 8,
                 "x": 16,
-                "y": 19
+                "y": 17
             },
             "id": 35,
             "options": {
@@ -1803,8 +1859,8 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "stagent_traffic_out_mbs{instance=\"$exporter\"}",
+                    "editorMode": "code",
+                    "expr": "stagent_traffic_out_mbits_per_sec{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1825,7 +1881,8 @@
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "palette-classic"
+                        "fixedColor": "blue",
+                        "mode": "fixed"
                     },
                     "custom": {
                         "axisBorderShow": false,
@@ -1873,7 +1930,7 @@
                             }
                         ]
                     },
-                    "unit": "Bps",
+                    "unit": "KBs",
                     "unitScale": true
                 },
                 "overrides": [
@@ -1886,7 +1943,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "dark-red",
+                                    "fixedColor": "#8c4fff",
                                     "mode": "fixed"
                                 }
                             }
@@ -1901,7 +1958,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "dark-blue",
+                                    "fixedColor": "#5794f2",
                                     "mode": "fixed"
                                 }
                             }
@@ -1910,7 +1967,7 @@
                 ]
             },
             "gridPos": {
-                "h": 5,
+                "h": 4,
                 "w": 6,
                 "x": 0,
                 "y": 21
@@ -1928,6 +1985,7 @@
                     "sort": "none"
                 }
             },
+            "pluginVersion": "10.3.3",
             "targets": [
                 {
                     "datasource": {
@@ -1975,7 +2033,8 @@
             "fieldConfig": {
                 "defaults": {
                     "color": {
-                        "mode": "palette-classic"
+                        "fixedColor": "blue",
+                        "mode": "fixed"
                     },
                     "custom": {
                         "axisBorderShow": false,
@@ -2030,43 +2089,13 @@
                     {
                         "matcher": {
                             "id": "byName",
-                            "options": "Read IOPS"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-blue",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Write IOPS"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "dark-red",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
                             "options": "Write"
                         },
                         "properties": [
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "dark-red",
+                                    "fixedColor": "#8c4fff",
                                     "mode": "fixed"
                                 }
                             }
@@ -2081,7 +2110,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "dark-blue",
+                                    "fixedColor": "#5794f2",
                                     "mode": "fixed"
                                 }
                             }
@@ -2090,7 +2119,7 @@
                 ]
             },
             "gridPos": {
-                "h": 5,
+                "h": 4,
                 "w": 6,
                 "x": 6,
                 "y": 21
@@ -2108,6 +2137,7 @@
                     "sort": "none"
                 }
             },
+            "pluginVersion": "10.3.3",
             "targets": [
                 {
                     "datasource": {

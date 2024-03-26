@@ -105,7 +105,7 @@
                     },
                     "links": [
                         {
-                            "targetBlank": true,
+                            "targetBlank": false,
                             "title": "${__field.labels.instance}",
                             "url": "http://localhost:3000/d/d88798a4-223a-40f3-9a6a-3787f1b71f0d/machine?var-exporter=${__field.labels.instance}"
                         }
