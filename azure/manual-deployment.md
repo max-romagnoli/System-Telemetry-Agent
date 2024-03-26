@@ -3,13 +3,13 @@
 #### Create a VM on Azure Portal
 * For this walkthrough I created a VM called **target-1**
 * Choose size. Here I chose **B1s** (€30.75 per month)
-* Save .pem file `target-1_key.pem` in `conf/`
+* Save .pem file `target-1_key.pem` in `azure/`
 
 #### Connect to VM using ssh
 ```
 cd System-Telemetry-Agent
-chmod 600 conf/target-1_key.pem
-ssh -i conf/target-1_key.pem azureuser@20.107.240.171
+chmod 600 azure/target-1_key.pem
+ssh -i azure/target-1_key.pem azureuser@20.107.240.171
 ```
 Notes: 
 * *target-1_key.pem* is the file containing the SSH key (!!!! DO NOT COMMIT IT !!!)
@@ -30,9 +30,9 @@ sudo mkdir -p /usr/src/app
 sudo chown -R azureuser:azureuser /usr/src/app/
 
 # Within System-Telemetry-Agent
-scp -i conf/target-1_key.pem -r exporter azureuser@20.107.240.171:/usr/src/app/
-scp -i conf/target-1_key.pem requirements.txt azureuser@20.107.240.171:/usr/src/app/
-scp -i conf/target-1_key.pem start_exporter.py azureuser@20.107.240.171:/usr/src/app/
+scp -i azure/target-1_key.pem -r exporter azureuser@20.107.240.171:/usr/src/app/
+scp -i azure/target-1_key.pem requirements.txt azureuser@20.107.240.171:/usr/src/app/
+scp -i azure/target-1_key.pem start_exporter.py azureuser@20.107.240.171:/usr/src/app/
 ```
 
 #### Install Python dependencies from requirements.txt

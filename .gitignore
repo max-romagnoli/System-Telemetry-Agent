@@ -12,7 +12,6 @@ __pycache__
 .DS_Store
 
 /.vscode
-/docker/.env
-/scripts/.env
+.env
 
 *.pem
