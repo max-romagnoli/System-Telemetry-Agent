@@ -19,8 +19,21 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 6,
-    "links": [],
+    "id": 9,
+    "links": [
+        {
+            "asDropdown": false,
+            "icon": "external link",
+            "includeVars": false,
+            "keepTime": false,
+            "tags": [],
+            "targetBlank": false,
+            "title": "New link",
+            "tooltip": "",
+            "type": "dashboards",
+            "url": ""
+        }
+    ],
     "liveNow": false,
     "panels": [
         {
@@ -30,7 +43,7 @@
             },
             "gridPos": {
                 "h": 2,
-                "w": 24,
+                "w": 12,
                 "x": 0,
                 "y": 0
             },
@@ -41,7 +54,32 @@
                     "showLineNumbers": false,
                     "showMiniMap": false
                 },
-                "content": "<h1 \r\n  style=\"overflow: hidden; color: #8c4fff; font-size: 35px; font-weight: bold\"\r\n>\r\n\r\nDashboard\r\n\r\n</h1>",
+                "content": "<h1 \r\n  style=\"text-align: left; overflow: hidden; color: #8c4fff; font-size: 35px; font-weight: bold\"\r\n>\r\n\r\nDashboard\r\n\r\n</h1>",
+                "mode": "html"
+            },
+            "pluginVersion": "10.3.3",
+            "transparent": true,
+            "type": "text"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 11,
+                "x": 13,
+                "y": 0
+            },
+            "id": 36,
+            "options": {
+                "code": {
+                    "language": "plaintext",
+                    "showLineNumbers": false,
+                    "showMiniMap": false
+                },
+                "content": "\r\n<h1 \r\n  style=\"text-align: right; overflow: hidden; color: gray; font-size: 25px; font-weight: bold\"\r\n>\r\n\r\n${exporter}\r\n\r\n</h1>\r\n\r\n",
                 "mode": "html"
             },
             "pluginVersion": "10.3.3",
@@ -1154,24 +1192,20 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
+                                "color": "red",
                                 "value": null
                             },
                             {
-                                "color": "red",
+                                "color": "yellow",
                                 "value": 0.2
                             },
                             {
-                                "color": "orange",
-                                "value": 0.5
-                            },
-                            {
                                 "color": "green",
-                                "value": 1
+                                "value": 0.5
                             }
                         ]
                     },
-                    "unit": "MBs",
+                    "unit": "Mbits",
                     "unitScale": true
                 },
                 "overrides": []
@@ -1207,7 +1241,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "stagent_traffic_in_mbs{instance=\"$exporter\"}",
+                    "expr": "stagent_traffic_in_mbits_per_sec{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1240,7 +1274,7 @@
                         "barAlignment": 0,
                         "drawStyle": "line",
                         "fillOpacity": 0,
-                        "gradientMode": "none",
+                        "gradientMode": "scheme",
                         "hideFrom": {
                             "legend": false,
                             "tooltip": false,
@@ -1268,16 +1302,20 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
+                                "color": "red",
                                 "value": null
                             },
                             {
-                                "color": "red",
-                                "value": 80
+                                "color": "yellow",
+                                "value": 0.2
+                            },
+                            {
+                                "color": "green",
+                                "value": 0.5
                             }
                         ]
                     },
-                    "unit": "MBs",
+                    "unit": "Mbits",
                     "unitScale": true
                 },
                 "overrides": []
@@ -1308,8 +1346,8 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "stagent_traffic_in_mbs{instance=\"$exporter\"}",
+                    "editorMode": "code",
+                    "expr": "stagent_traffic_in_mbits_per_sec{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1470,7 +1508,7 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "editorMode": "code",
-                    "expr": "stagent_disk_free_space_bytes",
+                    "expr": "stagent_disk_free_space_bytes{instance=\"$exporter\"}",
                     "hide": false,
                     "instant": false,
                     "legendFormat": "Free",
@@ -1667,8 +1705,8 @@
                                 "value": null
                             },
                             {
-                                "color": "#EAB839",
-                                "value": 0.1
+                                "color": "yellow",
+                                "value": 0.2
                             },
                             {
                                 "color": "green",
@@ -1676,7 +1714,7 @@
                             }
                         ]
                     },
-                    "unit": "MBs",
+                    "unit": "Mbits",
                     "unitScale": true
                 },
                 "overrides": []
@@ -1711,8 +1749,8 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "stagent_traffic_out_mbs{instance=\"$exporter\"}",
+                    "editorMode": "code",
+                    "expr": "stagent_traffic_out_mbits_per_sec{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1745,7 +1783,7 @@
                         "barAlignment": 0,
                         "drawStyle": "line",
                         "fillOpacity": 0,
-                        "gradientMode": "none",
+                        "gradientMode": "scheme",
                         "hideFrom": {
                             "legend": false,
                             "tooltip": false,
@@ -1773,7 +1811,7 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green",
+                                "color": "red",
                                 "value": null
                             },
                             {
@@ -1781,7 +1819,7 @@
                                 "value": 0.2
                             },
                             {
-                                "color": "#EAB839",
+                                "color": "yellow",
                                 "value": 0.5
                             },
                             {
@@ -1790,7 +1828,7 @@
                             }
                         ]
                     },
-                    "unit": "MBs",
+                    "unit": "Mbits",
                     "unitScale": true
                 },
                 "overrides": []
@@ -1821,8 +1859,8 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "stagent_traffic_out_mbs{instance=\"$exporter\"}",
+                    "editorMode": "code",
+                    "expr": "stagent_traffic_out_mbits_per_sec{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1929,7 +1967,7 @@
                 ]
             },
             "gridPos": {
-                "h": 5,
+                "h": 4,
                 "w": 6,
                 "x": 0,
                 "y": 21
@@ -2081,7 +2119,7 @@
                 ]
             },
             "gridPos": {
-                "h": 5,
+                "h": 4,
                 "w": 6,
                 "x": 6,
                 "y": 21

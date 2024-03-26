@@ -42,14 +42,15 @@ class NetworkCollector:
         prev_traffic = self.get_traffic_in()
         time.sleep(5)
         curr_traffic = self.get_traffic_in()
+
         if not curr_traffic or not prev_traffic:
-            traffic_in_per_sec = max(curr_traffic, prev_traffic) / 5
-        else:
-            traffic_in_per_sec = (curr_traffic - prev_traffic) / 5
-        if not traffic_in_per_sec:
             return None
-        else:
-            return traffic_in_per_sec
+        
+        if curr_traffic < prev_traffic:
+            return None     # TODO: for now just don't set, in the future need to calculate based on MAX_INTEGER value
+        
+        traffic_in_per_sec = (curr_traffic - prev_traffic) / 5
+        return traffic_in_per_sec
      
 
     def get_rate_traffic_out(self):
@@ -59,14 +60,15 @@ class NetworkCollector:
         prev_traffic = self.get_traffic_out()
         time.sleep(5)
         curr_traffic = self.get_traffic_out()
+
         if not curr_traffic or not prev_traffic:
-            traffic_out_per_sec = max(curr_traffic, prev_traffic) / 5
-        else:
-            traffic_out_per_sec = (curr_traffic - prev_traffic) / 5      
-        if not traffic_out_per_sec:
             return None
-        else:
-            return traffic_out_per_sec
+     
+        if curr_traffic < prev_traffic:
+            return None     # TODO: for now just don't set, in the future need to calculate based on MAX_INTEGER value
+
+        traffic_out_per_sec = (curr_traffic - prev_traffic) / 5
+        return traffic_out_per_sec
 
 
     def __str__(self) -> str:
