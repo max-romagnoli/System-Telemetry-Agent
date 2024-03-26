@@ -6,6 +6,8 @@ grafana/*
 prometheus/*
 !prometheus.yml
 !README.md
+!sd/
+local_replicas.json
 
 sample.yaml
 __pycache__
