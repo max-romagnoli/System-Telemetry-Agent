@@ -56,6 +56,126 @@
                 "x": 0,
                 "y": 2
             },
+            "id": 6,
+            "panels": [],
+            "title": "CPU",
+            "type": "row"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "P7C0DE56CDD952252"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "dashed+area"
+                        }
+                    },
+                    "mappings": [],
+                    "max": 100,
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "yellow",
+                                "value": 60
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "percent",
+                    "unitScale": true
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 3
+            },
+            "id": 7,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "right",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "P7C0DE56CDD952252"
+                    },
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "stagent_cpu_utilization_overall_percentage",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
+                    "instant": false,
+                    "legendFormat": "{{instance}}",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
+                }
+            ],
+            "title": "Utilization Overview ",
+            "type": "timeseries"
+        },
+        {
+            "collapsed": false,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 11
+            },
             "id": 4,
             "panels": [],
             "title": "RAM",
@@ -100,7 +220,7 @@
                             "mode": "none"
                         },
                         "thresholdsStyle": {
-                            "mode": "off"
+                            "mode": "dashed+area"
                         }
                     },
                     "links": [
@@ -122,11 +242,11 @@
                             },
                             {
                                 "color": "#EAB839",
-                                "value": 70
+                                "value": 60
                             },
                             {
                                 "color": "red",
-                                "value": 90
+                                "value": 80
                             }
                         ]
                     },
@@ -164,7 +284,7 @@
                 "h": 7,
                 "w": 24,
                 "x": 0,
-                "y": 3
+                "y": 12
             },
             "id": 3,
             "options": {
