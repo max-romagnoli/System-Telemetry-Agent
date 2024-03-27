@@ -468,7 +468,7 @@
                     {
                         "matcher": {
                             "id": "byName",
-                            "options": "Unused Bytes"
+                            "options": "Free"
                         },
                         "properties": [
                             {
@@ -587,7 +587,7 @@
                     "hide": false,
                     "includeNullMetadata": true,
                     "instant": false,
-                    "legendFormat": "Unused",
+                    "legendFormat": "Free",
                     "range": true,
                     "refId": "A",
                     "useBackend": false
@@ -660,36 +660,6 @@
                     {
                         "matcher": {
                             "id": "byName",
-                            "options": "Active Bytes"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "blue",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
-                            "options": "Inactive Bytes"
-                        },
-                        "properties": [
-                            {
-                                "id": "color",
-                                "value": {
-                                    "fixedColor": "#9b9a93",
-                                    "mode": "fixed"
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "matcher": {
-                            "id": "byName",
                             "options": "Used"
                         },
                         "properties": [
@@ -705,7 +675,7 @@
                     {
                         "matcher": {
                             "id": "byName",
-                            "options": "Unused"
+                            "options": "Free"
                         },
                         "properties": [
                             {
@@ -767,7 +737,7 @@
                     "hide": false,
                     "includeNullMetadata": true,
                     "instant": false,
-                    "legendFormat": "Unused",
+                    "legendFormat": "Free",
                     "range": true,
                     "refId": "B",
                     "useBackend": false
