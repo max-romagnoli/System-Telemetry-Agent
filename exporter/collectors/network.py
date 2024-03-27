@@ -1,5 +1,4 @@
 import psutil
-import time
 
 class NetworkCollector:
 
@@ -8,18 +7,20 @@ class NetworkCollector:
         """
         Constructor
         """
+        self.prev_traffic_in = 0
+        self.prev_traffic_out = 0
+
     
     def get_traffic_in(self):
         """
         @cindyariyo
         Returns the inbound traffic in Megabits.
         """
-        traffic = psutil.net_io_counters()
-        traffic_in = self.get_unit(traffic.bytes_recv)
+        traffic_in = psutil.net_io_counters()
         if not traffic_in:
-            return None
+            return 0.0
         else:
-            return traffic_in
+            return self.get_unit(traffic_in.bytes_recv)
     
 
     def get_traffic_out(self):
@@ -27,27 +28,27 @@ class NetworkCollector:
         @cindyariyo
         Returns the outbound traffic in Megabits.
         """
-        traffic = psutil.net_io_counters(nowrap=True)  
-        traffic_out = self.get_unit(traffic.bytes_sent) 
+        traffic_out = psutil.net_io_counters(nowrap=True)  
         if not traffic_out:
-            return None
+            return 0.0
         else: 
-            return traffic_out
+            return self.get_unit(traffic_out.bytes_sent) 
     
 
     def get_rate_traffic_in(self):
         """
         Returns the inbound traffic in Megabits/s.
         """
-        prev_traffic = self.get_traffic_in()
-        time.sleep(5)
-        curr_traffic = self.get_traffic_in()
-        if not curr_traffic or not prev_traffic:
-            traffic_in_per_sec = max(curr_traffic, prev_traffic) / 5
-        else:
-            traffic_in_per_sec = (curr_traffic - prev_traffic) / 5
-        if not traffic_in_per_sec:
-            return None
+        traffic_in_per_sec = 0.0
+        curr_traffic = self.get_traffic_in() 
+        if curr_traffic !=0 and self.prev_traffic_in != 0:
+            traffic_in_per_sec = (curr_traffic - self.prev_traffic_in) / 5
+            self.prev_traffic_in = curr_traffic 
+            return traffic_in_per_sec
+        elif curr_traffic !=0 or self.prev_traffic_in != 0:
+            traffic_in_per_sec = max(curr_traffic, self.prev_traffic_in) / 5
+            self.prev_traffic_in = curr_traffic
+            return traffic_in_per_sec
         else:
             return traffic_in_per_sec
      
@@ -56,15 +57,16 @@ class NetworkCollector:
         """
         Returns the outbound traffic in Megabits/s.
         """
-        prev_traffic = self.get_traffic_out()
-        time.sleep(5)
-        curr_traffic = self.get_traffic_out()
-        if not curr_traffic or not prev_traffic:
-            traffic_out_per_sec = max(curr_traffic, prev_traffic) / 5
-        else:
-            traffic_out_per_sec = (curr_traffic - prev_traffic) / 5      
-        if not traffic_out_per_sec:
-            return None
+        traffic_out_per_sec = 0.0
+        curr_traffic = self.get_traffic_out() 
+        if curr_traffic !=0 and self.prev_traffic_out != 0:
+            traffic_out_per_sec = (curr_traffic - self.prev_traffic_out) / 5
+            self.prev_traffic_out = curr_traffic 
+            return traffic_out_per_sec
+        elif curr_traffic !=0 or self.prev_traffic_out != 0:
+            traffic_out_per_sec = max(curr_traffic, self.prev_traffic_out) / 5
+            self.prev_traffic_out = curr_traffic
+            return traffic_out_per_sec
         else:
             return traffic_out_per_sec
 
@@ -90,3 +92,6 @@ class NetworkCollector:
         bits = bytes * 8
         megabits = bits /1000000
         return megabits
+
+if __name__ == '__main__':
+    print(NetworkCollector().__str__())

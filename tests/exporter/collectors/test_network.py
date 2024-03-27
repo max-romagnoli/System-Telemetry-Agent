@@ -73,8 +73,6 @@ class TestNetworkCollector(unittest.TestCase):
         Test if a string representation of networking metrics is returned.
         """
         network_collector = NetworkCollector() 
-        traffic_in = network_collector.get_rate_traffic_in()
-        traffic_out = network_collector.get_rate_traffic_out()
         self.assertRegex(network_collector.__str__(), r"Inbound Traffic: \d+(\.\d+) Mb/s, Outbound Traffic: \d+(\.\d+) Mb/s")
         
         
