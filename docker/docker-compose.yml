@@ -4,25 +4,25 @@ services:
   exporter:
     build:
       context: ..
-      dockerfile: docker/Dockerfile.python_exporter
-    ports:
-      - "8000:8000"
+      dockerfile: docker/Dockerfile
     volumes:
       - ../exporter:/usr/src/app/exporter
     working_dir: /usr/src/app
-    command: python3 start_exporter.py
+    command: python3 -u start_exporter.py
     networks:
       - systel-subnet
+    profiles:
+      - single-exporter
 
   node-exporter:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile.node_exporter
+    image: prom/node-exporter:v1.7.0
     ports:
       - "9100:9100"
-      - "80:80"
     networks:
       - systel-subnet
+    profiles:
+      - replicas
+      - single-exporter
 
   grafana:
     image: grafana/grafana:10.3.3
@@ -36,6 +36,9 @@ services:
       - grafana-data:/var/lib/grafana
     networks:
       - systel-subnet
+    profiles:
+      - replicas
+      - single-exporter
 
   prometheus:
     image: prom/prometheus:v2.45.3
@@ -43,6 +46,7 @@ services:
       - "9090:9090"
     volumes:
       - ../prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../prometheus/sd:/etc/prometheus/sd
       - prometheus-data:/prometheus
     command:
       - "--config.file=/etc/prometheus/prometheus.yml"
@@ -50,6 +54,9 @@ services:
       - "--web.enable-lifecycle"
     networks:
       - systel-subnet
+    profiles:
+      - replicas
+      - single-exporter
 
   grafana-sync-script:
     image: python:3.9
@@ -57,7 +64,6 @@ services:
       GRAFANA_SYNC_API: ${GRAFANA_SYNC_API}
       GRAFANA_LOCAL_API_URI: "http://grafana:3000/api"
     volumes:
-      #- ../grafana/conf/provisioning/dashboards:/usr/src/app/grafana/conf/provisioning/dashboards
       - ../grafana/conf/provisioning/dashboards:/etc/grafana/provisioning/dashboards
       - ../scripts/export_dashboards.py:/usr/src/app/export_dashboards.py
     command: /bin/sh -c "pip install requests python-dotenv && python /usr/src/app/export_dashboards.py"
@@ -65,6 +71,9 @@ services:
       - grafana
     networks:
       - systel-subnet
+    profiles:
+      - replicas
+      - single-exporter
 
 volumes:
   prometheus-data:

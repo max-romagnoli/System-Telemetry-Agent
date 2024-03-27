@@ -6,6 +6,8 @@ grafana/*
 prometheus/*
 !prometheus.yml
 !README.md
+!sd/
+local_replicas.json
 
 sample.yaml
 __pycache__
@@ -16,3 +18,7 @@ __pycache__
 /scripts/.env
 
 *.pem
+
+docker-compose.override.yml
+
+docs/reviews
