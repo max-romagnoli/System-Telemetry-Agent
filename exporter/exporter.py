@@ -26,14 +26,8 @@ def export_metrics(port=8000):
         set_gauge(cpu_frequency_gauge, cpu_collector.get_frequency())
         set_gauge(cpu_temperature_gauge, cpu_collector.get_temperature())
         utilization_by_logical_core, utilization_by_physical_core = cpu_collector.get_utilization_by_core()
-        num_logical_cores = len(utilization_by_logical_core)
-        num_physical_cores = len(utilization_by_physical_core)
-        for core in range(num_logical_cores):
-            logical_core_utilization = utilization_by_logical_core[core]
-            cpu_utilization_by_logical_core_gauge.labels(core=str(core)).set(logical_core_utilization)      
-        for core in range(num_physical_cores):
-            physical_core_utilization = utilization_by_physical_core[core]
-            cpu_utilization_by_physical_core_gauge.labels(core=str(core)).set(physical_core_utilization)        
+        set_gauge_from_list(cpu_utilization_by_logical_core_gauge, utilization_by_logical_core, label_name="core")    
+        set_gauge_from_list(cpu_utilization_by_physical_core_gauge, utilization_by_physical_core, label_name="core")  
              
         set_gauge(ram_utilization_gauge, ram_collector.get_utilization())
         set_gauge(ram_memory_total_gauge, ram_collector.get_memory_total())
@@ -64,3 +58,13 @@ def set_gauge(gauge=Gauge, value=float):
     
     if value is not None:
         gauge.set(value)
+
+def set_gauge_from_list(gauge=Gauge, list=list, label_name=str):
+
+    """
+    Sets the gauge to the specified list of values if the values are not None.
+    """  
+    if list is not None:
+        for index in range(len(list)):
+            value = list[index]
+            gauge.labels(**{label_name: str(index)}).set(value)
