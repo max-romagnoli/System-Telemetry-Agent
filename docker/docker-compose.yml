@@ -9,6 +9,8 @@ services:
       - ../exporter:/usr/src/app/exporter
     working_dir: /usr/src/app
     command: python3 -u start_exporter.py
+    ports:
+      - "8000:8000"
     networks:
       - systel-subnet
     profiles:
@@ -46,6 +48,7 @@ services:
       - "9090:9090"
     volumes:
       - ../prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../prometheus/alerts.rules.yml:/etc/prometheus/alerts.rules.yml
       - ../prometheus/sd:/etc/prometheus/sd
       - prometheus-data:/prometheus
     command:
@@ -75,9 +78,30 @@ services:
       - replicas
       - single-exporter
 
+  alertmanager:
+    image: prom/alertmanager:v0.27.0
+    restart: unless-stopped
+    ports:
+      - "9093:9093"
+    expose:
+    - "9093"
+    volumes:
+      - ../alertmanager:/etc/alertmanager/config
+      - ../alertmanager/alertmanager.yml:/etc/alertmanager/config/alertmanager.yml
+      - ..alertmanager-data:/etc/alertmanager/data
+    command: --config.file=/etc/alertmanager/config/alertmanager.yml --log.level=debug
+    depends_on:
+      - prometheus
+    networks:
+      - systel-subnet
+    profiles:
+      - replicas
+      - single-exporter
+
 volumes:
   prometheus-data:
   grafana-data:
+  alertmanager-data:
 
 networks:
   systel-subnet:

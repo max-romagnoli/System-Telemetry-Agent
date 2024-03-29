@@ -5,6 +5,7 @@ grafana/*
 
 prometheus/*
 !prometheus.yml
+!alerts.rules.yml
 !README.md
 !sd/
 local_replicas.json
