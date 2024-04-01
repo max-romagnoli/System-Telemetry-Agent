@@ -7,13 +7,11 @@ scrape_configs:
   static_configs:
     - targets: 
         - node-exporter:9100
-        - localhost:9100
 - job_name: 'python_exporter'
   static_configs:
     - targets:
-        - exporter:8000
-        - localhost:8000
-        - 20.107.240.171:8000   # target-1
+      - 20.107.240.171:8000   # target-1
   file_sd_configs:
     - files:
+      - '/etc/prometheus/sd/local_replicas.json'
       - 'sd/azure_targets.json'

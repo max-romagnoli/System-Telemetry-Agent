@@ -30,6 +30,7 @@ class CPUCollector:
         @mccooeyc11
         Returns the CPU temperature in degrees Celsius.        
         """
+        print(psutil.sensors_temperatures()) ## Debugging Purposes
         if not psutil.sensors_temperatures():
             return None
         else:
@@ -38,6 +39,20 @@ class CPUCollector:
                 return temps[0].current
             else:
                 return None
+
+    def get_utilization_by_core(self):
+        """
+        @l3331l4
+        Returns a list of CPU utilization percentages for each logical core and physical core.
+        """    
+        cpu_percent = psutil.cpu_percent(percpu=True)
+        logical_processors_per_core = psutil.cpu_count(logical=True) // psutil.cpu_count(logical=False)
+        core_utilizations = []  
+        for i in range(0, len(cpu_percent), logical_processors_per_core):
+            core_utilization = sum(cpu_percent[i:i+logical_processors_per_core]) 
+            core_utilizations.append(core_utilization)
+
+        return cpu_percent, core_utilizations
 
     def __str__(self) -> str:
         """
@@ -52,4 +67,3 @@ class CPUCollector:
             return f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: {temp}°C\n"
         else:
             return f"CPU utilization: {utilization}%\n CPU frequency: {frequency}MHz\n CPU temperature: not available\n"
-
