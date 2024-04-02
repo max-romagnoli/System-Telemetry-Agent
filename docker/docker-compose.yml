@@ -79,6 +79,7 @@ services:
       - single-exporter
 
   alertmanager:
+    user: "0"
     image: prom/alertmanager:v0.27.0
     restart: unless-stopped
     ports:
@@ -87,9 +88,13 @@ services:
     - "9093"
     volumes:
       - ../alertmanager:/etc/alertmanager/config
-      - ../alertmanager/alertmanager.yml:/etc/alertmanager/config/alertmanager.yml
+      - ../alertmanager/alertmanager.template.yml:/etc/alertmanager/config/alertmanager.template.yml
       - ..alertmanager-data:/etc/alertmanager/data
-    command: --config.file=/etc/alertmanager/config/alertmanager.yml --log.level=debug
+      - ../scripts/start_alertmanager.sh:/etc/alertmanager/scripts/start_alertmanager.sh
+    environment:
+      ALERTMANAGER_APP_PWD: ${ALERTMANAGER_APP_PWD}
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["chmod +x /etc/alertmanager/scripts/start_alertmanager.sh && /etc/alertmanager/scripts/start_alertmanager.sh"]
     depends_on:
       - prometheus
     networks:
