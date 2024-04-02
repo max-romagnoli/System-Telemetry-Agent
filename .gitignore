@@ -10,6 +10,9 @@ prometheus/*
 !sd/
 local_replicas.json
 
+alertmanager/*
+!alertmanager.template.yml
+
 sample.yaml
 __pycache__
 .DS_Store
