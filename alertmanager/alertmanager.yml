@@ -6,12 +6,12 @@ route:
   receiver: 'email'
 receivers:
   - name: 'email'
-    # email_configs:
-    #   - smarthost: 'smtp-mail.outlook.com:587'
-    #     auth_username: 
-    #     auth_password: 
-    #     from: 
-    #     to: 
+    email_configs:
+      - smarthost: 'smtp.gmail.com:587'
+        auth_username: 'stagent9@gmail.com'
+        auth_password: 'vukm crrf twby lchy'
+        from: 'stagent9@gmail.com'
+        to: 'your_email_here@gmail.com'
 inhibit_rules:
   - source_match:
       severity: 'critical'
