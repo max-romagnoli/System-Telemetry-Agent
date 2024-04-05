@@ -12,9 +12,3 @@ receivers:
         auth_password: 'vukm crrf twby lchy'
         from: 'stagent9@gmail.com'
         to: 'your_email_here@gmail.com'
-inhibit_rules:
-  - source_match:
-      severity: 'critical'
-    target_match:
-      severity: 'warning'
-    equal: ['alertname', 'dev', 'instance']

@@ -11,8 +11,8 @@ groups:
       description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minutes."
   
   - alert: HostOutOfMemory
-    expr: ram_utilization_gauge > 75
-    for: 5m
+    expr: stagent_ram_utilization_percentage > 75
+    for: 1m
     labels:
       severity: warning
     annotations:
@@ -21,7 +21,7 @@ groups:
 
 
   - alert: HostOutOfDiskSpace
-    expr: disk_utilization_gauge > 50
+    expr: stagent_disk_utilization_percentage > 50
     for: 1s
     labels:
       severity: warning
@@ -31,7 +31,7 @@ groups:
 
 
   - alert: HostHighCpuLoad
-    expr: cpu_utilization_gauge > 80
+    expr: stagent_cpu_utilization_overall_percentage > 80
     for: 5m
     labels:
       severity: warning
