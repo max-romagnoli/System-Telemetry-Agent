@@ -207,7 +207,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "CPU Utilization Overview",
+            "title": "CPU Utilization",
             "type": "timeseries"
         },
         {
@@ -226,7 +226,9 @@
                 "alertInstanceLabelFilter": "",
                 "alertName": "",
                 "dashboardAlerts": false,
-                "groupBy": [],
+                "groupBy": [
+                    "severity"
+                ],
                 "groupMode": "default",
                 "maxItems": 20,
                 "sortOrder": 3,
@@ -299,7 +301,7 @@
                             "mode": "none"
                         },
                         "thresholdsStyle": {
-                            "mode": "dashed+area"
+                            "mode": "area"
                         }
                     },
                     "links": [
@@ -369,7 +371,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "Disk Utilization Overview",
+            "title": "Disk Utilization",
             "type": "timeseries"
         },
         {
@@ -438,7 +440,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "ALERTS{alertname=\"InstanceDown\"}",
+                    "expr": "group by (instance) (ALERTS{alertname=\"InstanceDown\"})",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -490,7 +492,7 @@
                             "mode": "none"
                         },
                         "thresholdsStyle": {
-                            "mode": "dashed+area"
+                            "mode": "area"
                         }
                     },
                     "links": [
@@ -564,7 +566,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "RAM Utilization Overview",
+            "title": "RAM Utilization",
             "transformations": [],
             "type": "timeseries"
         },
@@ -596,8 +598,26 @@
         },
         {
             "datasource": {
-                "type": "prometheus",
-                "uid": "P7C0DE56CDD952252"
+                "type": "volkovlabs-rss-datasource",
+                "uid": "cbdf3818-0320-4265-84d1-f95ea9eab544"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
             },
             "gridPos": {
                 "h": 9,
@@ -607,10 +627,48 @@
             },
             "id": 18,
             "options": {
-                "showImage": true
+                "afterRender": "",
+                "content": "<div style=\"color: #333;\">\n  <img src=\"https://play-lh.googleusercontent.com/bUIDxMxSHAqD1omj1ZRrzLlUQSeJV9j29Vorr4ExXgq9ax8s5wJS80svCr-MCIOWg2Sg=w240-h480-rw\" alt=\"News Image\"\n      style=\"border-radius: 25px; width: 30px; height: 30px;\">\n  <span style=\"color: grey; font-size: 15px;\">{{category}} \u2022</span>\n  <span style=\"margin-bottom: 10px;\">\n    <a href=\"{{link}}\"\n        style=\"font-size: 15px; text-decoration: underline; color: #6a88c1; text-decoration: none;\"><u><strong>{{title}}</strong></u></a>\n  </span>\n  <div style=\"color: white; font-size: 13px; margin-top: 10px; margin-bottom: 10px;\">\n    <span style=\"color: #B3B3B3;\">{{pubDate}}</span>\n    <span >\n       \u2014 {{description}}\n    </span>\n  </div>\n</div>",
+                "defaultContent": "The query didn't return any results.",
+                "editor": {
+                    "format": "auto",
+                    "language": "html"
+                },
+                "editors": [],
+                "externalScripts": [],
+                "externalStyles": [],
+                "helpers": "",
+                "renderMode": "everyRow",
+                "styles": "",
+                "wrap": true
             },
-            "title": "Guides",
-            "type": "news"
+            "pluginVersion": "4.5.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "volkovlabs-rss-datasource",
+                        "uid": "cbdf3818-0320-4265-84d1-f95ea9eab544"
+                    },
+                    "feedType": "items",
+                    "refId": "A"
+                }
+            ],
+            "title": "Met \u00c9ireann",
+            "transformations": [
+                {
+                    "id": "sortBy",
+                    "options": {
+                        "fields": {},
+                        "sort": [
+                            {
+                                "desc": true,
+                                "field": "pubDate"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "type": "marcusolsson-dynamictext-panel"
         },
         {
             "datasource": {
@@ -651,7 +709,7 @@
                             "mode": "none"
                         },
                         "thresholdsStyle": {
-                            "mode": "off"
+                            "mode": "area"
                         }
                     },
                     "links": [
@@ -679,7 +737,7 @@
                             }
                         ]
                     },
-                    "unit": "decmbytes",
+                    "unit": "Mbits",
                     "unitScale": true
                 },
                 "overrides": []
@@ -710,8 +768,8 @@
                         "uid": "P7C0DE56CDD952252"
                     },
                     "disableTextWrap": false,
-                    "editorMode": "builder",
-                    "expr": "stagent_traffic_in_mbits",
+                    "editorMode": "code",
+                    "expr": "stagent_traffic_in_mbits_per_sec{}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -721,7 +779,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "Inbound Traffic Overview",
+            "title": "Inbound Traffic",
             "type": "timeseries"
         },
         {
@@ -763,7 +821,7 @@
                             "mode": "none"
                         },
                         "thresholdsStyle": {
-                            "mode": "dashed+area"
+                            "mode": "area"
                         }
                     },
                     "links": [
@@ -791,7 +849,7 @@
                             }
                         ]
                     },
-                    "unit": "decmbytes",
+                    "unit": "Mbits",
                     "unitScale": true
                 },
                 "overrides": []
@@ -823,7 +881,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "stagent_traffic_out_mbits",
+                    "expr": "stagent_traffic_out_mbits_per_sec",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -833,11 +891,11 @@
                     "useBackend": false
                 }
             ],
-            "title": "Outbound Traffic Overview",
+            "title": "Outbound Traffic",
             "type": "timeseries"
         }
     ],
-    "refresh": "5s",
+    "refresh": "",
     "schemaVersion": 39,
     "tags": [],
     "templating": {

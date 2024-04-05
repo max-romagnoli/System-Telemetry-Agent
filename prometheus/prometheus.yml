@@ -22,7 +22,8 @@ scrape_configs:
   static_configs:
     - targets:
       - exporter:8000
-      - 20.107.240.171:8000   # target-1
+    - labels:
+        setup: 'Docker'
   file_sd_configs:
     - files:
       - '/etc/prometheus/sd/local_replicas.json'
