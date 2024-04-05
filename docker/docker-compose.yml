@@ -9,8 +9,6 @@ services:
       - ../exporter:/usr/src/app/exporter
     working_dir: /usr/src/app
     command: python3 -u start_exporter.py
-    ports:
-      - "8000:8000"
     networks:
       - systel-subnet
     profiles:
