@@ -80,4 +80,4 @@ groups:
       severity: warning
     annotations:
       summary: "Host experiencing abnormally high outbound network traffic (instance {{ $labels.instance }})"
-      description: "Outbound network has exceeded 80% of the maximum observed rate over the last 5 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+      description: "Outbound network traffic has exceeded 80% of the maximum observed rate over the last 5 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
