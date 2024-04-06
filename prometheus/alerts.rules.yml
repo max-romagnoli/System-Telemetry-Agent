@@ -1,0 +1,83 @@
+groups:
+- name: alert.rules
+  rules:
+  - alert: InstanceDown
+    expr: up == 0
+    for: 1m
+    labels:
+      severity: "critical"
+    annotations:
+      summary: "Endpoint {{ $labels.instance }} down"
+      description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minutes."
+  
+  - alert: HostLowMemory
+    expr: stagent_ram_utilization_percentage > 75
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Host running out of memory (instance {{ $labels.instance }})"
+      description: "Memory is filling up (< 25% left)\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+
+  - alert: HostDiskWillFillIn4Hours
+    expr: predict_linear(stagent_disk_free_space_bytes[1h], 4 * 3600) < 0
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Host will run out of disk space (instance {{ $labels.instance }})"
+      description: "Disk will fill in 4 hours\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+
+  - alert: HostDiskWillFillIn24Hours
+    expr: predict_linear(stagent_disk_free_space_bytes[1h], 24 * 3600) < 0
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Host will run out of disk space (instance {{ $labels.instance }})"
+      description: "Disk will fill in 24 hours\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+  
+  - alert: HostLowDiskSpace
+    expr: stagent_disk_utilization_percentage > 50
+    for: 1s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Host running out of disk space (instance {{ $labels.instance }})"
+      description: "Disk is almost full (< 50% left)\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+
+  - alert: HostOutOfDiskSpace
+    expr: stagent_disk_utilization_percentage > 90
+    for: 1s
+    labels:
+      severity: "critical"
+    annotations:
+      summary: "Host nearly out of disk space (instance {{ $labels.instance }})"
+      description: "Disk is almost full (< 10% left)\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+
+  - alert: HostHighCpuLoad
+    expr: stagent_cpu_utilization_overall_percentage > 80
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Host high CPU load (instance {{ $labels.instance }})"
+      description: "CPU load is > 80%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+
+  - alert: HostHighInboundNetworkTraffic
+    expr: ((rate(stagent_traffic_in_mbits[1m]) / rate(stagent_traffic_in_mbits[1m] offset 1m)) > 10) and (rate(stagent_traffic_in_mbits[1m]) > 1000)
+    for: 1s
+    labels:
+      severity: "critical"
+    annotations:
+      summary: "Host experiencing abnormally high inbound network traffic (instance {{ $labels.instance }})"
+      description: "Inbound network traffic has increased by more than 10x in the last 5 minutes\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+
+  - alert: HostHighOutboundNetworkTraffic
+    expr:  rate(stagent_traffic_out_mbits[1m]) > 0.8 * max_over_time(stagent_traffic_out_mbits[1m])
+    for: 1s
+    labels:
+      severity: warning
+    annotations:
+      summary: "Host experiencing abnormally high outbound network traffic (instance {{ $labels.instance }})"
+      description: "Outbound network traffic has exceeded 80% of the maximum observed rate over the last 5 minutes\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"

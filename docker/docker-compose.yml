@@ -46,6 +46,7 @@ services:
       - "9090:9090"
     volumes:
       - ../prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ../prometheus/alerts.rules.yml:/etc/prometheus/alerts.rules.yml
       - ../prometheus/sd:/etc/prometheus/sd
       - prometheus-data:/prometheus
     command:
@@ -75,9 +76,35 @@ services:
       - replicas
       - single-exporter
 
+  alertmanager:
+    user: "0"
+    image: prom/alertmanager:v0.27.0
+    restart: unless-stopped
+    ports:
+      - "9093:9093"
+    expose:
+    - "9093"
+    volumes:
+      - ../alertmanager:/etc/alertmanager/config
+      - ../alertmanager/alertmanager.template.yml:/etc/alertmanager/config/alertmanager.template.yml
+      - ..alertmanager-data:/etc/alertmanager/data
+      - ../scripts/start_alertmanager.sh:/etc/alertmanager/scripts/start_alertmanager.sh
+    environment:
+      ALERTMANAGER_APP_PWD: ${ALERTMANAGER_APP_PWD}
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["chmod +x /etc/alertmanager/scripts/start_alertmanager.sh && /etc/alertmanager/scripts/start_alertmanager.sh"]
+    depends_on:
+      - prometheus
+    networks:
+      - systel-subnet
+    profiles:
+      - replicas
+      - single-exporter
+
 volumes:
   prometheus-data:
   grafana-data:
+  alertmanager-data:
 
 networks:
   systel-subnet:

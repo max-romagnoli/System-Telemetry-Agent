@@ -5,9 +5,14 @@ grafana/*
 
 prometheus/*
 !prometheus.yml
+!alerts.rules.yml
 !README.md
 !sd/
 local_replicas.json
+
+alertmanager/*
+!alertmanager.template.yml
+!README.md
 
 sample.yaml
 __pycache__
