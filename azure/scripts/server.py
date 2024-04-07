@@ -90,7 +90,6 @@ html_content = """
 </body>
 </html>
 """
-
 running_process = None
 
 class RequestHandler(BaseHTTPRequestHandler):
