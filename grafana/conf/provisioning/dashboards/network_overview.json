@@ -124,7 +124,7 @@
                             "viz": false
                         },
                         "insertNulls": false,
-                        "lineInterpolation": "linear",
+                        "lineInterpolation": "smooth",
                         "lineWidth": 1,
                         "pointSize": 5,
                         "scaleDistribution": {
@@ -168,7 +168,33 @@
                     "unit": "percent",
                     "unitScale": true
                 },
-                "overrides": []
+                "overrides": [
+                    {
+                        "__systemRef": "hideSeriesFrom",
+                        "matcher": {
+                            "id": "byNames",
+                            "options": {
+                                "mode": "exclude",
+                                "names": [
+                                    "52.164.217.219:8000",
+                                    "52.138.199.220:8000"
+                                ],
+                                "prefix": "All except:",
+                                "readOnly": true
+                            }
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.hideFrom",
+                                "value": {
+                                    "legend": false,
+                                    "tooltip": false,
+                                    "viz": true
+                                }
+                            }
+                        ]
+                    }
+                ]
             },
             "gridPos": {
                 "h": 6,
@@ -288,7 +314,10 @@
                             "viz": false
                         },
                         "insertNulls": false,
-                        "lineInterpolation": "linear",
+                        "lineInterpolation": "smooth",
+                        "lineStyle": {
+                            "fill": "solid"
+                        },
                         "lineWidth": 1,
                         "pointSize": 5,
                         "scaleDistribution": {
@@ -306,12 +335,14 @@
                     },
                     "links": [
                         {
+                            "targetBlank": false,
                             "title": "${__field.labels.instance}",
                             "url": "http://localhost:3000/d/d88798a4-223a-40f3-9a6a-3787f1b71f0d/machine?var-exporter=${__field.labels.instance}"
                         }
                     ],
                     "mappings": [],
                     "max": 100,
+                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -320,12 +351,12 @@
                                 "value": null
                             },
                             {
-                                "color": "yellow",
-                                "value": 50
+                                "color": "#EAB839",
+                                "value": 60
                             },
                             {
                                 "color": "red",
-                                "value": 90
+                                "value": 75
                             }
                         ]
                     },
@@ -340,7 +371,7 @@
                 "x": 0,
                 "y": 9
             },
-            "id": 9,
+            "id": 3,
             "options": {
                 "legend": {
                     "calcs": [],
@@ -353,6 +384,7 @@
                     "sort": "none"
                 }
             },
+            "pluginVersion": "10.3.3",
             "targets": [
                 {
                     "datasource": {
@@ -361,8 +393,9 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "stagent_disk_utilization_percentage",
+                    "expr": "stagent_ram_utilization_percentage",
                     "fullMetaSearch": false,
+                    "hide": false,
                     "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "{{instance}}",
@@ -371,7 +404,8 @@
                     "useBackend": false
                 }
             ],
-            "title": "Disk Utilization",
+            "title": "RAM Utilization",
+            "transformations": [],
             "type": "timeseries"
         },
         {
@@ -472,14 +506,14 @@
                         "barAlignment": 0,
                         "drawStyle": "line",
                         "fillOpacity": 0,
-                        "gradientMode": "scheme",
+                        "gradientMode": "none",
                         "hideFrom": {
                             "legend": false,
                             "tooltip": false,
                             "viz": false
                         },
                         "insertNulls": false,
-                        "lineInterpolation": "linear",
+                        "lineInterpolation": "smooth",
                         "lineWidth": 1,
                         "pointSize": 5,
                         "scaleDistribution": {
@@ -497,14 +531,12 @@
                     },
                     "links": [
                         {
-                            "targetBlank": false,
                             "title": "${__field.labels.instance}",
                             "url": "http://localhost:3000/d/d88798a4-223a-40f3-9a6a-3787f1b71f0d/machine?var-exporter=${__field.labels.instance}"
                         }
                     ],
                     "mappings": [],
                     "max": 100,
-                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -513,12 +545,12 @@
                                 "value": null
                             },
                             {
-                                "color": "#EAB839",
-                                "value": 60
+                                "color": "yellow",
+                                "value": 50
                             },
                             {
                                 "color": "red",
-                                "value": 75
+                                "value": 90
                             }
                         ]
                     },
@@ -533,7 +565,7 @@
                 "x": 0,
                 "y": 15
             },
-            "id": 3,
+            "id": 9,
             "options": {
                 "legend": {
                     "calcs": [],
@@ -546,7 +578,6 @@
                     "sort": "none"
                 }
             },
-            "pluginVersion": "10.3.3",
             "targets": [
                 {
                     "datasource": {
@@ -555,9 +586,8 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "stagent_ram_utilization_percentage",
+                    "expr": "stagent_disk_utilization_percentage",
                     "fullMetaSearch": false,
-                    "hide": false,
                     "includeNullMetadata": true,
                     "instant": false,
                     "legendFormat": "{{instance}}",
@@ -566,8 +596,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "RAM Utilization",
-            "transformations": [],
+            "title": "Disk Utilization",
             "type": "timeseries"
         },
         {
@@ -696,7 +725,7 @@
                             "viz": false
                         },
                         "insertNulls": false,
-                        "lineInterpolation": "linear",
+                        "lineInterpolation": "smooth",
                         "lineWidth": 1,
                         "pointSize": 5,
                         "scaleDistribution": {
@@ -709,7 +738,7 @@
                             "mode": "none"
                         },
                         "thresholdsStyle": {
-                            "mode": "off"
+                            "mode": "area"
                         }
                     },
                     "links": [
@@ -800,7 +829,7 @@
                             "viz": false
                         },
                         "insertNulls": false,
-                        "lineInterpolation": "linear",
+                        "lineInterpolation": "smooth",
                         "lineWidth": 1,
                         "pointSize": 5,
                         "scaleDistribution": {
@@ -813,7 +842,7 @@
                             "mode": "none"
                         },
                         "thresholdsStyle": {
-                            "mode": "off"
+                            "mode": "area"
                         }
                     },
                     "links": [
@@ -879,7 +908,7 @@
             "type": "timeseries"
         }
     ],
-    "refresh": "",
+    "refresh": "5s",
     "schemaVersion": 39,
     "tags": [],
     "templating": {
