@@ -13,3 +13,9 @@ datasources:
     url: http://prometheus:9090
     isDefault: true
     editable: false
+  - name: Prometheus-Azure
+    type: prometheus
+    access: proxy
+    url: http://20.93.119.35:9090
+    isDefault: false
+    editable: false
