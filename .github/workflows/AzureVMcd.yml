@@ -1,0 +1,31 @@
+name: Use CLI scripts to configure the CD after connecting the azure virtual machine
+
+on:
+  push:
+    branches: 
+      - main
+      - dev
+  pull_request:
+    branches: 
+      - main
+      - dev
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: latest
+        inlineScript: |
+          az vm run-command invoke \
+          --resource-group NetworkWatcherRG \
+          --name target-1 \
+          --command-id RunShellScript \
+          --scripts "sudo apt-get update && sudo apt-get install -y git python3 python3-pip && git clone https://github.com/yourusername/yourrepository.git && cd ySystem-Telemetry-Agent && python3 -m pip install -r requirements.txt && pytest"
