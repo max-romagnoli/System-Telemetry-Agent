@@ -9,7 +9,6 @@
     ],
       "labels": {
         "job": "python_exporter",
-        "setup": "Azure"
-      }
+        "setup": "Azure"      }
     }
 ]
