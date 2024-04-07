@@ -47,7 +47,7 @@ echo "docker-compose.override.yml has been generated."
 
 echo "[" > "$PROMETHEUS_SD_FILE"
 echo "  {" >> "$PROMETHEUS_SD_FILE"
-echo "    \"labels\": {\"job\": \"python_exporter\"}," >> "$PROMETHEUS_SD_FILE"
+echo "    \"labels\": {\"job\": \"python_exporter\", \"setup\": \"Docker\"}," >> "$PROMETHEUS_SD_FILE"
 echo "    \"targets\": [" >> "$PROMETHEUS_SD_FILE"
 for (( i=1; i<=NUM_INSTANCES; i++ ))
 do

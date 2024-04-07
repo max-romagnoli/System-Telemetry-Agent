@@ -8,7 +8,7 @@
         "52.164.217.79:8000"
     ],
       "labels": {
-        "job": "python_exporter"
-      }
+        "job": "python_exporter",
+        "setup": "Azure"      }
     }
 ]
