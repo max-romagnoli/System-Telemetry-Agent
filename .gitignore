@@ -26,6 +26,7 @@ __pycache__
 *.pem
 
 docker-compose.override.yml
+temp-docker-compose-down.yml
 
 docs/reviews
 

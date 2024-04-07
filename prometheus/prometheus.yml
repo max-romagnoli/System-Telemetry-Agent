@@ -19,11 +19,11 @@ scrape_configs:
     - targets: 
         - node-exporter:9100
 - job_name: 'python_exporter'
-  static_configs:
-    - targets:
-      - exporter:8000
-    - labels:
-        setup: 'Docker'
+  #static_configs:
+  #  - targets:
+  #    - exporter:8000
+  #  - labels:
+  #      setup: 'Docker'
   file_sd_configs:
     - files:
       - '/etc/prometheus/sd/local_replicas.json'
