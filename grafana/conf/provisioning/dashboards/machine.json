@@ -16,7 +16,7 @@
         ]
     },
     "description": "Displays detailed metrics of a single node in the server.",
-    "editable": true,
+    "editable": false,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
     "id": 9,
@@ -34,7 +34,7 @@
             "url": ""
         }
     ],
-    "liveNow": false,
+    "liveNow": true,
     "panels": [
         {
             "datasource": {
@@ -2041,7 +2041,7 @@
             "type": "timeseries"
         }
     ],
-    "refresh": "",
+    "refresh": "5s",
     "schemaVersion": 39,
     "tags": [],
     "templating": {

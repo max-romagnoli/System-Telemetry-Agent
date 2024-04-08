@@ -81,7 +81,7 @@ def get_workloads():
         # Disk fill workload
         "bash /tmp/disk_fill_script.sh"
     ]
-    random.shuffle(workloads)  # Ensure random distribution
+    random.shuffle(workloads)
     return workloads
 
 
@@ -99,7 +99,7 @@ def simulate_workload(ips, ssh_user, ssh_key_path):
 
     def signal_handler(sig, frame):
         """
-        Kills processes on each VM on signal.
+        Kills processes and cleanup on each VM on signal.
         """
         print('Stopping all workloads on the VMs...')
         for ssh in ssh_clients:

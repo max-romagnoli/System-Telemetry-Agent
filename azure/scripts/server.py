@@ -57,7 +57,7 @@ html_content = """
 <body>
     <div class="container">
         <div id="logo-container">
-            <img src="/docs/st-agent-logo.png" alt="Logo" id="logo"> 
+            <img src="https://raw.githubusercontent.com/max-romagnoli/System-Telemetry-Agent/dev/docs/st-agent-logo.png" alt="Logo" id="logo"> 
         </div>
         <h1>Start/Stop Script</h1>
         <button id="startButton">Start Script</button>
@@ -119,16 +119,9 @@ class RequestHandler(BaseHTTPRequestHandler):
                 self.wfile.write("OK".encode('utf-8'))
             else:
                 self.send_error(400, 'No script is running')
-        elif self.path == '/docs/st-agent-logo.png':
-            with open('/home/leila/System-Telemetry-Agent/docs/st-agent-logo.png', 'rb') as f:
-                self.send_response(200)
-                self.send_header('Content-type', 'image/png')
-                self.end_headers()
-                self.wfile.write(f.read())
         else:
             self.send_error(404, 'Not Found')
 
 with HTTPServer(('localhost', 5000), RequestHandler) as httpd:
     print("Server started at localhost:5000")
-    webbrowser.open('http://localhost:5000')
     httpd.serve_forever()
