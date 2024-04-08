@@ -11,7 +11,8 @@ fi
 
 if ! command -v docker-compose &> /dev/null; then
     echo "docker-compose is not installed. Please install it to proceed."
-    exit 1
+    sudo curl -L "https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
 fi
 
 if [ ! -f "$DOCKER_COMPOSE_OVERRIDE_FILE" ]; then

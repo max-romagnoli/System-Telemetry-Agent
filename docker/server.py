@@ -119,7 +119,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             script = self.path.split('=')[1]
             if running_process is None:
                 if script == 'simulate_instance_down.sh':
-                    running_process = subprocess.Popen(["sh", f"../../docker/{script}"])
+                    running_process = subprocess.Popen(["bash", script])
                     print("Instance Down Simulation started with PID:", running_process.pid)
                 else:
                     running_process = subprocess.Popen(["python3", script])

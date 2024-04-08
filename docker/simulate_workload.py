@@ -12,8 +12,8 @@ RESOURCE_GROUP = 'NetworkWatcherRG'
 VM_SCALE_SET = 'stagent-vms'
 SUBSCRIPTION_ID = '3f7efba3-c56c-405e-b6fc-fc955739d7ea'
 SSH_USER = 'azureuser'
-SSH_KEY_PATH = '../target-1_key.pem'
-IPS_FILE_PATH = '../vmss_ips.txt'
+SSH_KEY_PATH = '../azure/target-1_key.pem'
+IPS_FILE_PATH = '../azure/vmss_ips.txt'
 
 
 normal_workload_script = """
@@ -104,12 +104,18 @@ def simulate_workload(ips, ssh_user, ssh_key_path):
         print('Stopping all workloads on the VMs...')
         for ssh in ssh_clients:
             try:
-                ssh.exec_command("pkill -f normal_workload.sh")
-                ssh.exec_command("pkill -f stress-ng")
-                ssh.exec_command("rm -f /tmp/testfile*")
-                ssh.exec_command("rm -rf /tmp/disk_fill")
-                ssh.exec_command("pkill -f disk_fill_script.sh")
+                _, stdout, _ = ssh.exec_command("pkill -f normal_workload.sh")
+                stdout.channel.recv_exit_status()
+                _, stdout, _ = ssh.exec_command("pkill -f stress-ng")
+                stdout.channel.recv_exit_status()
+                _, stdout, _ = ssh.exec_command("rm -f /tmp/testfile*")
+                stdout.channel.recv_exit_status()
+                _, stdout, _ = ssh.exec_command("rm -rf /tmp/disk_fill")
+                stdout.channel.recv_exit_status()
+                _, stdout, _ = ssh.exec_command("pkill -f disk_fill_script.sh")
+                stdout.channel.recv_exit_status()
                 ssh.close()
+                logging.info(f"Cleanup successful on {ssh.get_transport().getpeername()[0]}")
             except Exception as e:
                 print(f"Failed to stop workloads cleanly: {e}")
         sys.exit(0)
