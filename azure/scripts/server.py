@@ -8,7 +8,7 @@ html_content = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start/Stop Script</title>
+    <title>System Simulator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,8 +33,8 @@ html_content = """
         button {
             background-color: #29bcbd;
             color: white;
-            padding: 15px 30px; 
-            font-size: 18px; 
+            padding: 20px 40px; 
+            font-size: 24px; 
             border: none;
             border-radius: 8px;
             cursor: pointer;
@@ -43,6 +43,19 @@ html_content = """
 
         button:hover {
             background-color: #1c2444; 
+        }
+
+        select {
+            padding: 10px;
+            font-size: 18px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: white;
+            font-family: Arial, sans-serif;
         }
 
         #logo-container {
@@ -59,30 +72,31 @@ html_content = """
         <div id="logo-container">
             <img src="https://raw.githubusercontent.com/max-romagnoli/System-Telemetry-Agent/dev/docs/st-agent-logo.png" alt="Logo" id="logo"> 
         </div>
-        <h1>Start/Stop Script</h1>
-        <button id="startButton">Start Script</button>
-        <button id="stopButton">Stop Script</button>
+        <h1>System Simulation</h1>
+        <label for="scriptSelect" style="color: white; font-family: Arial, sans-serif;">Select Simulation:</label>
+        <select id="scriptSelect">
+            <option value="simulate_workload.py">High Workload</option>
+            <option value="simulate_instance_down.sh">Instance Down</option>
+        </select>
+        <br>
+        <button id="actionButton">Start Simulation</button>
     </div>
 
     <script>
-        document.getElementById("startButton").addEventListener("click", function() {
-            fetch('/start-script')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    console.log('Script started');
-                })
-                .catch(error => console.error('There was a problem with the fetch operation:', error));
-        });
+        let isRunning = false;
+        const actionButton = document.getElementById("actionButton");
+        const scriptSelect = document.getElementById("scriptSelect");
 
-        document.getElementById("stopButton").addEventListener("click", function() {
-            fetch('/stop-script')
+        actionButton.addEventListener("click", function() {
+            fetch('/toggle-script?script=' + scriptSelect.value)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
-                    console.log('Script stopped');
+                    isRunning = !isRunning;
+                    actionButton.textContent = isRunning ? "Stop Simulation" : "Start Simulation";
+                    actionButton.style.backgroundColor = isRunning ? "#ff4d4d" : "#29bcbd";
+                    console.log(isRunning ? 'Simulation started' : 'Simulation stopped');
                 })
                 .catch(error => console.error('There was a problem with the fetch operation:', error));
         });
@@ -90,6 +104,7 @@ html_content = """
 </body>
 </html>
 """
+
 running_process = None
 
 class RequestHandler(BaseHTTPRequestHandler):
@@ -100,25 +115,23 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             self.wfile.write(html_content.encode('utf-8'))
-        elif self.path == '/start-script':
+        elif self.path.startswith('/toggle-script?script='):
+            script = self.path.split('=')[1]
             if running_process is None:
-                running_process = subprocess.Popen(["python3", "simulate_workload.py"])
-                print("Script started with PID:", running_process.pid)
-                self.send_response(200)
-                self.end_headers()
-                self.wfile.write("OK".encode('utf-8'))
+                if script == 'simulate_instance_down.sh':
+                    running_process = subprocess.Popen(["sh", f"../../docker/{script}"])
+                    print("Instance Down Simulation started with PID:", running_process.pid)
+                else:
+                    running_process = subprocess.Popen(["python3", script])
+                    print("Workload Simulation started with PID:", running_process.pid)
             else:
-                self.send_error(400, 'Script is already running')
-        elif self.path == '/stop-script':
-            if running_process is not None:
                 running_process.terminate()
+                running_process.wait()
+                print("Simulation stopped")
                 running_process = None
-                print("Script stopped")
-                self.send_response(200)
-                self.end_headers()
-                self.wfile.write("OK".encode('utf-8'))
-            else:
-                self.send_error(400, 'No script is running')
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write("OK".encode('utf-8'))
         else:
             self.send_error(404, 'Not Found')
 
