@@ -45,19 +45,6 @@ html_content = """
             background-color: #1c2444; 
         }
 
-        select {
-            padding: 10px;
-            font-size: 18px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            margin-bottom: 20px;
-        }
-
-        label {
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-
         #logo-container {
             margin-bottom: 30px; 
         }
@@ -73,22 +60,15 @@ html_content = """
             <img src="https://raw.githubusercontent.com/max-romagnoli/System-Telemetry-Agent/dev/docs/st-agent-logo.png" alt="Logo" id="logo"> 
         </div>
         <h1>System Simulation</h1>
-        <label for="scriptSelect" style="color: white; font-family: Arial, sans-serif;">Select Simulation:</label>
-        <select id="scriptSelect">
-            <option value="simulate_workload.py">High Workload</option>
-            <option value="simulate_instance_down.sh">Instance Down</option>
-        </select>
-        <br>
         <button id="actionButton">Start Simulation</button>
     </div>
 
     <script>
         let isRunning = false;
         const actionButton = document.getElementById("actionButton");
-        const scriptSelect = document.getElementById("scriptSelect");
 
         actionButton.addEventListener("click", function() {
-            fetch('/toggle-script?script=' + scriptSelect.value)
+            fetch('/toggle-simulation')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -115,18 +95,17 @@ class RequestHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type', 'text/html')
             self.end_headers()
             self.wfile.write(html_content.encode('utf-8'))
-        elif self.path.startswith('/toggle-script?script='):
-            script = self.path.split('=')[1]
+        elif self.path == '/toggle-simulation':
             if running_process is None:
-                if script == 'simulate_instance_down.sh':
-                    running_process = subprocess.Popen(["bash", script])
-                    print("Instance Down Simulation started with PID:", running_process.pid)
-                else:
-                    running_process = subprocess.Popen(["python3", script])
-                    print("Workload Simulation started with PID:", running_process.pid)
+                simulate_workload_process = subprocess.Popen(["python3", "simulate_workload.py"])
+                simulate_instance_down_process = subprocess.Popen(["bash", "simulate_instance_down.sh"])
+                print("Workload Simulation started with PID:", simulate_workload_process.pid)
+                print("Instance Down Simulation started with PID:", simulate_instance_down_process.pid)
+                running_process = (simulate_workload_process, simulate_instance_down_process)
             else:
-                running_process.terminate()
-                running_process.wait()
+                for process in running_process:
+                    process.terminate()
+                    process.wait()
                 print("Simulation stopped")
                 running_process = None
             self.send_response(200)
