@@ -12,7 +12,8 @@ receivers:
         auth_identity: 'stagent9@gmail.com'
         auth_password: '${ALERTMANAGER_APP_PWD}'
         from: 'stagent9@gmail.com'
-        to: 'maxxromagnoli@gmail.com'
+        to: 'maxxromagnoli@gmail.com, zonel@tcd.ie, oyelakua@tcd.ie, binliw@tcd.ie, ariyoc@tcd.ie, mccooeyc@tcd.ie, kryukovd@tcd.ie, ohorodnk@tcd.ie, adilr@tcd.ie'
+        #to: 'maxxromagnoli@gmail.com, zonel@tcd.ie'
         require_tls: true
 inhibit_rules:
   - source_match:

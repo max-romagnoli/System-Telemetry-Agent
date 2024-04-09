@@ -39,6 +39,9 @@ scp -i azure/target-1_key.pem azure/scripts/server.py azureuser@20.107.240.171:/
 scp -i azure/target-1_key.pem azure/scripts/simulate_workload.py azureuser@20.107.240.171:/usr/src/app/
 scp -i azure/target-1_key.pem azure/scripts/server_startup.sh azureuser@20.107.240.171:/usr/src/app/
 
+scp -i azure/target-1_key.pem -r exporter/collectors/network.py azureuser@52.169.145.243:/usr/src/app/exporter/collectors
+
+
 #### Setup Exporter to run on startup
 ```
 # Within azureuser@target-1

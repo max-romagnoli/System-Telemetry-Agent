@@ -16,7 +16,7 @@
         ]
     },
     "description": "An overview of all the machines running in the network aimed at visualising the overall performance of the system.",
-    "editable": false,
+    "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
     "id": 2,
@@ -41,7 +41,7 @@
                     "showLineNumbers": false,
                     "showMiniMap": false
                 },
-                "content": "<div style=\"display: flex; align-items: center; margin-top: -10px\">   \n  \n  <img \n    src=\"https://raw.githubusercontent.com/max-romagnoli/System-Telemetry-Agent/dev/docs/st-agent-icon.png\" \n    style=\"margin-top: 20px; margin-left: -30px; width: 120px; height: auto; margin-right: -10px;\">    \n  <span style=\"margin-top: 20px; text-align: left; overflow: hidden; color: #8c4fff; font-size: 35px; font-weight: bold\">       \n    Network Overview   \n  </span>\n</div>\n",
+                "content": "<div style=\"display: flex; align-items: center; margin-top: -10px\">   \n  \n  <img \n    src=\"https://raw.githubusercontent.com/max-romagnoli/System-Telemetry-Agent/dev/docs/st-agent-icon.png\" \n    style=\"margin-top: 20px; margin-left: -30px; width: 120px; height: auto; margin-right: -10px;\">    \n  <span style=\"margin-top: 20px; text-align: left; overflow: hidden; color: #8c4fff; font-size: 35px; font-weight: bold\">       \n    System Overview   \n  </span>\n</div>\n",
                 "mode": "html"
             },
             "pluginVersion": "10.3.3",
@@ -177,6 +177,7 @@
                 "y": 3
             },
             "id": 7,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -346,6 +347,7 @@
                 "y": 9
             },
             "id": 3,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -425,6 +427,7 @@
                 "y": 12
             },
             "id": 14,
+            "interval": "5",
             "options": {
                 "alignValue": "left",
                 "legend": {
@@ -540,6 +543,7 @@
                 "y": 15
             },
             "id": 9,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -580,7 +584,7 @@
             },
             "gridPos": {
                 "h": 9,
-                "w": 4,
+                "w": 8,
                 "x": 16,
                 "y": 18
             },
@@ -598,80 +602,6 @@
             },
             "title": "Notes",
             "type": "annolist"
-        },
-        {
-            "datasource": {
-                "type": "volkovlabs-rss-datasource",
-                "uid": "cbdf3818-0320-4265-84d1-f95ea9eab544"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    }
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 9,
-                "w": 4,
-                "x": 20,
-                "y": 18
-            },
-            "id": 18,
-            "options": {
-                "afterRender": "",
-                "content": "<div style=\"color: #333;\">\n  <img src=\"https://play-lh.googleusercontent.com/bUIDxMxSHAqD1omj1ZRrzLlUQSeJV9j29Vorr4ExXgq9ax8s5wJS80svCr-MCIOWg2Sg=w240-h480-rw\" alt=\"News Image\"\n      style=\"border-radius: 25px; width: 30px; height: 30px;\">\n  <span style=\"color: grey; font-size: 15px;\">{{category}} \u2022</span>\n  <span style=\"margin-bottom: 10px;\">\n    <a href=\"{{link}}\"\n        style=\"font-size: 15px; text-decoration: underline; color: #6a88c1; text-decoration: none;\"><u><strong>{{title}}</strong></u></a>\n  </span>\n  <div style=\"color: white; font-size: 13px; margin-top: 10px; margin-bottom: 10px;\">\n    <span style=\"color: #B3B3B3;\">{{pubDate}}</span>\n    <span >\n       \u2014 {{description}}\n    </span>\n  </div>\n</div>",
-                "defaultContent": "The query didn't return any results.",
-                "editor": {
-                    "format": "auto",
-                    "language": "html"
-                },
-                "editors": [],
-                "externalScripts": [],
-                "externalStyles": [],
-                "helpers": "",
-                "renderMode": "everyRow",
-                "styles": "",
-                "wrap": true
-            },
-            "pluginVersion": "4.5.0",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "volkovlabs-rss-datasource",
-                        "uid": "cbdf3818-0320-4265-84d1-f95ea9eab544"
-                    },
-                    "feedType": "items",
-                    "refId": "A"
-                }
-            ],
-            "title": "Met \u00c9ireann",
-            "transformations": [
-                {
-                    "id": "sortBy",
-                    "options": {
-                        "fields": {},
-                        "sort": [
-                            {
-                                "desc": true,
-                                "field": "pubDate"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "type": "marcusolsson-dynamictext-panel"
         },
         {
             "datasource": {
@@ -744,6 +674,7 @@
                 "y": 21
             },
             "id": 11,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -848,6 +779,7 @@
                 "y": 21
             },
             "id": 12,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -882,7 +814,7 @@
             "type": "timeseries"
         }
     ],
-    "refresh": "5s",
+    "refresh": "",
     "schemaVersion": 39,
     "tags": [],
     "templating": {

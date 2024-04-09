@@ -75,9 +75,9 @@ def get_workloads():
         # 1 machine running a 5 spike of CPU and IO stress
         "stress-ng --cpu 1 --io 1 --timeout 5s",
         # 1 machine running memory stress
-        "stress-ng --vm 2 --vm-bytes 95% --timeout 2000s",
+        "stress-ng --vm 2 --vm-bytes 95% --timeout 10s",
         # 1 machine running CPU stress for 2000s
-        "stress-ng --cpu 1 --timeout 2000s",
+        "stress-ng --cpu 1 --timeout 5s",
         # Disk fill workload
         "bash /tmp/disk_fill_script.sh"
     ]
@@ -104,18 +104,12 @@ def simulate_workload(ips, ssh_user, ssh_key_path):
         print('Stopping all workloads on the VMs...')
         for ssh in ssh_clients:
             try:
-                _, stdout, _ = ssh.exec_command("pkill -f normal_workload.sh")
-                stdout.channel.recv_exit_status()
-                _, stdout, _ = ssh.exec_command("pkill -f stress-ng")
-                stdout.channel.recv_exit_status()
-                _, stdout, _ = ssh.exec_command("rm -f /tmp/testfile*")
-                stdout.channel.recv_exit_status()
-                _, stdout, _ = ssh.exec_command("rm -rf /tmp/disk_fill")
-                stdout.channel.recv_exit_status()
-                _, stdout, _ = ssh.exec_command("pkill -f disk_fill_script.sh")
-                stdout.channel.recv_exit_status()
+                ssh.exec_command("pkill -f normal_workload.sh")
+                ssh.exec_command("pkill -f stress-ng")
+                ssh.exec_command("rm -f /tmp/testfile*")
+                ssh.exec_command("rm -rf /tmp/disk_fill")
+                ssh.exec_command("pkill -f disk_fill_script.sh")
                 ssh.close()
-                logging.info(f"Cleanup successful on {ssh.get_transport().getpeername()[0]}")
             except Exception as e:
                 print(f"Failed to stop workloads cleanly: {e}")
         sys.exit(0)
