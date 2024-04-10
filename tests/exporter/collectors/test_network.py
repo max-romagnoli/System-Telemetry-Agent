@@ -88,7 +88,7 @@ class TestNetworkCollector(unittest.TestCase):
         """
         network_collector = NetworkCollector()
         traffic_in = network_collector.get_traffic_in()
-        self.assertIsInstance(traffic_in, int)
+        self.assertIsInstance(traffic_in, float)
     
     def test_get_traffic_out(self):
         """
@@ -97,7 +97,7 @@ class TestNetworkCollector(unittest.TestCase):
         """
         network_collector = NetworkCollector()
         traffic_out = network_collector.get_traffic_out()
-        self.assertIsInstance(traffic_out, int)
+        self.assertIsInstance(traffic_out, float)
 
     def test_get_rate_traffic_in(self):
         """

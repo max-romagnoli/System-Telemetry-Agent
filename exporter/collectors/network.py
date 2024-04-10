@@ -3,9 +3,6 @@ import time
 
 class NetworkCollector:
 
-    prev_traffic_out = 0.0
-    prev_traffic_in = 0.0
-    
     
     def __init__(self) -> None:
         """
@@ -18,8 +15,8 @@ class NetworkCollector:
         Returns the inbound traffic in Megabits.
         """
         traffic = psutil.net_io_counters()
-        traffic_in = traffic.bytes_recv
-        if traffic_in == None:
+        traffic_in = self.get_unit(traffic.bytes_recv)
+        if not traffic_in:
             return None
         else:
             return traffic_in
@@ -31,8 +28,8 @@ class NetworkCollector:
         Returns the outbound traffic in Megabits.
         """
         traffic = psutil.net_io_counters(nowrap=True)  
-        traffic_out = traffic.bytes_sent 
-        if traffic_out == None:
+        traffic_out = self.get_unit(traffic.bytes_sent) 
+        if not traffic_out:
             return None
         else: 
             return traffic_out
@@ -40,47 +37,38 @@ class NetworkCollector:
 
     def get_rate_traffic_in(self):
         """
-        @ljdzed
         Returns the inbound traffic in Megabits/s.
         """
+        prev_traffic = self.get_traffic_in()
+        time.sleep(5)
+        curr_traffic = self.get_traffic_in()
 
-        curr_traffic = self.get_traffic_in()  
-
-        traffic_in_per_sec = (curr_traffic - self.prev_traffic_in) / 5
-       
-        if curr_traffic == None or self.prev_traffic_in == None:
-            
+        if not curr_traffic or not prev_traffic:
             return None
         
-        if curr_traffic < self.prev_traffic_in:
-           
+        if curr_traffic < prev_traffic:
             return None     # TODO: for now just don't set, in the future need to calculate based on MAX_INTEGER value
-        self.prev_traffic_in = curr_traffic        
-
-        return self.get_unit(traffic_in_per_sec)
+        
+        traffic_in_per_sec = (curr_traffic - prev_traffic) / 5
+        return traffic_in_per_sec
      
 
     def get_rate_traffic_out(self):
         """
-        @ljdzed
         Returns the outbound traffic in Megabits/s.
         """
-
+        prev_traffic = self.get_traffic_out()
+        time.sleep(5)
         curr_traffic = self.get_traffic_out()
 
-        traffic_out_per_sec = (curr_traffic - self.prev_traffic_out) / 5
-        
-
-        
-        if curr_traffic == None or self.prev_traffic_out == None:
-            
+        if not curr_traffic or not prev_traffic:
             return None
      
-        if curr_traffic < self.prev_traffic_out:
+        if curr_traffic < prev_traffic:
             return None     # TODO: for now just don't set, in the future need to calculate based on MAX_INTEGER value
 
-        self.prev_traffic_out = curr_traffic
-        return self.get_unit(traffic_out_per_sec)
+        traffic_out_per_sec = (curr_traffic - prev_traffic) / 5
+        return traffic_out_per_sec
 
 
     def __str__(self) -> str:
