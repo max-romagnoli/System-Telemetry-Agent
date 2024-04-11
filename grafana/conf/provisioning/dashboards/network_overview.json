@@ -16,7 +16,7 @@
         ]
     },
     "description": "An overview of all the machines running in the network aimed at visualising the overall performance of the system.",
-    "editable": true,
+    "editable": false,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
     "id": 2,
@@ -814,7 +814,7 @@
             "type": "timeseries"
         }
     ],
-    "refresh": "",
+    "refresh": "5s",
     "schemaVersion": 39,
     "tags": [],
     "templating": {
