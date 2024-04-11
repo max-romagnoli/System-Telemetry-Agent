@@ -21,7 +21,6 @@ def export_metrics(port=8000):
     print(f"Exporter running on port {port}")
 
     while True:
-
         set_gauge(cpu_utilization_gauge, cpu_collector.get_utilization())
         set_gauge(cpu_frequency_gauge, cpu_collector.get_frequency())
         set_gauge(cpu_temperature_gauge, cpu_collector.get_temperature())
