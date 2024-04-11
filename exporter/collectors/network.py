@@ -54,16 +54,7 @@ class NetworkCollector:
         
         if curr_traffic < self.prev_traffic_in:
             return None     # TODO: for now just don't set, in the future need to calculate based on MAX_INTEGER value
-        # print(self.prev_traffic_in)
-        # print("VS")
-        # print(curr_traffic)
-        # print("=")
-        # print(traffic_in_per_sec*5)
-        # print("/5 = ")
-        # print(traffic_in_per_sec)
-        # print(" -- ")
-        # print(self.get_unit(traffic_in_per_sec))
-        # print(" ")
+
         self.prev_traffic_in = curr_traffic        
 
         return self.get_unit(traffic_in_per_sec)
@@ -78,23 +69,14 @@ class NetworkCollector:
         curr_traffic = self.get_traffic_out()
 
         traffic_out_per_sec = (curr_traffic - self.prev_traffic_out) / 5
-          
+
         if curr_traffic == None or self.prev_traffic_out == None:
             
             return None
      
         if curr_traffic < self.prev_traffic_out:
             return None     # TODO: for now just don't set, in the future need to calculate based on MAX_INTEGER value
-        # print(self.prev_traffic_out)
-        # print("VS")
-        # print(curr_traffic)
-        # print("=")
-        # print(traffic_out_per_sec*5)
-        # print("/5 = ")
-        # print(traffic_out_per_sec)
-        # print(" -- ")
-        # print(self.get_unit(traffic_out_per_sec))
-        # print(" ")
+
         self.prev_traffic_out = curr_traffic
         return self.get_unit(traffic_out_per_sec)
 
