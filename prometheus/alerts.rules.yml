@@ -3,7 +3,7 @@ groups:
   rules:
   - alert: InstanceDown
     expr: up == 0
-    for: 1m
+    for: 2s
     labels:
       severity: "critical"
     annotations:

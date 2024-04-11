@@ -9,7 +9,7 @@
 ```
 cd System-Telemetry-Agent
 chmod 600 azure/target-1_key.pem
-ssh -i azure/target-1_key.pem azureuser@52.169.145.243
+ssh -i azure/target-1_key.pem azureuser@20.107.240.171
 ```
 Notes: 
 * *target-1_key.pem* is the file containing the SSH key (!!!! DO NOT COMMIT IT !!!)
@@ -30,11 +30,17 @@ sudo mkdir -p /usr/src/app
 sudo chown -R azureuser:azureuser /usr/src/app/
 
 # Within System-Telemetry-Agent
-scp -i azure/target-1_key.pem -r exporter azureuser@52.169.145.243:/usr/src/app/
-scp -i azure/target-1_key.pem requirements.txt azureuser@52.169.145.243:/usr/src/app/
-scp -i azure/target-1_key.pem start_exporter.py azureuser@52.169.145.243:/usr/src/app/
-scp -i azure/target-1_key.pem azure/scripts/exporter_startup.sh azureuser@52.169.145.243:/usr/src/app/
+scp -i azure/target-1_key.pem -r exporter azureuser@20.107.240.171:/usr/src/app/
+scp -i azure/target-1_key.pem requirements.txt azureuser@20.107.240.171:/usr/src/app/
+scp -i azure/target-1_key.pem start_exporter.py azureuser@20.107.240.171:/usr/src/app/
+scp -i azure/target-1_key.pem azure/scripts/exporter_startup.sh azureuser@20.107.240.171:/usr/src/app/
 ```
+scp -i azure/target-1_key.pem azure/scripts/server.py azureuser@20.107.240.171:/usr/src/app/
+scp -i azure/target-1_key.pem azure/scripts/simulate_workload.py azureuser@20.107.240.171:/usr/src/app/
+scp -i azure/target-1_key.pem azure/scripts/server_startup.sh azureuser@20.107.240.171:/usr/src/app/
+
+scp -i azure/target-1_key.pem -r exporter/collectors/network.py azureuser@52.169.145.243:/usr/src/app/exporter/collectors
+
 
 #### Setup Exporter to run on startup
 ```

@@ -11,7 +11,7 @@ class NetworkCollector:
         """
         Constructor
         """
-    
+
     def get_traffic_in(self):
         """
         @cindyariyo
@@ -36,7 +36,7 @@ class NetworkCollector:
             return None
         else: 
             return traffic_out
-    
+        
 
     def get_rate_traffic_in(self):
         """
@@ -53,8 +53,8 @@ class NetworkCollector:
             return None
         
         if curr_traffic < self.prev_traffic_in:
-           
             return None     # TODO: for now just don't set, in the future need to calculate based on MAX_INTEGER value
+
         self.prev_traffic_in = curr_traffic        
 
         return self.get_unit(traffic_in_per_sec)
@@ -69,9 +69,7 @@ class NetworkCollector:
         curr_traffic = self.get_traffic_out()
 
         traffic_out_per_sec = (curr_traffic - self.prev_traffic_out) / 5
-        
 
-        
         if curr_traffic == None or self.prev_traffic_out == None:
             
             return None
@@ -103,4 +101,5 @@ class NetworkCollector:
         """
         bits = bytes * 8
         megabits = bits /1000000
+        0.000008
         return megabits

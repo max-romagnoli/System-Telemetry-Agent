@@ -7,12 +7,12 @@ route:
 receivers:
   - name: 'email'
     email_configs:
-      - smarthost: 'smtp.gmail.com:587'
-        auth_username: 'stagent9@gmail.com'
-        auth_identity: 'stagent9@gmail.com'
+      - smarthost: '<host-email-here>:587'
+        auth_username: '<host-email-here>'
+        auth_identity: '<host-email-here>'
         auth_password: '${ALERTMANAGER_APP_PWD}'
-        from: 'stagent9@gmail.com'
-        to: 'maxxromagnoli@gmail.com'
+        from: '<sender-email-here>'
+        to: '<receiver-email-here1>, <receiver-email-here2>'
         require_tls: true
 inhibit_rules:
   - source_match:

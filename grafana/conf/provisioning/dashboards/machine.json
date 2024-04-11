@@ -16,7 +16,7 @@
         ]
     },
     "description": "Displays detailed metrics of a single node in the server.",
-    "editable": true,
+    "editable": false,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
     "id": 9,
@@ -34,7 +34,7 @@
             "url": ""
         }
     ],
-    "liveNow": false,
+    "liveNow": true,
     "panels": [
         {
             "datasource": {
@@ -54,7 +54,7 @@
                     "showLineNumbers": false,
                     "showMiniMap": false
                 },
-                "content": "<h1 \r\n  style=\"text-align: left; overflow: hidden; color: #8c4fff; font-size: 35px; font-weight: bold\"\r\n>\r\n\r\nDashboard\r\n\r\n</h1>",
+                "content": "<div style=\"display: flex; align-items: center; margin-top: -12px; margin-bottom: -5px;\">   \r\n  \r\n  <img \r\n    src=\"https://raw.githubusercontent.com/max-romagnoli/System-Telemetry-Agent/dev/docs/st-agent-icon.png\" \r\n    style=\"margin-left: -30px; width: 110px; height: auto; margin-right: -10px;\">    \r\n  <span style=\"text-align: left; overflow: hidden; color: #8c4fff; font-size: 35px; font-weight: bold\">       \r\n    Machine Drilldown  \r\n  </span>\r\n</div>\r\n",
                 "mode": "html"
             },
             "pluginVersion": "10.3.3",
@@ -93,7 +93,7 @@
             },
             "gridPos": {
                 "h": 2,
-                "w": 11,
+                "w": 12,
                 "x": 0,
                 "y": 2
             },
@@ -176,7 +176,7 @@
                 "y": 4
             },
             "id": 19,
-            "interval": "15s",
+            "interval": "5",
             "options": {
                 "minVizHeight": 75,
                 "minVizWidth": 75,
@@ -289,7 +289,7 @@
                 "y": 4
             },
             "id": 25,
-            "interval": "15s",
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -332,20 +332,14 @@
             "fieldConfig": {
                 "defaults": {
                     "mappings": [],
+                    "max": 10,
+                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "red",
-                                "value": null
-                            },
-                            {
-                                "color": "yellow",
-                                "value": 0.2
-                            },
-                            {
                                 "color": "green",
-                                "value": 0.5
+                                "value": null
                             }
                         ]
                     },
@@ -361,6 +355,7 @@
                 "y": 4
             },
             "id": 33,
+            "interval": "5",
             "options": {
                 "minVizHeight": 75,
                 "minVizWidth": 75,
@@ -415,6 +410,8 @@
                         "axisColorMode": "text",
                         "axisLabel": "",
                         "axisPlacement": "auto",
+                        "axisSoftMax": 0.3,
+                        "axisSoftMin": 0,
                         "barAlignment": 0,
                         "drawStyle": "line",
                         "fillOpacity": 0,
@@ -442,20 +439,13 @@
                         }
                     },
                     "mappings": [],
+                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "red",
-                                "value": null
-                            },
-                            {
-                                "color": "yellow",
-                                "value": 0.5
-                            },
-                            {
                                 "color": "green",
-                                "value": 1
+                                "value": null
                             }
                         ]
                     },
@@ -471,6 +461,7 @@
                 "y": 4
             },
             "id": 34,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -547,6 +538,7 @@
                 "y": 9
             },
             "id": 26,
+            "interval": "5",
             "options": {
                 "minVizHeight": 75,
                 "minVizWidth": 75,
@@ -659,6 +651,7 @@
                 "y": 9
             },
             "id": 27,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -704,20 +697,14 @@
                         "mode": "thresholds"
                     },
                     "mappings": [],
+                    "max": 10,
+                    "min": 0,
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "red",
-                                "value": null
-                            },
-                            {
-                                "color": "yellow",
-                                "value": 0.2
-                            },
-                            {
                                 "color": "green",
-                                "value": 0.5
+                                "value": null
                             }
                         ]
                     },
@@ -733,6 +720,7 @@
                 "y": 9
             },
             "id": 28,
+            "interval": "5",
             "options": {
                 "minVizHeight": 75,
                 "minVizWidth": 75,
@@ -787,6 +775,8 @@
                         "axisColorMode": "text",
                         "axisLabel": "",
                         "axisPlacement": "auto",
+                        "axisSoftMax": 0.3,
+                        "axisSoftMin": 0,
                         "barAlignment": 0,
                         "drawStyle": "line",
                         "fillOpacity": 0,
@@ -818,16 +808,8 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "red",
-                                "value": null
-                            },
-                            {
-                                "color": "yellow",
-                                "value": 0.5
-                            },
-                            {
                                 "color": "green",
-                                "value": 1
+                                "value": null
                             }
                         ]
                     },
@@ -843,6 +825,7 @@
                 "y": 9
             },
             "id": 35,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -948,6 +931,7 @@
                 "y": 14
             },
             "id": 38,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -1051,6 +1035,7 @@
                 "y": 14
             },
             "id": 37,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -1183,6 +1168,7 @@
                 "y": 16
             },
             "id": 20,
+            "interval": "5",
             "options": {
                 "displayLabels": [
                     "value"
@@ -1278,7 +1264,7 @@
                         "spanNulls": false,
                         "stacking": {
                             "group": "A",
-                            "mode": "normal"
+                            "mode": "percent"
                         },
                         "thresholdsStyle": {
                             "mode": "off"
@@ -1326,7 +1312,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "text",
+                                    "fixedColor": "blue",
                                     "mode": "fixed"
                                 }
                             }
@@ -1341,7 +1327,7 @@
                             {
                                 "id": "color",
                                 "value": {
-                                    "fixedColor": "#5794f2",
+                                    "fixedColor": "text",
                                     "mode": "fixed"
                                 }
                             }
@@ -1356,12 +1342,13 @@
                 "y": 16
             },
             "id": 23,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
                     "displayMode": "list",
                     "placement": "bottom",
-                    "showLegend": true
+                    "showLegend": false
                 },
                 "tooltip": {
                     "mode": "single",
@@ -1404,7 +1391,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "Capacity Overtime",
+            "title": "Capacity Over Time",
             "type": "timeseries"
         },
         {
@@ -1533,6 +1520,7 @@
                 "y": 21
             },
             "id": 30,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -1603,7 +1591,7 @@
                         }
                     },
                     "mappings": [],
-                    "unit": "percent",
+                    "unit": "decbytes",
                     "unitScale": true
                 },
                 "overrides": [
@@ -1676,6 +1664,7 @@
                 "y": 23
             },
             "id": 4,
+            "interval": "5",
             "options": {
                 "displayLabels": [
                     "percent"
@@ -1707,7 +1696,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "stagent_ram_utilization_percentage{instance=\"$exporter\"}",
+                    "expr": "stagent_ram_memory_used_bytes{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "hide": false,
                     "includeNullMetadata": true,
@@ -1724,7 +1713,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "100 - stagent_ram_utilization_percentage{instance=\"$exporter\"}",
+                    "expr": "stagent_ram_memory_available_bytes{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "hide": false,
                     "includeNullMetadata": true,
@@ -1838,6 +1827,7 @@
                 "y": 23
             },
             "id": 7,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -1858,7 +1848,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "stagent_ram_utilization_percentage{instance=\"$exporter\"}",
+                    "expr": "stagent_ram_memory_used_bytes{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -1874,7 +1864,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "code",
-                    "expr": "100 - stagent_ram_utilization_percentage{instance=\"$exporter\"}",
+                    "expr": "stagent_ram_memory_available_bytes{instance=\"$exporter\"}",
                     "fullMetaSearch": false,
                     "hide": false,
                     "includeNullMetadata": true,
@@ -1885,7 +1875,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "Usage Overtime",
+            "title": "Usage Over Time",
             "type": "timeseries"
         },
         {
@@ -1946,7 +1936,7 @@
                             }
                         ]
                     },
-                    "unit": "KBs",
+                    "unit": "Bps",
                     "unitScale": true
                 },
                 "overrides": [
@@ -1989,6 +1979,7 @@
                 "y": 25
             },
             "id": 29,
+            "interval": "5",
             "options": {
                 "legend": {
                     "calcs": [],
@@ -2041,7 +2032,7 @@
             "type": "timeseries"
         }
     ],
-    "refresh": "",
+    "refresh": "5s",
     "schemaVersion": 39,
     "tags": [],
     "templating": {
