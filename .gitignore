@@ -1,3 +1,5 @@
+
+
 grafana/*
 !conf
 !README.md
@@ -5,20 +7,30 @@ grafana/*
 
 prometheus/*
 !prometheus.yml
+!alerts.rules.yml
 !README.md
 !sd/
 local_replicas.json
+
+alertmanager/*
+!alertmanager.template.yml
+!README.md
 
 sample.yaml
 __pycache__
 .DS_Store
 
 /.vscode
-/docker/.env
-/scripts/.env
+.env
 
 *.pem
 
 docker-compose.override.yml
+temp-docker-compose-down.yml
 
 docs/reviews
+
+.python_packages
+.venv
+
+workload-attempts/

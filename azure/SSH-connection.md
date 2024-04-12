@@ -2,13 +2,13 @@
 
 #### Prerequisites
 * For this walkthrough I created a VM called **target-1** and deployed the exporter onto the VM
-* Save .pem file `target-1_key.pem` in `conf/` folder
+* Save .pem file `target-1_key.pem` in `azure/` folder
 
 #### Connect to VM using ssh
 ```
 cd System-Telemetry-Agent
-chmod 600 conf/target-1_key.pem
-ssh -i conf/target-1_key.pem azureuser@20.107.240.171
+chmod 600 azure/target-1_key.pem
+ssh -i azure/target-1_key.pem azureuser@20.107.240.171
 ```
 Notes: 
 * *target-1_key.pem* is the file containing the SSH key (!!!! DO NOT COMMIT IT !!!)
